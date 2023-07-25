@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Shop Yeoblee 𖣃 Sign In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-03.css">
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-02.css">
+
+<style>
+body {
+font-family: 'Roboto', sans-serif; 
+font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+    <div id="shopify-section-header" class="shopify-section shopify-section--header">
+        <header class="header" id="section-header" role="banner">
+        <a href="#" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
+    
+    	<nav class="main-menu deskonly">
+        	<li class="menu-item ">
+            	<a href="#">Shop&nbsp;</a>
+        	</li>
+        	<li class="menu-item ">
+            	<a href="#">About&nbsp;</a>
+        	</li>
+        	<li class="menu-item ">
+            	<a href="#">Journal&nbsp;</a>
+        	</li>
+    	</nav>
+
+    	<nav class="side-menu deskonly">
+        	<a class="cart-tog" href="#">
+            	<span>&nbsp;마이페이지</span>
+        	</a>
+        	<a class="cart-tog" href="#">
+            	<span>&nbsp;로그인</span>
+        	</a>
+        	<a class="cart-tog" href="#">
+            	<span>&nbsp;위시리스트</span>
+        	</a>
+        	<a class="cart-tog" href="#">
+            	<span>&nbsp;쇼핑백</span>
+            	<span class="hc-items-count">(0)</span>
+        	</a>
+    	</nav>
+        
+        </header>
+    </div>
+
+    <div id="shopify-section-1627014023e7f9b35f" class="shopify-section shopify-section--slideshow">
+        <section id="section-1627014023e7f9b35f" data-section-id="1627014023e7f9b35f" data-section-type="slideshow">
+
+            <div class="slideshow size-default" style="height: 124px;">
+                <div class="slideshow--carousel carousel carousel--fadeIn carousel--insideDots flickity-enabled" data-flickity="{
+                    &quot;prevNextButtons&quot;:false,
+                    &quot;setGallerySize&quot;: true,
+                    &quot;adaptiveHeight&quot;: true,
+                    &quot;wrapAround&quot;: true,
+                    &quot;dragThreshold&quot;: 15,
+                    &quot;pauseAutoPlayOnHover&quot;: false,
+                    &quot;autoPlay&quot;: false,
+                    &quot;pageDots&quot;:false}" tabindex="0">
+                <div class="flickity-viewport" style="height: 533.516px; touch-action: pan-y;">
+                    <div class="flickity-slider" style="left: 0px; transform: translateX(0%);">
+                        <div class="slideshow--slide carousel--cell invert-false is-selected" style="visibility: visible; position: absolute; left: 0%;" data-slide-index="0">
+                                <div class="slideshow--image mobonly hires-wrap ">
+                                    <img class="slideshow--image mobonly-img lores ok" src="" alt="">
+                                    <img class="slideshow--image mobonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="/assets/images/0011.jpg">
+                                </div>
+                                <div class="slideshow--image deskonly hires-wrap">
+                                    <img class="slideshow--image deskonly-img lores ok" src="" alt="">
+                                    <img class="slideshow--image deskonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="/assets/images/0011.jpg">
+                                </div>
+                            <div class="slideshow--content pos-middle">
+                                <header class="slideshow--content--headers">
+                                    <h2 class="slideshow--slide--title left">
+                                        <p><a href="/collections/season-sale" title="Season Sale"><strong> </strong></a></p>
+                                    </h2>
+                                </header>
+            </div></div></div></div></div></div>
+
+            <span id="section-1627014023e7f9b35f-end" class="Anchor"></span>
+        </section>
+        <hr>
+    </div>
+    
+    <section class="signIn">
+        <div class="tabs">
+            <div id="tab1" class="on">
+                <h2 class="wa_hidden">회원 입력</h2>
+                <form action="/loginProcess" id="loginForm" method="post">
+                    <input type="hidden" name="_csrf" value="2f268939-0d5f-4db3-b70e-7a68e84fefa8">
+                    <input type="hidden" name="accessToken" id="accessToken" value="">
+                    <input type="hidden" name="loginTarget" id="loginTarget" value="">
+                    <input type="hidden" name="remember-me" id="autologin" value="true">
+                    <input type="hidden" name="pageMode" value="false">
+                    <input type="hidden" name="naverConn" value="N">
+                    <div class="signIn-form">
+                        <div>
+                            <div class="input_box">
+                                <span class="skills">
+                                    <i class="reset_txt"></i>
+                                </span>
+                                <label for="userId" class="wa_hidden">아이디</label>
+                                <input type="text" id="userId" name="userId" value="" validate="required;xss2;" locale="ko" placeholder="아이디" class="reset" title="아이디">
+                            </div>
+                            <div class="input_box">
+                                <span class="skills">
+                                <i class="show_pass" style="background-position: center -400px;"></i>
+                                </span>
+                                <label for="password" class="wa_hidden">비밀번호</label>
+                                <input type="password" maxlength="20" name="password" id="password" value="" validate="required" locale="ko" placeholder="비밀번호" title="비밀번호">
+                            </div>
+                        </div>
+                        <button type="button" onclick="login();">로그인</button>
+                    </div>
+                    <p id="idPText" class="invalid-txt"></p>
+                    <br>
+                    <div class="link">
+                        <a href="#">아이디 찾기</a>
+                        <a href="#">비밀번호 찾기</a>
+                        <a href="#" class="colorDark">회원가입</a>
+                    </div>
+                    <br>
+                    <dl class="login_sns">
+                            <dt><span>SNS 계정으로 로그인</span></dt><br>
+                            <dd>
+                                <a href="#" id="oLoginKaKaoLink" class="" title="새창열림">카카오 로그인</a>
+                                <a href="#" class="" title="새창열림">네이버 로그인</a>
+                            </dd>
+                        </dl>
+                    <!-- start 네이버 로그인  -->
+                    <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+                    <script type="text/javascript" src="/v3/js/naver/naverLogin_implicit-1.0.2-min-HASH-ab9e391af2.js" charset="utf-8"></script>
+                    <div id="naver_id_login"></div>
+                    <script type="text/javascript">
+                        var YOUR_CLIENT_ID = "6x8wctGRNfI0pb9neoqD";
+                    </script>
+                    <script type="text/javascript" src="/v3/js/naver/naver_login-HASH-c890639567.js"></script>
+                    <!-- end 네이버 로그인  -->
+                </form>
+            </div>
+        </div>
+        <br><br><br>
+        <br><br><br><br>
+    </section>
+        
+        <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
+            <footer class="footer second">
+                <a href="/" class="second--copyright deskonly"></a>
+                <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
+                <a href="/" class="second--copyright deskonly"></a>
+                <br>
+            </footer>
+        </div>
+
+</body>
+</html>
