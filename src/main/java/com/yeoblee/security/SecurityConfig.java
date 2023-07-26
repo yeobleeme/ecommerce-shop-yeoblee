@@ -20,14 +20,14 @@ public class SecurityConfig extends	WebSecurityConfigurerAdapter {
 //		security.userDetailsService(userDetailService);
 		
 		security.authorizeRequests()
-				.antMatchers("/").permitAll()
+				.antMatchers("/", "/shop", "/journal", "/about", "/login", "/join").permitAll()
 				.antMatchers("/mypage/**").authenticated()
 				.antMatchers("/admin/**").hasRole("ADMIN");
 
 		security.csrf().disable();
 		security.formLogin().loginPage("/login").defaultSuccessUrl("/", true); 
-		security.exceptionHandling().accessDeniedPage("/system/accessDenied"); 
-		security.logout().logoutUrl("/system/logout").invalidateHttpSession(true).logoutSuccessUrl("/");
+		security.exceptionHandling().accessDeniedPage("/accessDenied"); 
+		security.logout().logoutUrl("/logout").invalidateHttpSession(true).logoutSuccessUrl("/");
 	}
 	
 	@Bean
