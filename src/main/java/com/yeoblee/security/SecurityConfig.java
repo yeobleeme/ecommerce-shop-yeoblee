@@ -11,13 +11,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends	WebSecurityConfigurerAdapter {
 	
-//	@Autowired
-//	private SecurityUserDetailService userDetailService;
+	@Autowired
+	private SecurityUserDetailService userDetailService;
 	
 	@Override
 	protected void configure(HttpSecurity security) throws Exception {
 		
-//		security.userDetailsService(userDetailService);
+		security.userDetailsService(userDetailService);
 		
 		security.authorizeRequests()
 				.antMatchers("/", "/shop", "/journal", "/about", "/login", "/join").permitAll()

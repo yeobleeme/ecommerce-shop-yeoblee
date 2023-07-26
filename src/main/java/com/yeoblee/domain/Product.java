@@ -53,6 +53,10 @@ public class Product {
 		
 	@Transient
 	private MultipartFile uploadFile;
+	
+//	private Long p_ref;
+//	private Long p_lev;
+//	private Long p_seq;
 
 }
 

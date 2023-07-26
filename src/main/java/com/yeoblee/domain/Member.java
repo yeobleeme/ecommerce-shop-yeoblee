@@ -28,7 +28,7 @@ public class Member {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long m_num;
 	
-	@Column(name = "M_ID", unique = true)
+	@Column(unique = true)
 	private String m_id;
 	
 	private String m_name;
@@ -40,6 +40,7 @@ public class Member {
 	
 	private String m_password;
 	
+	@Column(unique = true)
 	private String m_phone;
 	
 	private boolean m_sms_ok;

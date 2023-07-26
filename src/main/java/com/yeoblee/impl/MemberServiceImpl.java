@@ -19,21 +19,21 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getMember(Member member) {
-		Optional<Member> findMember = memberRepository.findById(member.getM_num());
+		Optional<Member> findMember = memberRepository.findById(member.getM_id());
 		System.out.println(findMember);
 		if(findMember.isPresent())
 			return findMember.get();
 		else return null;
 	}
 	
-	@Override
-	public Page<Member> getMemberList(Pageable pageable, String searchType, String searchWord) {
-		if(searchType.equalsIgnoreCase("m_num")) {
-			return memberRepository.findByM_idContaining(searchWord, pageable);
-		} else {
-			return memberRepository.findbyM_nameContaining(searchWord, pageable);
-		}
-	}
+//	@Override
+//	public Page<Member> getMemberList(Pageable pageable, String searchType, String searchWord) {
+//		if(searchType.equalsIgnoreCase("m_id")) {
+//			return memberRepository.findByIdContaining(searchWord, pageable);
+//		} else {
+//			return memberRepository.findByNameContaining(searchWord, pageable);
+//		}
+//	}
 	
 	@Override
 	public long getTotalRowCount(Member member) {
