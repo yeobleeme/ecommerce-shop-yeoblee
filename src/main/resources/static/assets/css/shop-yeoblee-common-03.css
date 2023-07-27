@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 @charset "UTF-8";/*! jQuery UI - v1.11.4 - 2016-01-06
 * http://jqueryui.com
 * Includes:core.css, draggable.css, resizable.css, button.css, datepicker.css, dialog.css, menu.css, selectmenu.css, theme.css
@@ -32969,7 +32967,7 @@ h2+.find_shop .search_wrap {
     vertical-align: top;
     margin: 0 0 0 4px;
     border-radius: 50%;
-    background: #8e1fff;
+    background: #32cd32;
     content: ''
 }
 
@@ -33925,7 +33923,7 @@ h2+.find_shop .search_wrap {
     width: 15px;
     height: 16px;
     background: url(../images/ui/bg_fin_check.svg) no-repeat left 2px/12px auto;
-    content: ''
+    /* content: '' */
 }
 
 .valid-status span.ok {
