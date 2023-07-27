@@ -42,10 +42,10 @@ public class LoginController {
 		return "/";
 	}
 	
-	@GetMapping("/join")
-	public String getJoinPage() {
-		return "join";
-	}
+//	@GetMapping("/join")
+//	public String getJoinPage() {
+//		return "join";
+//	}
 	
 
 }
