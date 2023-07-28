@@ -24,37 +24,39 @@ import lombok.ToString;
 @Entity
 public class Member {
 
-	@Id
+	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long m_num;
+	private Long mbrNum;
+	
+	@Id
+	@Column(unique = true)
+	private String mbrId;
+	
+	private String mbrName;
 	
 	@Column(unique = true)
-	private String m_id;
+	private String mbrEmail;
 	
-	private String m_name;
+//	private boolean m_email_ok;
 	
-	@Column(unique = true)
-	private String m_email;
-	
-	private boolean m_email_ok;
-	
-	private String m_password;
+	private String mbrPw;
 	
 	@Column(unique = true)
-	private String m_phone;
+	private String mbrMobile;
 	
-	private boolean m_sms_ok;
+//	private boolean m_sms_ok;
 	
-	private String m_addr1;
-	private String m_addr2;
-	private String m_addr3;
+	private String mbrAddr1;
+	private String mbrAddr2;
+	private String mbrAddr3;
 	
-	private Date m_birth;
+	private String mbrBirth;
 	
-	private Long m_point;
+//	@Column(insertable = false, columnDefinition = "bigint default 0")
+//	private Long m_point;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date m_regdate;
+	private Date mbrRegDate;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;

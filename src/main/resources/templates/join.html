@@ -105,147 +105,177 @@ font-family: 'Noto Sans KR', sans-serif;
     <main id="content" class="contents">
     
     <h1>회원가입</h1>
+    
+    
+<!-- <form th:action="insertMember" method="post" onsubmit="return showCongratulations()">
+<div class="">
+<input type="text" class="rounded-input" name="id" placeholder="USER ID" value="" />
+<input type="text" class="rounded-input" name="name" placeholder="NAME" value="" />
+<input type="password" class="rounded-input" name="password"  placeholder="PASSWORD" value="" />
+<input type="text" class="rounded-input" name="telephone" placeholder="TELEPHONE" value="" />
+<input type="text" class="rounded-input" name="role" placeholder="USER-FIXED" readonly />
+<input type="submit" class="btn-submit" value="Submit" style="border: none; background:#fff; font-weight: bold">
+</div>			
+</form> -->
 
-<section class="join form_wrap">
-    <form id="addMbrForm" name="addMbrForm" action="" method="post">
-        <div class="form_wrap" id="easyJoinDiv">
-            <div class="row" id="limbrId">
-                <label for="mbrId" class="required">아이디</label>
-                <div class="input_box">
-                    <input type="text" name="mbr.mbrId" id="mbrId" value="" validate="" class="reset" locale="ko" label="아이디" index="10">
+
+	<section class="join form_wrap">
+    	<form id="addMbrForm" name="addMbrForm" th:action="join" method="post">
+    
+	        <div class="form_wrap" id="easyJoinDiv">
+	        
+	            <div class="row" id="mbrId">
+	                <label for="mbrId" class="required">아이디</label>
+	                <div class="input_box">
+	                    <input type="text" name="mbrId" id="" value="" class="reset" label="아이디" index="10">
+	                </div>
+	                <p class="valid-status" id="desc_mbrId">
+	                    <span class="spec">영문, 숫자, 영문+숫자</span>
+	                    <span class="size">6자 이상</span>
+	                </p>
+	                <p class="invalid-txt" id="message_mbrId"></p>
+	                <p class="desc" id="mbrIdInfo"></p>
+	            </div>
+	
+	            <div class="row" id="mbrPw">
+	                <label for="mbrPw" class="required">비밀번호</label>
+	                <div class="input_box">
+	                    <input type="password" name="mbrPw" id="mbrPw" validate="" label="비밀번호" index="20">
+	                </div>
+	                <p class="valid-status" id="desc_mbrPw">
+	                    <span class="spec">영문, 숫자, 특수문자 2가지 이상 조합</span>
+	                    <span class="size">10자 이상</span>
+	                </p>
+	                <p class="invalid-txt" id="message_mbrPw"></p>
+	                <p class="desc" id="mbrPwInfo"></p>
+	            </div>
+	
+	            <div class="row" id="mbrCheckPw">
+	                <label for="mbrCheckPw" class="required">비밀번호 확인</label>
+	                <div class="input_box">
+	                    <input type="password" class="inp_txt inp_pass" id="mbrCheckPw" validate="" label="비밀번호 확인" index="30">
+	                </div>
+	                <p class="invalid-txt" id="message_mbrCheckPw"></p>
+	            </div>
+	
+	            <div class="row" id="mbrName">
+	                <label for="mbrName" class="required">이름</label>
+	                <div class="input_box">
+	                    <input type="text" class="reset" name="mbrName" id="mbrName" validate="" label="이름" index="40" value="">
+	                </div>
+	                <p class="invalid-txt" id="message_mbrNm"></p>
+	            </div>
+	
+	            <div class="row" id="mbrMobile">
+	                    <label for="mbrMobile" class="required">휴대폰 번호</label>
+	                    <div class="input_box">
+	                        <input type="text" class="reset" name="mbrMobile" id="mbrMobile" maxlength="11" validate="" label="휴대폰 번호" index="50">
+	                    </div>
+	                    <p class="valid-status" id="desc_mbrPw">
+	                        <span class="spec">'-' 제외 숫자만 입력</span>
+	                    </p>
+	                    <p class="invalid-txt" id="message_mobileNumber"></p>
+	                </div>
+	
+	            <div class="row" id="mbrEmail">
+	                <label for="mbrEmail" class="required">이메일</label>
+	                <div class="input_select">
+	                    <input type="text" name="mbrEmail" id="mbrEmail" value="" validate="" label="이메일" index="60">
+	                </div>
+	                <p class="invalid-txt" id="message_mbrEmail"></p>
+	            </div>
+	
+	            <div class="row" id="mbrAddr1" style="width:340px;">
+	                <label for="mbrAddr1">주소</label>
+	                <div class="input_box">
+	                    <input type="text" class="reset" name="mbrAddr1" value="" id="mbrAddr1" validate="" label="우편번호" index="70">
+	                    <button id="" class="btn bk" onclick="">검색</button>
+	                </div>
+	                <p class="invalid-txt" id="message_recomdId"></p>
+	            </div>
+	            
+	            <div class="row" id="mbrAddr2">
+	                <label for="mbrAddr2"></label>
+	                <div class="input_box">
+	                    <input type="text" class="reset" name="mbrAddr2" value="" id="mbrAddr2" validate="" label="주소" index="70">
+	                </div>
+	                <p class="invalid-txt" id="message_recomdId"></p>
+	            </div>
+	            
+	            <div class="row" id="mbrAddr3">
+	                <label for="mbrAddr3"></label>
+	                <div class="input_box">
+	                    <input type="text" class="reset" name="mbrAddr3" value="" id="mbrAddr3" validate="" label="상세주소" index="70">
+	                </div>
+	                <p class="invalid-txt" id="message_recomdId"></p>
+	            </div>
+	
+	            <div class="row" id="mbrBirth" style="width:340px;">
+	                <label for="mbrBirth">생년월일</label>
+	                <div class="input_box">
+	                    <input type="text" class="reset" name="mbrBirth" value="" id="mbrBirth" validate="" label="" index="70">
+	                </div>
+	                <p class="invalid-txt" id="message_recomdId"></p>
+	            </div>
+	            
+	            <div class="row" id="">
+	                <label for="recomdId">이용약관</label> <br />
+	            </div>
+	            
+	            <div class="row terms-area all-group">
+	                <div class="terms-bx">
+	                	<div class="checkbox">
+	                    	<input id="chk01" type="checkbox" name="">
+	                    	<label for="chk01" style="color: #767676">
+	                    	[필수] 만 14세 이상
+	                    	</label>
+	                    </div>
+	                   	<br />
+	                    <div class="checkbox">
+	                    	<input id="chk01" type="checkbox" name="">
+	                    	<label for="chk01" style="color: #767676">
+	                    	[필수] 온라인사이트 이용약관
+	                    	</label>
+	                    </div>
+	                    <br />
+	                    <div class="checkbox">
+	                    	<input id="chk01" type="checkbox" name="">
+	                    	<label for="chk01" style="color: #767676">
+	                    	[필수] 개인정보 수집 및 이용동의
+	                    	</label>
+	                    </div>
+	                    <br />
+	                    <div class="checkbox">
+	                    	<input id="chk01" type="checkbox" name="">
+	                    	<label for="chk01" style="color: #767676">
+	                    	[선택] 홍보 마케팅 목적 개인정보 수집 이용동의
+	                    	</label>
+	                    </div>
+	                </div>
                 </div>
-                <p class="valid-status" id="desc_mbrId">
-                    <span class="spec">영문, 숫자, 영문+숫자</span>
-                    <span class="size">6자 이상</span>
-                </p>
-                <p class="invalid-txt" id="message_mbrId"></p>
-                <p class="desc" id="mbrIdInfo"></p>
-            </div>
+	        
+	        	<div class="submit">
+	            	<button id="btnAddMember" class="btn bk" onclick="">가입하기</button>
+	        	</div>
+	        	
+	        </div>
+	    </form>
+    	<br><br><br>
+    	<br><br><br><br>
+	</section>
 
-            <div class="row" id="limbrPw">
-                <label for="mbrPw" class="required">비밀번호</label>
-                <div class="input_box">
-                    <span class="skills">
-                        <i class="valid_txt" id="passwordLevel"></i>
-                        <i class="show_pass"></i>
-                    </span>
-                    <input type="password" name="mbr.mbrPw" id="mbrPw" validate="" label="비밀번호" locale="ko" index="20">
-                </div>
-                <p class="valid-status" id="desc_mbrPw">
-                    <span class="spec">영문, 숫자, 특수문자 2가지 이상 조합</span>
-                    <span class="size">10자 이상</span>
-                </p>
-                <p class="invalid-txt" id="message_mbrPw"></p>
-                <p class="desc" id="mbrPwInfo"></p>
-            </div>
-
-            <div class="row" id="limbrCheckPw">
-                <label for="mbrCheckPw" class="required">비밀번호 확인</label>
-                <div class="input_box">
-                    <span class="skills">
-                        <i class="show_pass"></i>
-                    </span>
-                    <input type="password" class="inp_txt inp_pass" id="mbrCheckPw" validate="" label="비밀번호 확인" index="30">
-                </div>
-                <p class="invalid-txt" id="message_mbrCheckPw"></p>
-            </div>
-
-            <div class="row" id="limbrNm">
-                <label for="mbrNm" class="required">이름</label>
-                <div class="input_box">
-                    <span class="skills">
-                        <i class="valid_txt">OK</i>
-                    </span>
-                    <input type="text" class="reset" name="mbr.mbrNm" id="mbrNm" validate="" label="이름" index="40" value="">
-                </div>
-                <p class="invalid-txt" id="message_mbrNm"></p>
-            </div>
-
-            <div class="row">
-                    <label for="mobileNumber" class="required">휴대폰 번호</label>
-                    <div class="input_box">
-                        <input type="text" class="reset" name="mobileNumber" id="mobileNumber" maxlength="11" validate="" label="휴대폰 번호" index="50">
-                    </div>
-                    <p class="valid-status" id="desc_mbrPw">
-                        <span class="spec">'-' 제외 숫자만 입력</span>
-                    </p>
-                    <p class="invalid-txt" id="message_mobileNumber"></p>
-                </div>
-
-            <div class="row" id="limbrEmail">
-                <label for="mbrEmail" class="required">이메일</label>
-                <div class="input_select">
-                    <input type="text" name="mbr.mbrEmail" id="mbrEmail" value="" validate="" label="이메일" locale="ko" index="60">
-                </div>
-                <p class="invalid-txt" id="message_mbrEmail"></p>
-            </div>
-
-            <div class="row" id="lirecomdId" style="width:340px;">
-                <label for="recomdId">주소</label>
-                <div class="input_box">
-                    <span class="skills">
-                        <i class="reset_txt"></i>
-                    </span>
-                    <input type="text" class="reset" name="" value="" id="recomdId" validate="" label="" index="70">
-                    <button id="" class="btn bk" onclick="">검색</button>
-                </div>
-                <p class="invalid-txt" id="message_recomdId"></p>
-            </div>
-            <div class="row" id="lirecomdId">
-                <label for="recomdId"></label>
-                <div class="input_box">
-                    <span class="skills">
-                        <i class="reset_txt"></i>
-                    </span>
-                    <input type="text" class="reset" name="" value="" id="recomdId" validate="" label="" index="70">
-                </div>
-                <p class="invalid-txt" id="message_recomdId"></p>
-            </div>
-            <div class="row" id="lirecomdId">
-                <label for="recomdId"></label>
-                <div class="input_box">
-                    <span class="skills">
-                        <i class="reset_txt"></i>
-                    </span>
-                    <input type="text" class="reset" name="" value="" id="recomdId" validate="" label="" index="70">
-                </div>
-                <p class="invalid-txt" id="message_recomdId"></p>
-            </div>
-
-            <div class="row" id="lirecomdId" style="width:340px;">
-                <label for="recomdId">생년월일</label>
-                <div class="input_box">
-                    <span class="skills">
-                        <i class="reset_txt"></i>
-                    </span>
-                    <input type="text" class="reset" name="" value="" id="recomdId" validate="" label="" index="70">
-                </div>
-                <p class="invalid-txt" id="message_recomdId"></p>
-            </div>
-
-        
-        </div>
-
-        <div class="submit">
-            <button id="btnAddMember" class="btn bk" onclick="">가입하기</button>
-        </div>
-    </form>
-    <br><br><br>
-    <br><br><br><br>
-</section>
-
-</main>
+	</main>
 
     
         
-        <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
-            <footer class="footer second">
-                <a href="/" class="second--copyright deskonly"></a>
-                <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
-                <a href="/" class="second--copyright deskonly"></a>
-                <br>
-            </footer>
-        </div>
+	<div id="shopify-section-footer" class="shopify-section shopify-section--footer">
+    	<footer class="footer second">
+        <a href="/" class="second--copyright deskonly"></a>
+        <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
+        <a href="/" class="second--copyright deskonly"></a>
+        <br>
+        </footer>
+	</div>
 
 </body>
 </html>

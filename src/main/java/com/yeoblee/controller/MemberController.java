@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yeoblee.domain.Member;
 import com.yeoblee.domain.PagingInfo;
+import com.yeoblee.domain.Role;
 import com.yeoblee.service.MemberService;
 
 @Controller
@@ -72,13 +73,16 @@ public class MemberController {
 	}
 	
 	@PostMapping("/join")
-	public String insertMember(Member member) {
+	public String addMember(Member member) {
 //		if(member.getId() == null) {
 //			return "redirect:login";
 //		}
 //		member.setRole(member.getRole() != "" ? "ADMIN" : "USER");
-		memberService.insertMember(member);
-		return "login";
+		if (member.getRole() == null) {
+            member.setRole(Role.ROLE_USER);
+        }
+		memberService.addMember(member);
+		return "redirect:login";
 	}
 	
 	

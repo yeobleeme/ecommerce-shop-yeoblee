@@ -101,31 +101,19 @@ font-family: 'Noto Sans KR', sans-serif;
         <div class="tabs">
             <div id="tab1" class="on">
                 <h2 class="wa_hidden">회원 입력</h2>
-                <form action="/loginProcess" id="loginForm" method="post">
-                    <input type="hidden" name="_csrf" value="2f268939-0d5f-4db3-b70e-7a68e84fefa8">
-                    <input type="hidden" name="accessToken" id="accessToken" value="">
-                    <input type="hidden" name="loginTarget" id="loginTarget" value="">
-                    <input type="hidden" name="remember-me" id="autologin" value="true">
-                    <input type="hidden" name="pageMode" value="false">
-                    <input type="hidden" name="naverConn" value="N">
+                <form th:action="login" id="loginForm" method="post">
                     <div class="signIn-form">
                         <div>
                             <div class="input_box">
-                                <span class="skills">
-                                    <i class="reset_txt"></i>
-                                </span>
-                                <label for="userId" class="wa_hidden">아이디</label>
-                                <input type="text" id="userId" name="userId" value="" validate="required;xss2;" locale="ko" placeholder="아이디" class="reset" title="아이디">
+                                <label for="mbrId" class="wa_hidden">아이디</label>
+                                <input type="text" id="mbrId" name="mbrId" value="" validate="" placeholder="아이디" class="reset" title="아이디">
                             </div>
                             <div class="input_box">
-                                <span class="skills">
-                                <i class="show_pass" style="background-position: center -400px;"></i>
-                                </span>
-                                <label for="password" class="wa_hidden">비밀번호</label>
-                                <input type="password" maxlength="20" name="password" id="password" value="" validate="required" locale="ko" placeholder="비밀번호" title="비밀번호">
+                                <label for="mbrPw" class="wa_hidden">비밀번호</label>
+                                <input type="password" maxlength="20" name="mbrPw" id="mbrPw" value="" validate="" placeholder="비밀번호" title="비밀번호">
                             </div>
                         </div>
-                        <button type="button" onclick="login();">로그인</button>
+                        <button type="submit" onclick="">로그인</button>
                     </div>
                     <p id="idPText" class="invalid-txt"></p>
                     <br>
@@ -135,22 +123,17 @@ font-family: 'Noto Sans KR', sans-serif;
                         <a href="#" class="colorDark">회원가입</a>
                     </div>
                     <br>
-                    <dl class="login_sns">
-                            <dt><span>SNS 계정으로 로그인</span></dt><br>
+                    <!-- <dl class="login_sns">
+                    <dt><span>SNS 계정으로 로그인</span></dt><br>
                             <dd>
                                 <a href="#" id="oLoginKaKaoLink" class="" title="새창열림">카카오 로그인</a>
                                 <a href="#" class="" title="새창열림">네이버 로그인</a>
                             </dd>
-                        </dl>
-                    <!-- start 네이버 로그인  -->
-                    <!-- 네이버아이디로로그인 버튼 노출 영역 -->
-                    <script type="text/javascript" src="/v3/js/naver/naverLogin_implicit-1.0.2-min-HASH-ab9e391af2.js" charset="utf-8"></script>
+                    </dl>
+                    start 네이버 로그인 
+                    네이버아이디로로그인 버튼 노출 영역
                     <div id="naver_id_login"></div>
-                    <script type="text/javascript">
-                        var YOUR_CLIENT_ID = "6x8wctGRNfI0pb9neoqD";
-                    </script>
-                    <script type="text/javascript" src="/v3/js/naver/naver_login-HASH-c890639567.js"></script>
-                    <!-- end 네이버 로그인  -->
+                    end 네이버 로그인  -->
                 </form>
             </div>
         </div>

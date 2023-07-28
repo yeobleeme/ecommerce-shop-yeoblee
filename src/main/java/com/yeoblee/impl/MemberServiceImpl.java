@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getMember(Member member) {
-		Optional<Member> findMember = memberRepository.findById(member.getM_id());
+		Optional<Member> findMember = memberRepository.findById(member.getMbrId());
 		System.out.println(findMember);
 		if(findMember.isPresent())
 			return findMember.get();
@@ -41,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void insertMember(Member member) {
+	public void addMember(Member member) {
 		memberRepository.save(member);
 	}
 
@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void deleteMember(Member member) {
-		memberRepository.deleteById(member.getM_id());
+		memberRepository.deleteById(member.getMbrId());
 	}
 
 }

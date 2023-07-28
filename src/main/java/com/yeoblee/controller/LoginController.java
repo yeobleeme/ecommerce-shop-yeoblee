@@ -28,7 +28,7 @@ public class LoginController {
 		
 		Member findMember = memberService.getMember(member);
 		
-		if(findMember != null && findMember.getM_password().equals(member.getM_password())) {
+		if(findMember != null && findMember.getMbrPw().equals(member.getMbrPw())) {
 			model.addAttribute("member", findMember);
 			return "/";
 		} else {

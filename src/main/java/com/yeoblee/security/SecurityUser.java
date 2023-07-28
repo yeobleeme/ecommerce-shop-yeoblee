@@ -10,7 +10,7 @@ public class SecurityUser extends User {
 	private Member member;
 
 	public SecurityUser(Member member) {
-		super(member.getM_id(), member.getM_password(),
+		super(member.getMbrId(), member.getMbrPw(),
 				AuthorityUtils.createAuthorityList(member.getRole().toString()));
 		this.member = member;
 	}

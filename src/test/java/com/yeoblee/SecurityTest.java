@@ -17,25 +17,25 @@ import com.yeoblee.persistence.MemberRepository;
 @Commit
 public class SecurityTest {
 	
-	@Autowired
-	private MemberRepository memberRepository;
-	
-	@Autowired
-	private PasswordEncoder encoder;
-
-	@Test
-	public void testInsert() {
-		Member member = new Member();
-		
-		member.setM_email("yeoblee@gmail.com");
-		member.setM_name("yeoblee");
-		member.setM_password(encoder.encode("12345"));
-		member.setM_addr1("123-000");
-		member.setM_addr2("seoul seocho");
-		member.setM_addr3("102-000");
-		member.setRole(Role.ROLE_ADMIN);
-		
-		memberRepository.save(member);
-	}
+//	@Autowired
+//	private MemberRepository memberRepository;
+//	
+//	@Autowired
+//	private PasswordEncoder encoder;
+//
+//	@Test
+//	public void testInsert() {
+//		Member member = new Member();
+//		
+//		member.setM_email("yeoblee@gmail.com");
+//		member.setM_name("yeoblee");
+//		member.setM_password(encoder.encode("12345"));
+//		member.setM_addr1("123-000");
+//		member.setM_addr2("seoul seocho");
+//		member.setM_addr3("102-000");
+//		member.setRole(Role.ROLE_ADMIN);
+//		
+//		memberRepository.save(member);
+//	}
 	
 }

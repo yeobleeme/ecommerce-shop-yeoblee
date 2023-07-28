@@ -3854,6 +3854,8 @@ input[type=checkbox],input[type=radio] {
     display: inline-block;
     box-sizing: border-box;
     margin-right: 10px;
+    margin-left: 26px;
+    margin-top:4px;
     font-size: var(--fontD);
     line-height: var(--fontDL);
     vertical-align: middle;
