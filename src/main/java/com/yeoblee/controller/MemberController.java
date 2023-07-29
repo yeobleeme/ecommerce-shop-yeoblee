@@ -77,7 +77,6 @@ public class MemberController {
 //		if(member.getId() == null) {
 //			return "redirect:login";
 //		}
-//		member.setRole(member.getRole() != "" ? "ADMIN" : "USER");
 		if (member.getRole() == null) {
             member.setRole(Role.ROLE_USER);
         }

@@ -21,18 +21,18 @@ public class SecurityController {
 	@Autowired
 	private MemberService memberService;
 	
-	@PostMapping("/login")
-	public String login(Member member, Model model) {
-		
-		Member findMember = memberService.getMember(member);
-		
-		if(findMember != null && findMember.getMbrPw().equals(member.getMbrPw())) {
-			model.addAttribute("member", findMember);
-			return "info/welcome";
-		} else {
-			return "redirect:login";
-		}
-	}
+//	@PostMapping("login")
+//	public String login(Member member, Model model) {
+//		
+//		Member findMember = memberService.getMember(member);
+//		
+//		if(findMember != null && findMember.getMbrPw().equals(member.getMbrPw())) {
+//			model.addAttribute("member", findMember);
+//			return "info/welcome";
+//		} else {
+//			return "redirect:login";
+//		}
+//	}
 	
 }
 
