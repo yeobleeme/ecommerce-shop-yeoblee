@@ -24,11 +24,10 @@ import lombok.ToString;
 @Entity
 public class Member {
 
-	
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long mbrNum;
 	
-	@Id
 	@Column(unique = true)
 	private String mbrId;
 	

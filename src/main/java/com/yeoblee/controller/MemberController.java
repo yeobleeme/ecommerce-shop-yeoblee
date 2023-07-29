@@ -67,12 +67,12 @@ public class MemberController {
 //	}
 	
 
-	@GetMapping("/join")
-	public String getJoinPage() {
-		return "join";
+	@GetMapping("/addMember")
+	public String getaddMemberPage() {
+		return "addMember";
 	}
 	
-	@PostMapping("/join")
+	@PostMapping("/addMember")
 	public String addMember(Member member) {
 //		if(member.getId() == null) {
 //			return "redirect:login";

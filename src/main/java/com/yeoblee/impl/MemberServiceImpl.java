@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.yeoblee.domain.Member;
@@ -16,6 +17,9 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberRepository memberRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public Member getMember(Member member) {
@@ -42,7 +46,10 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void addMember(Member member) {
+		String encodedPassword = passwordEncoder.encode(member.getMbrPw());
+		member.setMbrPw(encodedPassword);
 		memberRepository.save(member);
+		
 	}
 
 	@Override
