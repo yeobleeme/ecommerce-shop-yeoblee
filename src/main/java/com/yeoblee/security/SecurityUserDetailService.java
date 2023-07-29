@@ -16,11 +16,12 @@ public class SecurityUserDetailService implements UserDetailsService {
 	
 	@Autowired
 	private MemberRepository memberRepository;
+	
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		Optional<Member> optional = memberRepository.findById(username);
+		Optional<Member> optional = memberRepository.findByMbrId(username);
 		
 		if(!optional.isPresent()) {
 			throw new UsernameNotFoundException(username + " 사용자를 찾지 못했습니다.");
@@ -28,6 +29,7 @@ public class SecurityUserDetailService implements UserDetailsService {
 			Member member = optional.get();
 			return new SecurityUser(member);
 		}
+		
 	}
 
 }

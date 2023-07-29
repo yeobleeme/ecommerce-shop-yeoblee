@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getMember(Member member) {
-		Optional<Member> findMember = memberRepository.findById(member.getMbrId());
+		Optional<Member> findMember = memberRepository.findByMbrId(member.getMbrId());
 		System.out.println(findMember);
 		if(findMember.isPresent())
 			return findMember.get();

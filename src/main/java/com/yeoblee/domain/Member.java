@@ -25,7 +25,7 @@ import lombok.ToString;
 public class Member {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long mbrNum;
 	
 	@Column(unique = true)
