@@ -4,28 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class SecurityController {
+public class ViewController {
+	
+	@GetMapping("/mypage/myPage")
+	public String mypage() {
+		return "mypage/myPage";
+	}
 
-	@GetMapping("/login")
-	public void login() {}
-	
-	@GetMapping("/logout")
-	public void logout() {}
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
