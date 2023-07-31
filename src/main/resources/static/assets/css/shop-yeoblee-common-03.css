@@ -11802,8 +11802,7 @@ label.switch span+span {
     vertical-align: middle;
     font-weight: 400;
     background: #fff;
-    border-bottom: 1px solid #959595;
-    text-align: center
+    text-align: left
 }
 
 .grid_wrap th span:not(.date)+span {
@@ -24664,8 +24663,9 @@ section.mypage.claim .submit {
 }
 
 section.mypage .count_tit {
-    font-size: 19px;
-    color: #111;
+	background:black;
+	color:white;
+    font-size: 20px;
     line-height: 24px
 }
 
@@ -24692,11 +24692,11 @@ section.mypage .count_tit .search-date {
 
 section.mypage .count_tit .btn {
     display: inline-block;
-    float: right;
-    padding: 1px 20px;
-    border-color: #444;
-    background-color: #444;
-    font-size: 13px
+    float: left;
+    padding: 4px 16px;
+    border-color: #111111;
+    background-color: #111111;
+    font-size: 16px
 }
 
 section.mypage .count_tit .btn+.btn {

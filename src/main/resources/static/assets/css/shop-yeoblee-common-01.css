@@ -711,9 +711,6 @@ main .shopify-section--hidden {
 
 .default-page--content a {
     display: inline-block;
-    -webkit-text-decoration: underline #b7b5ab;
-    text-decoration: underline #b7b5ab;
-    text-underline-offset: 2px
 }
 
 .default-page--content a:hover {

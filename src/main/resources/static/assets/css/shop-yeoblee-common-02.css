@@ -781,8 +781,7 @@ main .shopify-section {
       margin-bottom: 1em; }
     .default-page--content a {
       display: inline-block;
-      text-decoration: underline #b7b5ab;
-      text-underline-offset: 2px; }
+       }
       .default-page--content a:hover {
         color: #bebcb4; }
     .default-page--content p,
