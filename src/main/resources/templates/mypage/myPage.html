@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-03.css">
 <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
 <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-02.css">
 
@@ -86,11 +87,11 @@ font-family: 'Noto Sans KR', sans-serif;
                                 
                                     <div class="slideshow--image mobonly hires-wrap ">
                                         <img class="slideshow--image mobonly-img lores ok" src="" alt="">
-                                        <img class="slideshow--image mobonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="assets/images/0011.jpg">
+                                        <img class="slideshow--image mobonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="/assets/images/0011.jpg">
                                     </div>
                                     <div class="slideshow--image deskonly hires-wrap">
                                         <img class="slideshow--image deskonly-img lores ok" src="" alt="">
-                                        <img class="slideshow--image deskonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="assets/images/0011.jpg">
+                                        <img class="slideshow--image deskonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="/assets/images/0011.jpg">
                                     </div>
                                 
                                 <div class="slideshow--content pos-middle">
@@ -108,275 +109,105 @@ font-family: 'Noto Sans KR', sans-serif;
 
     <div id="shopify-section-collection-template" class="shopify-section shopify-section--bordered">
     <div class="collection the-cols ">
-    <!-- <a class="collection-sidebar--toggle mobonly">
-    <span data-title="All products<em>Filter</em>">All products<em>Filter</em></span>
-    </a> -->
 
     <div class="collection-sidebar the-cols--sidebar">
         <nav class="collection-sidebar--menu">
-            <li class="menu-item is-active">
-                <a href="#" class="menu-item--link" data-href="">All</a>
+            <li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
+                <a href="#" class="menu-item--link" data-href="" >나의 쇼핑 활동</a>
             </li>
             <li class="menu-item ">
-                <a href="#" class="menu-item--link" data-href="">Outers</a>
+                <a href="#" class="menu-item--link" data-href="">주문 내역 조회</a>
             </li>
             <li class="menu-item ">
-                <a href="#" class="menu-item--link" data-href="">Tops</a>
+                <a href="#" class="menu-item--link" data-href="">위시리스트</a>
             </li>
             <li class="menu-item ">
-                <a href="#" class="menu-item--link" data-href="">Bottoms</a>
+                <a href="#" class="menu-item--link" data-href="">구매 후기</a>
             </li>
             <li class="menu-item ">
-                <a href="#" class="menu-item--link" data-href="">Shoes</a>
-            </li>
-            <li class="menu-item ">
-                <a href="#" class="menu-item--link" data-href="">Accessories</a>
+                <a href="#" class="menu-item--link" data-href="">위시리스트</a>
             </li>
             <li>
                 <br>
+            <li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
+                <a href="#" class="menu-item--link" data-href="" >고객센터</a>
             </li>
             <li class="menu-item ">
-                <a href="#" class="menu-item--link" data-href="">New Arrivals</a>
+                <a href="#" class="menu-item--link" data-href="">자주 묻는 질문</a>
             </li>
             <li class="menu-item ">
-                <a href="#" class="menu-item--link" data-href="">Season Sale</a>
+                <a href="#" class="menu-item--link" data-href="">문의 게시판</a>
             </li>
+            	<br />
+            <li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
+                <a href="#" class="menu-item--link" data-href="">회원 정보 수정</a>
+            </li>
+            <li class="menu-item ">
+                <a href="#" class="menu-item--link" data-href="">자주 묻는 질문</a>
+            </li>
+            <li class="menu-item ">
+                <a href="#" class="menu-item--link" data-href="">문의 게시판</a>
+            </li>
+            
         </nav>
 
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
+        <br><br><br>
+        <br><br><br>
         
     </div>
+    
 
 
     <div class="collection-list the-cols--content" style="opacity: 1;">
 
+	<form method="post" id="srchForm" action="/secured/mypage/myPage">	
+	
+	<section class="mypage">
+		<div class="membership" style="">
+			<div class="mem-class">
+				<i class="lv-03 coin"></i>
+				<div class="mem-profile">
+					<h2><a href="/secured/mypage/memberInfoMgmt"><em>이종엽</em>님</a>
+					<small>yeobleeee@gmail.com</small></h2>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="history_wrap">
+					<h4>
+						<span>진행중인 수선 내역</span><span>진행중인 문의 내역</span>
+					</h4>
+					<ul class="ask_list">
+						<li><span>무료사이즈 수선</span> <a href="/secured/mypage/listRepair" class="c999">0</a></li>
+						<li><span>AS 수선</span> <a href="/secured/mypage/listPayRepair" class="c999">0</a></li>
+						<li><span>1:1문의/SSF톡</span> <a href="/secured/mypage/myInquiryList" class="c999">0</a></li>
+						<li><span>상품 Q&amp;A</span> <a href="/secured/mypage/myQnaList" class="c999">0</a></li>
+					</ul>
+				</div>
+				<div class="history_wrap">
+					<h4>진행중인 활동 내역</h4>
+					<ul class="ask_list">
+						<li><span>찜한상품</span> <a href="/secured/mypage/myWishList" class="c999">0</a></li>
+						<li><span>마이브랜드</span> <a href="/secured/mypage/myBrndList" class="c999">0</a></li>
+						<li><span>재입고알림</span> <a href="/secured/mypage/myAlarmsForStock" class="c999">0</a></li>
+						<li><span>이벤트참여내역</span> <a href="/secured/mypage/eventList">5</a></li>
+					</ul>
 
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
+					<div class="hint_area">
+						<div class="left">
+							<em>8 Seconds 구매혜택</em>
+							<p>삼성패션 멤버십 고객님들께만 제공되는 혜택입니다.</p>
+						</div>
+						<div class="right">
+							<a href="/secured/mypage/myEightSecondsBenefits" class="btn">쿠폰 혜택보기</a>
+						</div>
+					</div>
 
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
+				</div>
+			</section>
+<!-- v3 컨텐츠 종료 -->	
+</form>
         
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
-
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
-
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
-
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
-
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
-
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
-
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
-
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
-
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
-
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
-
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
-
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
-
-        <div class="products-list--item">
-            <article class="product-item" data-sizes="size_S size_M size_L size_XL ">
-                <div class="product-item--wrap">
-                    <a href="/product.html" class="product-item--image">
-                    <div class="product-item--images">
-                    <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" src="./img/720.png">
-                    </div>
-                    </div>
-                    </a>
-
-                    <div class="product-item--info">
-                        <h2 class="product-item--info--title not-index">
-                            <a href="/product.html">
-                                <span class="code">102</span>
-                                <span class="full">102 Jacket</span>
-                            </a>
-                        </h2>
-                        <div class="product-item--info--price">
-                            <span class="price-span money">₩ 360,000</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <br>
-        </div>
 
 
         </div>
@@ -385,8 +216,12 @@ font-family: 'Noto Sans KR', sans-serif;
 
         <hr><hr><hr><hr><hr>
         <hr><hr><hr><hr><hr>
+        
+        
 
     </main>
+    
+    
 
     <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
         <footer class="footer second">

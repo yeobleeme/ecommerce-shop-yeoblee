@@ -17055,11 +17055,11 @@ section.category>div>img {
 }
 
 .mem-class .lv-03 {
-    background: linear-gradient(-45deg,#8e1fff 40%,#903cc1 100%)
+    background: linear-gradient(-45deg,#39ff14 40%,#00c500 100%)
 }
 
 .mem-class .badge.lv-03 {
-    background: linear-gradient(-90deg,#8e1fff 40%,#903cc1 100%)
+    background: linear-gradient(-90deg,#39ff14 40%,#00c500 100%)
 }
 
 .mem-class .lv-04 {
@@ -17111,7 +17111,7 @@ section.category>div>img {
 }
 
 .mem-class .lv-03:after {
-    content: 'FAMILY'
+    content: 'MEMBER'
 }
 
 .mem-class .lv-04:after {
@@ -22427,8 +22427,7 @@ section.mypage .membership {
     margin-bottom: 57px;
     padding: 50px 0;
     height: 200px;
-    border-top: 2px solid #282828!important;
-    border-bottom: 2px solid #282828!important
+    
 }
 
 section.mypage .membership h2 {
