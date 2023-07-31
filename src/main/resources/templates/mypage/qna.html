@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Shop Yeoblee</title>
+<title>Document</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 
 <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-03.css">
 <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
@@ -23,51 +24,53 @@ font-family: 'Noto Sans KR', sans-serif;
 </style>
 
 </head>
-<body>
-
+<body class="">
     
     <div id="shopify-section-header" class="shopify-section shopify-section--header">
-    	<header class="header" id="section-header" role="banner">
-            <a href="#" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
-        
-        	<nav class="main-menu deskonly">
-            	<li class="menu-item ">
-                	<a href="/test.html">Shop&nbsp;</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a href="/about.html">About&nbsp;</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a href="/journal.html">Journal&nbsp;</a>
-            	</li>
-        	</nav>
+        <header class="header" id="section-header" role="banner">
+        <a href="#" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
+    
+    <nav class="main-menu deskonly">
+        <li class="menu-item ">
+            <a href="#">Shop&nbsp;</a>
+        </li>
+        <li class="menu-item ">
+            <a href="#">About&nbsp;</a>
+        </li>
+        <li class="menu-item ">
+            <a href="#">Topics&nbsp;</a>
+        </li>
+    </nav>
 
-        	<nav class="side-menu deskonly">
-            	<a class="cart-tog" th:href="@{/mypage/myPage}" style="color: #00c500">
-                	<span>&nbsp;마이페이지</span>
-            	</a>
-            	<a class="cart-tog" th:href="@{/login}" th:unless="${#httpServletRequest.userPrincipal != null}">
-                	<span>&nbsp;로그인</span>
-            	</a>
-            	<a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
-                	<span>&nbsp;로그아웃</span>
-            	</a>
-            	<a class="cart-tog" href="/wish.html">
-                	<span>&nbsp;위시리스트</span>
-            	</a>
-            	<a class="cart-tog" href="/bag.html">
-                	<span>&nbsp;쇼핑백</span>
-                	<span class="hc-items-count">(2)</span>
-            	</a>
-        	</nav>
-   
+    <nav class="side-menu deskonly">
+
+        <a class="cart-tog" th:href="@{/mypage/myPage}" style="color: #00c500">
+        	<span>&nbsp;마이페이지</span>
+        </a>
+
+        <a class="cart-tog" th:href="@{/login}" th:unless="${#httpServletRequest.userPrincipal != null}">
+        	<span>&nbsp;로그인</span>
+        </a>
+        <a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
+            <span>&nbsp;로그아웃</span>
+        </a>
+
+        <a class="cart-tog" href="#">
+            <span>&nbsp;위시리스트</span>
+        </a>
+
+        <a class="cart-tog" href="#">
+            <span>&nbsp;쇼핑백</span>
+            <span class="hc-items-count">(0)</span>
+        </a>
+
+    </nav>
+    
         </header>
     </div>
-
-    
-
+  
     <main role="main">
-
+        
         <div id="shopify-section-1627014023e7f9b35f" class="shopify-section shopify-section--slideshow">
             <section id="section-1627014023e7f9b35f" data-section-id="1627014023e7f9b35f" data-section-type="slideshow">
 
@@ -106,10 +109,9 @@ font-family: 'Noto Sans KR', sans-serif;
         </section>
     </div>
 
-
-     <div class="default-page the-cols">
+        <div class="default-page the-cols">
             <div class="default-page--sidebar the-cols--sidebar">
-        <nav class="collection-sidebar--menu">
+                <nav class="collection-sidebar--menu">
             <li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
                 <a href="#" class="menu-item--link" data-href="" >나의 쇼핑 활동</a>
             </li>
@@ -133,7 +135,7 @@ font-family: 'Noto Sans KR', sans-serif;
             <li class="menu-item ">
                 <a href="#" class="menu-item--link" data-href="">자주 묻는 질문</a>
             </li>
-            <li class="menu-item ">
+            <li class="menu-item " style="color: #00c500">
                 <a th:href="@{/mypage/qna}" class="menu-item--link" data-href="">문의 게시판</a>
             </li>
             	<br><br>
@@ -148,72 +150,54 @@ font-family: 'Noto Sans KR', sans-serif;
             </li>
             
         </nav>
-
-        <br><br>
-        <br><br>
-        
-    </div>
-    
-
-
-    <div class="collection-list the-cols--content" style="opacity: 1;">
-
-	<form method="post" id="srchForm" action="/secured/mypage/myPage">	
-	
-	<section class="mypage">
-	
-		<!-- <div class="membership" style="margin-bottom: 0px; height:30px; font-size: 26px;">
-			<a href="">마이페이지</a>
-		</div> -->
-		
-		<div class="membership">
-			<div class="mem-class" style="display:flex; align-items: center">
-				<i class="lv-03 coin"></i>
-				<div class="mem-profile" style="padding-left: 40px">
-					<h2><a href="/secured/mypage/memberInfoMgmt"><em>이종엽 </em>님</a>
-					<small>yeobleeee@gmail.com</small></h2>
-				</div>
-			</div>	
-		</div>
-		
-				<div class="history_wrap">
-					<h4>진행중인 활동 내역</h4>
-					<ul class="ask_list">
-						<li><span>찜한상품</span> <a href="/secured/mypage/myWishList" class="c999">0</a></li>
-						<li><span>마이브랜드</span> <a href="/secured/mypage/myBrndList" class="c999">0</a></li>
-						<li><span>재입고알림</span> <a href="/secured/mypage/myAlarmsForStock" class="c999">0</a></li>
-						<li><span>이벤트참여내역</span> <a href="/secured/mypage/eventList">5</a></li>
-					</ul>
-
-					<div class="hint_area">
-						<div class="left">
-							<em>8 Seconds 구매혜택</em>
-							<p>삼성패션 멤버십 고객님들께만 제공되는 혜택입니다.</p>
-						</div>
-						<div class="right">
-							<a href="/secured/mypage/myEightSecondsBenefits" class="btn">쿠폰 혜택보기</a>
-						</div>
-					</div>
-
-				</div>
-			</section>
-<!-- v3 컨텐츠 종료 -->	
-</form>
-        
-
-
-        </div>
-        </div>
+        <br><br><br><br><br><br><br>
+       	</div>
+       	
+            <div class="default-page--content the-cols--content in">
+                <h1 class="hid">Yeoblee — About</h1>
+                <div class="default-page--content--wrap h5d">
+                    <h5 id="ethos">Yeoblee</h5>
+                    <div class="h5-col" data-id="ethos">
+                        <div class="">
+                            Yeoblee is a Seoul based design studio focused on <br> minimalist aesthetics and values.<br><br>
+                            The collection is an evolving composition of seasonless, <br> gender-neutral black clothing.
+                            Pieces have no external, internal or applied elements pointing any specific sex, age or status.<br><br>
+                            It is about thoughtful design, highlighting the relevant to create effortless meaningful wardrobe. <br> 
+                            Collection is made of sustainable premium materials, manufactured with responsible producers. <br><br>
+                        </div>
+                        <div class=""></div>
+                        <div class=""></div><br>
+                        <p>
+                            <img src="./img/1296.png" alt="">
+                        </p>
+                        <hr>
+                    </div>
+                    <h5 id="sustainability">Sustainability</h5>
+                    <div class="h5-col" data-id="sustainability">
+                        <div class="h5-col" data-id="philosophy">
+                            <p>The most important thing about sustainability of clothing is not to choose organic or 
+                                recycled materials; it is to change how people think about and use clothes. 
+                                We should consider what we need and take good care of the pieces we have. 
+                                When you have only your favourite garments in your wardrobe instead of multiple pretty 
+                                options, the closet is much more functional and omnipotent, and you can wear your most loved clothes daily.
+                            </p>
+                        </div>
+                        <br>
+                    </div>
+                    <h5 id="strategy">Strategy</h5>
+                    <div class="h5-col" data-id="strategy">
+                        <p>Yeoblee is a Seoul based design studio focused on minimalistic aesthetics and values. Our aim is to create timeless, thoughtful and long-lasting design. Yeoblee was founded in 2012 with core values of being kind, honest and respectful towards people, environment and the nature we live in. Once these moral decisions where made, the path of how we do business became clear. At Yeoblee we think sustainability is a commitment that we do to ourselves and to the society we live in.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
 
         <hr><hr><hr><hr><hr>
         <hr><hr><hr><hr><hr>
-        
-        
 
     </main>
-    
-    
 
     <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
         <footer class="footer second">
@@ -224,6 +208,5 @@ font-family: 'Noto Sans KR', sans-serif;
         </footer>
     </div>
 
-
-</body>
+    </body>
 </html>
