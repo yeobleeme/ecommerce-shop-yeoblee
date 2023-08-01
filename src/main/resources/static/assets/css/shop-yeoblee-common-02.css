@@ -213,7 +213,9 @@ input[type='password'] {
   border-bottom: 1px solid #d9d7c9;
   letter-spacing: -0.3px;
   padding: 0;
-  padding-bottom: 4px; }
+  padding-bottom: 5.5px; 
+  padding-top: 5px;
+  }
 
 main input[type='submit'] {
   background-color: #2b2b2e;

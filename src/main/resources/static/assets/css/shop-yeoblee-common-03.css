@@ -26075,7 +26075,7 @@ section.mypage .form_wrap .item {
 section.mypage .form_wrap textarea {
     width: calc(100% - 22px);
     padding: 10px;
-    height: 72px!important
+    height: 100px!important
 }
 
 section.mypage .form_wrap .checkbox>label {
@@ -26089,7 +26089,7 @@ section.mypage .form_wrap .file_box {
 }
 
 section.mypage .form_wrap .file_box input[type=text] {
-    width: 688px
+    width: 615px
 }
 
 section.mypage .form_wrap .file_box button {

@@ -36,10 +36,9 @@ public class Qna {
 	@Column(nullable = false, length = 100)
 	private String qnaTitle;
 	
-	@Column(updatable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mbrId")
-	private String qnaWriter;
+	private Member qnaWriter;
 	
 	@Lob
 	private String qnaContent;
@@ -55,8 +54,8 @@ public class Qna {
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
 	private Long qnaCnt;
 	
-	@OneToMany(mappedBy = "board")
-    private List<QnaComment> qnaComment;
+//	@OneToMany(mappedBy = "qna")
+//    private List<QnaComment> qnaComment;
 	
 }
 

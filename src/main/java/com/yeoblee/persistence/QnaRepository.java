@@ -14,7 +14,7 @@ public interface QnaRepository extends JpaRepository<Qna, Long>{
 	
 	@Modifying
 	@Transactional
-	@Query("update Qna q set q.qnaCnt = q.qbaCnt + 1 where q.qnaNum= = :qnaNum")
+	@Query("update Qna q set q.qnaCnt = q.qnaCnt + 1 where q.qnaNum = :qnaNum")
 	int updateQnaCnt(@Param("qnaNum") Long qnaNum);
 	
 //	@Modifying

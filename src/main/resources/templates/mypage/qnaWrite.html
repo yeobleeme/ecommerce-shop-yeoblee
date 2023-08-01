@@ -150,55 +150,78 @@ font-family: 'Noto Sans KR', sans-serif;
             	</li>
             
         	</nav>
-        	<br><br><br><br><br><br><br>
+        	<br><br><br><br><br><br><br><br><br>
        	</div>
        	
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
 						
 					<section class="mypage">
-						
-						<table class="grid_wrap goods">
-						
-						<colgroup>
-						<col width="100%">
-						<!-- <col width="40%">
-						<col width="60%"> -->
-						</colgroup>
-						
-							<thead>
-							<tr>
-							<th style="width: 20%">&nbsp;&nbsp;&nbsp;&nbsp;번호</th>
-							<th style="width: 35%">문의내용</th>
-							<th style="width: 25%">작성자</th>
-							<th style="width: 20%">작성일</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-							<td colspan="4" class="none">등록된 상품Q&amp;A가 없습니다.</td>
-							</tr>
-							</tbody>
-						</table>
-						
-						<div class="count_tit">
-						<a href="" class="btn bk">문의글 작성</a>
-						</div>
-						
+						<form name="gForm" id="gForm" method="post" enctype="multipart/form-data">
+							<div class="form_wrap">
+								<ul>
+									<li>
+										<span class="item">문의제목</span>
+										<span class="input_box">
+											<span class="skills">
+												<i class="valid_txt">OK</i>
+												<i class="reset_txt"></i>
+											</span>
+											<input id="inqSj" name="csoMtmInq.inqSj" type="text" value="" placeholder="제목을 입력해주세요." class="reset" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">문의내용</span>
+										<textarea name="csoMtmInq.inqCont" id="inqCont" placeholder="문의 내용을 작성해주세요."></textarea>
+										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">파일첨부</span>
+										<span class="file_box">
+											<input type="text" name="csoMtmInqAtchFile.mtmInqAtchFileNm" id="searchFileName" class="box" placeholder="첨부할 파일을 선택해주세요." readonly="">
+											<span id="fileWrap1">
+												<input type="file" name="files" onchange="javascript:checkFileSizeAjax(this);">
+												<button type="button" id="btnFile">파일찾기</button>
+											</span>
+											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
+										</span>
+									</li>
+									<br>
+					                <li>
+										<span class="item">휴대폰번호</span>
+										<span class="input_box">
+											<input type="hidden" name="mobilNationNo" value="82">
+											<input type="text" class="reset" name="" id="chkMobilNo" label="휴대폰번호" value="" validate="" placeholder="01058368031">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">이메일</span>
+										<span class="input_box">
+											<input type="text" class="reset" name="" id="chkEmail" value="" autocomplete="off" label="이메일" validate="" placeholder="mauyeoblee@gmail.com">
+										</span>
+									</li>
+								</ul>
+							</div>
+							<div class="submit">
+								<a href="/secured/mypage/myInquiryList" class="btn">취소</a>
+								<a href="javascript:insertCsInquiry();" class="btn bk">
+									저장</a>
+							</div>
+						</form>
 
-						<div class="page">
-		
-						</div>
-		
 						<div class="list_wrap">
 							<ul>
-								<li>비방, 광고, 불건전한 내용의 글은 사전 동의 없이 삭제될 수 있습니다.</li>
+								<li>주문취소, 교환/반품 신청은 마이페이지 &gt; 나의주문 &gt;<a href="/secured/mypage/listOrder">주문/배송조회</a>에서 신청해 주세요.</li>
+								<li>문의하신 내용에 대한 답변은 마이페이지 &gt; 나의활동 &gt;<a href="/secured/mypage/myInquiryList">1:1문의</a>을 통해 확인하실 수 있습니다.</li>
 							</ul>
 						</div>
-		
 					</section>
+					
 				</div>
-                
+				<br><br><br>
             </div>
             
         </div>
