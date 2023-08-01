@@ -17,8 +17,6 @@ public class SecurityConfig extends	WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity security) throws Exception {
 		
-		System.out.println("configure 메서드 호출");
-		
 		security.userDetailsService(userDetailService);
 		
 		security.authorizeRequests()

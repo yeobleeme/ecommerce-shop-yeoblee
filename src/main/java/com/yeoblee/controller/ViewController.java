@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ViewController {
 	
 	@GetMapping("/mypage/myPage")
-	public String mypage() {
+	public String getMypage() {
 		return "mypage/myPage";
 	}
 	
 	@GetMapping("/mypage/qna")
-	public String pna() {
+	public String getQnaPage() {
 		return "mypage/qna";
 	}
+	
 
 }

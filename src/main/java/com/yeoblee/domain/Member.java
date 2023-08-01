@@ -51,8 +51,8 @@ public class Member {
 	
 	private String mbrBirth;
 	
-//	@Column(insertable = false, columnDefinition = "bigint default 0")
-//	private Long m_point;
+	@Column(insertable = false, columnDefinition = "bigint default 0")
+	private Long m_point;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
 	private Date mbrRegDate;
@@ -62,8 +62,8 @@ public class Member {
 	
 //	private boolean enabled;
 
-//	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
-//	private List<Board> boardList = new ArrayList<>();
+	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+	private List<Qna> qnaList = new ArrayList<>();
 	
 }
 
