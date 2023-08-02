@@ -157,7 +157,7 @@ font-family: 'Noto Sans KR', sans-serif;
 	            <div class="inner-wrap">
 					<section class="mypage">
 						<form th:action="@{/mypage/qna/write}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
-							
+							<input type="hidden" class="reset" name="qnaWriterId" id="qnaWriterId" th:value="${#authentication.principal.member.mbrId}">
 							<div class="form_wrap">
 								<ul>
 									<li>

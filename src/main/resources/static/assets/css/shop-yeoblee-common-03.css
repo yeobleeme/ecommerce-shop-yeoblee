@@ -11854,16 +11854,13 @@ label.switch span+span {
 }
 
 .grid_wrap td {
-    padding: 25px 0;
-    line-height: 18px;
-    color: #767676;
+    padding: 18px 0;
+    line-height: 12px;
+    color: #222;
     vertical-align: middle;
-    text-align: center;
-    border-bottom: 1px solid #111
-}
-
-.grid_wrap tr:first-child td {
-    border-top: 1px solid #111;
+    text-align: left;
+    border-bottom: 1px solid #bebcb4;
+    font-size: 16px;
 }
 
 .grid_wrap td.v-top {

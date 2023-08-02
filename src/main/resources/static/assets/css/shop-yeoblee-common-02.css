@@ -1,6 +1,4 @@
 @charset "UTF-8";
-
-@charset "UTF-8";
 html,
 body,
 div,
@@ -59,9 +57,6 @@ caption,
 tbody,
 tfoot,
 thead,
-tr,
-th,
-td,
 article,
 aside,
 canvas,
@@ -803,9 +798,6 @@ main .shopify-section {
       @media (max-width: 767px) {
         .default-page--content table tr {
           display: block; } }
-      .default-page--content table tr td {
-        flex: 1;
-        margin-bottom: 1em; }
         @media (max-width: 767px) {
           .default-page--content table tr td {
             display: block;

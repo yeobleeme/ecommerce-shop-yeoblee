@@ -88,20 +88,17 @@ public class QnaController {
 		return "redirect:/mypage/qna";
 	}
 	
-	@GetMapping("/mypage/qna")
-	public String getQnaPage() {
-		return "mypage/qna";
-	}
 	
-	@GetMapping("/getMemberList")
-	public String getMemberList(Model model,
+	@GetMapping("/mypage/qna")
+	public String getQnaList(Model model,
 			@RequestParam(defaultValue = "0") int curPage,
 			@RequestParam(defaultValue = "10") int rowSizePerPage,
-			@RequestParam(defaultValue = "name") String searchType,
+			@RequestParam(defaultValue = "qnaTitle") String searchType,
+			@RequestParam(defaultValue = "qnaNum") String qnaSeq,
 			@RequestParam(defaultValue = "") String searchWord
 			) {
-		Pageable pageable = PageRequest.of(curPage, rowSizePerPage, Sort.by(searchType).ascending());
-		Page<Member> pagedResult = qnaService.getQnaList(pageable, searchType, searchWord);
+		Pageable pageable = PageRequest.of(curPage, rowSizePerPage, Sort.by(qnaSeq).descending());
+		Page<Qna> pagedResult = qnaService.getQnaList(pageable, searchType, searchWord);
 		
 		int totalRowCount = pagedResult.getNumberOfElements();
 		int totalPageCount = pagedResult.getTotalPages();
@@ -130,7 +127,7 @@ public class QnaController {
 		model.addAttribute("st", searchType);
 		model.addAttribute("sw", searchWord);
 		
-		return "member/getMemberList";
+		return "mypage/qna";
 	}
 	
 	

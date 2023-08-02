@@ -55,6 +55,8 @@ public class Qna {
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
 	private Long qnaCnt;
 	
+	private String qnaWriterId;
+	
 	private String qnaMobile;
 	
 	private String qnaEmail;

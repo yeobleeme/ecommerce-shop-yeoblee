@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@charset "UTF-8";
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap');
 
 html, body {
@@ -736,11 +734,7 @@ main .shopify-section--hidden {
     width: 100%
 }
 
-.default-page--content table tr td {
-    -ms-flex: 1;
-    flex: 1;
-    margin-bottom: 1em
-}
+
 
 .default-page--content table tr td p:last-child {
     margin-bottom: 0
