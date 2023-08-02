@@ -26,7 +26,7 @@ public class SecurityConfig extends	WebSecurityConfigurerAdapter {
 
 		security.csrf().disable();
 		
-		security.formLogin().loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/", true); 
+		security.formLogin().loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/"); 
 		
 		security.exceptionHandling().accessDeniedPage("/accessDenied"); 
 		

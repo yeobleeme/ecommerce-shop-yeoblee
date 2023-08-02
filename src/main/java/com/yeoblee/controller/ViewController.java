@@ -11,10 +11,5 @@ public class ViewController {
 		return "mypage/myPage";
 	}
 	
-	@GetMapping("/mypage/qna")
-	public String getQnaPage() {
-		return "mypage/qna";
-	}
-	
 
 }

@@ -37,10 +37,11 @@ public class Qna {
 	private String qnaTitle;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="mbrId")
+    @JoinColumn(name="mbrNum")
 	private Member qnaWriter;
 	
 	@Lob
+	@Column(nullable = false)
 	private String qnaContent;
 	
 	@Transient
@@ -49,10 +50,14 @@ public class Qna {
 	private String qnaFileName;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date qnaCrtdate;	
+	private Date qnaCreateDate;	
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
 	private Long qnaCnt;
+	
+	private String qnaMobile;
+	
+	private String qnaEmail;
 	
 //	@OneToMany(mappedBy = "qna")
 //    private List<QnaComment> qnaComment;

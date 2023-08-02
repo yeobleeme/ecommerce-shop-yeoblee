@@ -155,36 +155,29 @@ font-family: 'Noto Sans KR', sans-serif;
        	
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
-						
 					<section class="mypage">
-						<form name="gForm" id="gForm" method="post" enctype="multipart/form-data">
+						<form th:action="@{/mypage/qna/write}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
+							
 							<div class="form_wrap">
 								<ul>
 									<li>
 										<span class="item">문의제목</span>
 										<span class="input_box">
-											<span class="skills">
-												<i class="valid_txt">OK</i>
-												<i class="reset_txt"></i>
-											</span>
-											<input id="inqSj" name="csoMtmInq.inqSj" type="text" value="" placeholder="제목을 입력해주세요." class="reset" autocomplete="off">
+											<input id="qnaTitle" name="qnaTitle" type="text" value="" placeholder="제목을 입력해주세요." class="" autocomplete="off">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">문의내용</span>
-										<textarea name="csoMtmInq.inqCont" id="inqCont" placeholder="문의 내용을 작성해주세요."></textarea>
+										<textarea name="qnaContent" id="qnaContent" placeholder="문의 내용을 작성해주세요."></textarea>
 										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">파일첨부</span>
-										<span class="file_box">
-											<input type="text" name="csoMtmInqAtchFile.mtmInqAtchFileNm" id="searchFileName" class="box" placeholder="첨부할 파일을 선택해주세요." readonly="">
-											<span id="fileWrap1">
-												<input type="file" name="files" onchange="javascript:checkFileSizeAjax(this);">
-												<button type="button" id="btnFile">파일찾기</button>
-											</span>
+										<span class="input_box">
+											<label class="" for="qnaUploadFile"></label>
+											<input type="file" class="" name="qnaUploadFile" id="qnaUploadFile" style="color:#767676;"> 
 											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
 										</span>
 									</li>
@@ -192,23 +185,21 @@ font-family: 'Noto Sans KR', sans-serif;
 					                <li>
 										<span class="item">휴대폰번호</span>
 										<span class="input_box">
-											<input type="hidden" name="mobilNationNo" value="82">
-											<input type="text" class="reset" name="" id="chkMobilNo" label="휴대폰번호" value="" validate="" placeholder="01058368031">
+											<input type="text" class="" name="qnaMobile" id="qnaMobile" th:value="${#authentication.principal.member.mbrMobile}">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">이메일</span>
 										<span class="input_box">
-											<input type="text" class="reset" name="" id="chkEmail" value="" autocomplete="off" label="이메일" validate="" placeholder="mauyeoblee@gmail.com">
+											<input type="text" class="reset" name="qnaEmail" id="qnaEmail" th:value="${#authentication.principal.member.mbrEmail}">
 										</span>
 									</li>
 								</ul>
 							</div>
 							<div class="submit">
-								<a href="/secured/mypage/myInquiryList" class="btn">취소</a>
-								<a href="javascript:insertCsInquiry();" class="btn bk">
-									저장</a>
+								<a href="" class="btn">취소</a>
+								<button type="submit" class="btn bk">저장</button>
 							</div>
 						</form>
 

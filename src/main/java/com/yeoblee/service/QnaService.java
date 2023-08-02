@@ -3,6 +3,7 @@ package com.yeoblee.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.yeoblee.domain.Member;
 import com.yeoblee.domain.Qna;
 
 public interface QnaService {
