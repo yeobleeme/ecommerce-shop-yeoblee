@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,7 +42,10 @@ public class QnaController {
 	public PagingInfo pagingInfo = new PagingInfo();
 	
 	@Value("${path.upload}")
-	public String uploadFolder;
+	public String qnaUploadFolder;
+	
+	@Value("${path.download}")
+	public String qnaDownFolder;
 	
 	@ModelAttribute("member")
 	public Member setMember() {
@@ -50,7 +54,7 @@ public class QnaController {
 	
 	@GetMapping("/mypage/qna/write")
 	public String getQnaWrite(Model model, Member member) {
-		return "mypage/qnaWrite";
+		return "qna/qnaWrite";
 	}
 	
 //	@PostMapping("/mypage/qna/write")
@@ -71,6 +75,7 @@ public class QnaController {
 //		return "redirect:/mypage/qna";
 //	}
 	
+	
 	@PostMapping("/mypage/qna/write")
 	public String insertQna(Qna qna, @AuthenticationPrincipal SecurityUser pricipal) throws IOException {
 		
@@ -78,13 +83,14 @@ public class QnaController {
 		MultipartFile qnaUploadFile = qna.getQnaUploadFile();
 		if(!qnaUploadFile.isEmpty()) {
 			String qnaFileName = qnaUploadFile.getOriginalFilename();
-			qnaUploadFile.transferTo(new File(uploadFolder + qnaFileName));
+			qnaUploadFile.transferTo(new File(qnaUploadFolder + qnaFileName));
 			qna.setQnaFileName(qnaFileName);
 		}
 		
 		qna.setQnaWriter(pricipal.getMember());
 		
 		qnaService.insertQna(qna);
+		
 		return "redirect:/mypage/qna";
 	}
 	
@@ -127,10 +133,44 @@ public class QnaController {
 		model.addAttribute("st", searchType);
 		model.addAttribute("sw", searchWord);
 		
-		return "mypage/qna";
+		return "qna/qna";
+	}
+
+	
+	@GetMapping("/mypage/qna/view")
+	public String getQnaView(Model model, @RequestParam Long qnaNum) {
+		Qna qna = new Qna();
+	    qna.setQnaNum(qnaNum);
+		qnaService.updateQnaCnt(qna);
+		model.addAttribute("qna", qnaService.getQna(qna));
+		return "qna/qnaView";
 	}
 	
 	
+	@GetMapping("/mypage/qna/modify")
+	public String updateQna(Model model, Qna qna) {
+		model.addAttribute("qna", qnaService.getQna(qna));
+		return "qna/qnaModify";
+	}
+	
+	
+	@PostMapping("/mypage/qna/modify")
+	public String updateQna(Qna qna, MultipartFile qnaUploadFile, @AuthenticationPrincipal SecurityUser pricipal, Model model) throws IOException {
+		
+		if (!qnaUploadFile.isEmpty()) {
+	        String qnaFileName = qnaUploadFile.getOriginalFilename();
+	        qnaUploadFile.transferTo(new File(qnaUploadFolder + qnaFileName));
+	        qna.setQnaFileName(qnaFileName);
+	    }
+		
+		qnaService.updateQna(qna);
+		
+		model.addAttribute("qna", qnaService.getQna(qna));
+		
+		return "redirect:/mypage/qna/view?qnaNum=" + qna.getQnaNum();
+	}
+	
+
 	
 
 }

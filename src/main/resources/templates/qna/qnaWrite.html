@@ -28,7 +28,7 @@ font-family: 'Noto Sans KR', sans-serif;
     
     <div id="shopify-section-header" class="shopify-section shopify-section--header">
         <header class="header" id="section-header" role="banner">
-        <a href="#" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
+        <a href="/" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
     
     <nav class="main-menu deskonly">
         <li class="menu-item ">
@@ -150,62 +150,75 @@ font-family: 'Noto Sans KR', sans-serif;
             	</li>
             
         	</nav>
-        	<br><br><br><br><br><br><br>
+        	<br><br><br><br><br><br><br><br><br>
        	</div>
        	
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
-						
 					<section class="mypage">
-						
-						<table class="grid_wrap goods">
-						
-						<colgroup>
-						<col width="100%">
-						<!-- <col width="40%">
-						<col width="60%"> -->
-						</colgroup>
-						
-							<thead>
-								<tr>
-									<td style="color: #767676; width: 20%;">&nbsp;&nbsp;번호</td>
-									<td style="color: #767676; width: 35%;">문의제목</td>
-									<td style="color: #767676; width: 25%;">작성자</td>
-									<td style="color: #767676; width: 20%;">작성일</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="qna, state : ${pagedResult.getContent()}">
-									<td style="width: 20%;" th:text="'&nbsp;&nbsp;'+${qna.qnaNum}"></td>
-									<td style="width: 35%" th:text="${qna.qnaTitle}"></td>
-									<td style="width: 25%" th:text="${qna.qnaWriterId}"></td>
-									<td style="width: 20%" th:text="${#dates.format(qna.qnaCreateDate, 'yyyy.MM.dd')}"></td>
-								</tr>
-							</tbody>
-						</table>
-						<br />
-						<div class="count_tit">
-						<a th:href="@{/mypage/qna/write}" class="btn bk">문의글 작성</a>
-						</div>
-						
+						<form th:action="@{/mypage/qna/write}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
+							<input type="hidden" class="reset" name="qnaWriterId" id="qnaWriterId" th:value="${#authentication.principal.member.mbrId}">
+							<div class="form_wrap">
+								<ul>
+									<li>
+										<span class="item">문의제목</span>
+										<span class="input_box">
+											<input id="qnaTitle" name="qnaTitle" type="text" value="" placeholder="제목을 입력해주세요." class="" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">문의내용</span>
+										<textarea name="qnaContent" id="qnaContent" placeholder="문의 내용을 작성해주세요."></textarea>
+										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">파일첨부</span>
+										<span class="input_box">
+											<label class="" for="qnaUploadFile"></label>
+											<input type="file" class="" name="qnaUploadFile" id="qnaUploadFile" style="color:#767676;"> 
+											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
+										</span>
+									</li>
+									<br>
+					                <li>
+										<span class="item">휴대폰번호</span>
+										<span class="input_box">
+											<input type="text" class="" name="qnaMobile" id="qnaMobile" th:value="${#authentication.principal.member.mbrMobile}">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">이메일</span>
+										<span class="input_box">
+											<input type="text" class="reset" name="qnaEmail" id="qnaEmail" th:value="${#authentication.principal.member.mbrEmail}">
+										</span>
+									</li>
+								</ul>
+							</div>
+							<div class="submit">
+								<a href="" class="btn">취소</a>
+								<button type="submit" class="btn bk">저장</button>
+							</div>
+						</form>
 
-						<div class="page">
-		
-						</div>
-		
 						<div class="list_wrap">
 							<ul>
-								<li>비방, 광고, 불건전한 내용의 글은 사전 동의 없이 삭제될 수 있습니다.</li>
+								<li>주문취소, 교환/반품 신청은 마이페이지 &gt; 나의주문 &gt;<a href="/secured/mypage/listOrder">주문/배송조회</a>에서 신청해 주세요.</li>
+								<li>문의하신 내용에 대한 답변은 마이페이지 &gt; 나의활동 &gt;<a href="/secured/mypage/myInquiryList">1:1문의</a>을 통해 확인하실 수 있습니다.</li>
 							</ul>
 						</div>
-		
 					</section>
+					
 				</div>
-                
+				<br><br><br>
             </div>
             
         </div>
 
+        <hr><hr><hr><hr><hr>
+        <hr><hr><hr><hr><hr>
 
     </main>
 

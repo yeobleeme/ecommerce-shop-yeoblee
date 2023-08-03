@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-03.css">
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-02.css">
+
+<style>
+body {
+font-family: 'Roboto', sans-serif; 
+font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
+
+</head>
+<body class="">
+    
+    <div id="shopify-section-header" class="shopify-section shopify-section--header">
+        <header class="header" id="section-header" role="banner">
+        <a href="/" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
+    
+    <nav class="main-menu deskonly">
+        <li class="menu-item ">
+            <a href="#">Shop&nbsp;</a>
+        </li>
+        <li class="menu-item ">
+            <a href="#">About&nbsp;</a>
+        </li>
+        <li class="menu-item ">
+            <a href="#">Topics&nbsp;</a>
+        </li>
+    </nav>
+
+    <nav class="side-menu deskonly">
+
+        <a class="cart-tog" th:href="@{/mypage/myPage}" style="color: #00c500">
+        	<span>&nbsp;마이페이지</span>
+        </a>
+
+        <a class="cart-tog" th:href="@{/login}" th:unless="${#httpServletRequest.userPrincipal != null}">
+        	<span>&nbsp;로그인</span>
+        </a>
+        <a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
+            <span>&nbsp;로그아웃</span>
+        </a>
+
+        <a class="cart-tog" href="#">
+            <span>&nbsp;위시리스트</span>
+        </a>
+
+        <a class="cart-tog" href="#">
+            <span>&nbsp;쇼핑백</span>
+            <span class="hc-items-count">(0)</span>
+        </a>
+
+    </nav>
+    
+        </header>
+    </div>
+  
+    <main role="main" id="content" class="contents" style="min-height: 849px;">
+        
+        <div id="shopify-section-1627014023e7f9b35f" class="shopify-section shopify-section--slideshow">
+            <section id="section-1627014023e7f9b35f" data-section-id="1627014023e7f9b35f" data-section-type="slideshow">
+
+                <div class="slideshow size-default" style="height: 124px;">
+                    <div class="slideshow--carousel carousel carousel--fadeIn carousel--insideDots flickity-enabled" data-flickity="{
+                        &quot;prevNextButtons&quot;:false,
+                        &quot;setGallerySize&quot;: true,
+                        &quot;adaptiveHeight&quot;: true,
+                        &quot;wrapAround&quot;: true,
+                        &quot;dragThreshold&quot;: 15,
+                        &quot;pauseAutoPlayOnHover&quot;: false,
+                        &quot;autoPlay&quot;: false,
+                        &quot;pageDots&quot;:false}" tabindex="0">
+                    <div class="flickity-viewport" style="height: 533.516px; touch-action: pan-y;">
+                        <div class="flickity-slider" style="left: 0px; transform: translateX(0%);">
+                            <div class="slideshow--slide carousel--cell invert-false is-selected" style="visibility: visible; position: absolute; left: 0%;" data-slide-index="0">
+                                
+                                    <div class="slideshow--image mobonly hires-wrap ">
+                                        <img class="slideshow--image mobonly-img lores ok" src="" alt="">
+                                        <img class="slideshow--image mobonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="/assets/images/0011.jpg">
+                                    </div>
+                                    <div class="slideshow--image deskonly hires-wrap">
+                                        <img class="slideshow--image deskonly-img lores ok" src="" alt="">
+                                        <img class="slideshow--image deskonly-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="/assets/images/0011.jpg">
+                                    </div>
+                                
+                                <div class="slideshow--content pos-middle">
+                                    <header class="slideshow--content--headers">
+                                        <h2 class="slideshow--slide--title left">
+                                            <p><a href="/collections/season-sale" title="Season Sale"><strong> </strong></a></p>
+                                        </h2>
+                                    </header>
+                </div></div></div></div></div></div>
+
+            <span id="section-1627014023e7f9b35f-end" class="Anchor"></span>
+        </section>
+    </div>
+
+    <div class="default-page the-cols">
+    	<div class="default-page--sidebar the-cols--sidebar">
+        	<nav class="collection-sidebar--menu">
+            	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
+                	<a href="#" class="menu-item--link" data-href="" >나의 쇼핑 활동</a>
+            	</li>
+            	<li class="menu-item ">
+                	<a href="#" class="menu-item--link" data-href="">주문 내역 조회</a>
+            	</li>
+            	<li class="menu-item ">
+                	<a href="#" class="menu-item--link" data-href="">위시리스트</a>
+            	</li>
+            	<li class="menu-item ">
+                	<a href="#" class="menu-item--link" data-href="">구매 후기</a>
+            	</li>
+            	<li class="menu-item ">
+                	<a href="#" class="menu-item--link" data-href="">위시리스트</a>
+            	</li>
+            	<li>
+                <br><br>
+            	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
+                	<a href="#" class="menu-item--link" data-href="" >고객센터</a>
+            	</li>
+            	<li class="menu-item ">
+                	<a href="#" class="menu-item--link" data-href="">자주 묻는 질문</a>
+            	</li>
+            	<li class="menu-item " style="color: #00c500">
+                	<a th:href="@{/mypage/qna}" class="menu-item--link" data-href="">문의 게시판</a>
+            	</li>
+            	<br><br>
+            	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
+                	<a href="#" class="menu-item--link" data-href="">회원 정보</a>
+            	</li>
+            	<li class="menu-item ">
+                	<a href="#" class="menu-item--link" data-href="">회원 정보 수정</a>
+            	</li>
+            	<li class="menu-item ">
+                	<a href="@{/mypage/qna}" class="menu-item--link" data-href="">배송지 관리</a>
+            	</li>
+            
+        	</nav>
+        	<br><br><br><br><br><br><br><br><br>
+       	</div>
+       	
+        	<div class="default-page--content the-cols--content in">
+	            <div class="inner-wrap">
+					<section class="mypage">
+						<form th:action="@{/mypage/qna/modify}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
+							<input type="hidden" class="" name="qnaNum" id="qnaNum" th:value="${qna.qnaNum}"/>
+							<input type="hidden" class="" name="qnaWriterId" id="qnaWriterId" th:value="${#authentication.principal.member.mbrId}">
+							<div class="form_wrap">
+								<ul>
+									<li>
+										<span class="item">문의제목</span>
+										<span class="input_box">
+											<input id="qnaTitle" name="qnaTitle" type="text" th:value="${qna.qnaTitle}" class="">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">문의내용</span>
+										<textarea name="qnaContent" id="qnaContent" th:text="${qna.qnaContent}" class=""></textarea>
+										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">파일첨부</span>
+										<span class="input_box">
+											<label class="" for="qnaUploadFile"></label>
+											<input type="file" class="" name="qnaUploadFile" id="qnaUploadFile" style="color:#767676;">
+											<p class="info no_line" th:text="${qna.qnaFileName}"></p>
+											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
+										</span>
+									</li>
+									<br>
+					                <li>
+										<span class="item">휴대폰번호</span>
+										<span class="input_box">
+											<input type="text" class="" name="qnaMobile" id="qnaMobile" th:value="${#authentication.principal.member.mbrMobile}">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">이메일</span>
+										<span class="input_box">
+											<input type="text" class="reset" name="qnaEmail" id="qnaEmail" th:value="${#authentication.principal.member.mbrEmail}">
+										</span>
+									</li>
+								</ul>
+							</div>
+							<div class="submit">
+								<a href="" class="btn">취소</a>
+								<button type="submit" class="btn bk">저장</button>
+							</div>
+						</form>
+
+						<div class="list_wrap">
+							<ul>
+								<li>주문취소, 교환/반품 신청은 마이페이지 &gt; 나의주문 &gt;<a href="/secured/mypage/listOrder">주문/배송조회</a>에서 신청해 주세요.</li>
+								<li>문의하신 내용에 대한 답변은 마이페이지 &gt; 나의활동 &gt;<a href="/secured/mypage/myInquiryList">1:1문의</a>을 통해 확인하실 수 있습니다.</li>
+							</ul>
+						</div>
+					</section>
+					
+				</div>
+				<br><br><br>
+            </div>
+            
+        </div>
+
+        <hr><hr><hr><hr><hr>
+        <hr><hr><hr><hr><hr>
+
+    </main>
+
+    <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
+        <footer class="footer second">
+            <a href="/" class="second--copyright deskonly"></a>
+            <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
+            <a href="/" class="second--copyright deskonly"></a>
+            <br>
+        </footer>
+    </div>
+
+    </body>
+</html>

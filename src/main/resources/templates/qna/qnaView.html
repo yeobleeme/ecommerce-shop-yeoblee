@@ -28,7 +28,7 @@ font-family: 'Noto Sans KR', sans-serif;
     
     <div id="shopify-section-header" class="shopify-section shopify-section--header">
         <header class="header" id="section-header" role="banner">
-        <a href="#" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
+        <a href="/" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
     
     <nav class="main-menu deskonly">
         <li class="menu-item ">
@@ -152,73 +152,54 @@ font-family: 'Noto Sans KR', sans-serif;
         	</nav>
         	<br><br><br><br><br><br><br><br><br>
        	</div>
-       	
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
 					<section class="mypage">
-						<form th:action="@{/mypage/qna/write}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
-							<input type="hidden" class="reset" name="qnaWriterId" id="qnaWriterId" th:value="${#authentication.principal.member.mbrId}">
-							<div class="form_wrap">
-								<ul>
-									<li>
-										<span class="item">문의제목</span>
-										<span class="input_box">
-											<input id="qnaTitle" name="qnaTitle" type="text" value="" placeholder="제목을 입력해주세요." class="" autocomplete="off">
-										</span>
-									</li>
-									<br>
-									<li>
-										<span class="item">문의내용</span>
-										<textarea name="qnaContent" id="qnaContent" placeholder="문의 내용을 작성해주세요."></textarea>
-										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
-									</li>
-									<br>
-									<li>
-										<span class="item">파일첨부</span>
-										<span class="input_box">
-											<label class="" for="qnaUploadFile"></label>
-											<input type="file" class="" name="qnaUploadFile" id="qnaUploadFile" style="color:#767676;"> 
-											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
-										</span>
-									</li>
-									<br>
-					                <li>
-										<span class="item">휴대폰번호</span>
-										<span class="input_box">
-											<input type="text" class="" name="qnaMobile" id="qnaMobile" th:value="${#authentication.principal.member.mbrMobile}">
-										</span>
-									</li>
-									<br>
-									<li>
-										<span class="item">이메일</span>
-										<span class="input_box">
-											<input type="text" class="reset" name="qnaEmail" id="qnaEmail" th:value="${#authentication.principal.member.mbrEmail}">
-										</span>
-									</li>
-								</ul>
-							</div>
-							<div class="submit">
-								<a href="" class="btn">취소</a>
-								<button type="submit" class="btn bk">저장</button>
-							</div>
-						</form>
-
-						<div class="list_wrap">
-							<ul>
-								<li>주문취소, 교환/반품 신청은 마이페이지 &gt; 나의주문 &gt;<a href="/secured/mypage/listOrder">주문/배송조회</a>에서 신청해 주세요.</li>
-								<li>문의하신 내용에 대한 답변은 마이페이지 &gt; 나의활동 &gt;<a href="/secured/mypage/myInquiryList">1:1문의</a>을 통해 확인하실 수 있습니다.</li>
-							</ul>
-						</div>
+					    <div class="form_wrap">
+					        <ul>
+					            <li>
+					                <span class="item">문의제목</span>
+					                <p class="info" th:text="${qna.qnaTitle}" style="font-size: 17px;"></p>
+					            </li>
+					            <li>
+					                <span class="item">작성일</span>
+					                <p class="info" th:text="${#dates.format(qna.qnaCreateDate, 'yyyy.MM.dd')}" style="font-size: 17px;"></p>
+					            </li>
+					            <li>
+					                <span class="item">조회수</span>
+					                <p class="info" th:text="${qna.qnaCnt}" style="font-size: 17px;"></p>
+					            </li>
+					            <li>
+					                <span class="item">작성자</span>
+					                <p class="info" th:text="${qna.qnaWriterId}" style="font-size: 17px;"></p>
+					            </li>
+					            <li>
+					                <span class="item">문의내용</span>
+					                <p class="info no_line" th:text="${qna.qnaContent}" style="font-size: 17px;"></p>
+					            </li>
+					            <br />
+					            <li>
+					            	<span class="item">파일첨부</span>
+					                    <p class="info no_line" style="font-size: 17px;">
+					                    	<img th:src="@{'/uploadfile/' + ${qna.qnaFileName}}" alt="" style="width: 41%"/>
+					                    </p>
+					            </li>
+					            <li>
+					                <span class="item"></span>
+					                <p class="info"></p>
+					            </li>
+					        </ul>
+					        <div class="btn_center">
+					         	<a href="#" class="btn bk">답글작성</a>
+					         	<!-- <a th:href="@{/mypage/qna}" class="btn">목록</a> -->
+					            <a th:href="@{/mypage/qna/modify(qnaNum=${qna.qnaNum})}" onclick="" class="btn">수정</a>
+					            <a href="#" onclick="" class="btn">삭제</a>
+					        </div>
+					    </div>
 					</section>
-					
 				</div>
-				<br><br><br>
             </div>
-            
         </div>
-
-        <hr><hr><hr><hr><hr>
-        <hr><hr><hr><hr><hr>
 
     </main>
 

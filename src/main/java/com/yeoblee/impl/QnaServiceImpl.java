@@ -52,9 +52,11 @@ public class QnaServiceImpl implements QnaService {
 		Qna findQna = qnaRepository.findById(qna.getQnaNum()).get();
 		findQna.setQnaTitle(qna.getQnaTitle());
 		findQna.setQnaContent(qna.getQnaContent());
+		findQna.setQnaMobile(qna.getQnaMobile());
+		findQna.setQnaEmail(qna.getQnaEmail());
 		qnaRepository.save(findQna);
 	}
-
+	
 	@Override
 	public void deleteQna(Qna qna) {
 		qnaRepository.deleteById(qna.getQnaNum());
@@ -62,10 +64,11 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	public int updateQnaCnt(Qna qna) {
-		return qnaRepository.updateQnaCnt(qna.getQnaCnt());
+		return qnaRepository.updateQnaCnt(qna.getQnaNum());
 	}
 
 }
+
 
 
 
