@@ -148,7 +148,7 @@ font-family: 'Noto Sans KR', sans-serif;
             	<li class="menu-item ">
                 	<a href="@{/mypage/qna}" class="menu-item--link" data-href="">배송지 관리</a>
             	</li>
-            
+
         	</nav>
         	<br><br><br><br><br><br><br>
        	</div>
@@ -163,7 +163,8 @@ font-family: 'Noto Sans KR', sans-serif;
 							<div class="mem-class" style="display:flex; align-items: center">
 								<i class="lv-03 coin"></i>
 								<div class="mem-profile" style="padding-left: 40px">
-									<h2><a href="/secured/mypage/memberInfoMgmt"><em th:text="${#authentication.principal.member.mbrId}"></em>&nbsp;님</a>
+									<h2>
+									<a href=""><em th:text="${#authentication.principal.member.mbrName}"></em>&nbsp;님</a>
 									<small th:text="${#authentication.principal.member.mbrEmail}"></small>
 									<small th:text="'가입일 : '+${#dates.format(#authentication.principal.member.mbrRegDate, 'yyyy.MM.dd')}"></small>
 									</h2>

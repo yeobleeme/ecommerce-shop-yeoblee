@@ -159,6 +159,7 @@ font-family: 'Noto Sans KR', sans-serif;
 					   <form th:action="@{/mypage/member/modify}" th:object="${member}" id="gForm" method="post">
 					        <input name="mbrNum" type="hidden" id="mbrNum" th:value="${#authentication.principal.member.mbrNum}">
 					        <input name="mbrPoint" type="hidden" id="mbrPoint" th:value="${#authentication.principal.member.mbrPoint}">
+					        <input name="role" type="hidden" id="role" th:value="${#authentication.principal.member.role}">
 					        <div class="row">
 					            <label for="mbrId" class="required">아이디</label>
 					            <div class="input_box">
@@ -169,7 +170,7 @@ font-family: 'Noto Sans KR', sans-serif;
 					        <div class="row">
 					            <label for="mbrPw" class="required">비밀번호</label>
 					            <div class="input_box">
-					                <input name="mbrPw" type="password" maxlength="20" id="mbrPw" th:value="${#strings.substring(#authentication.principal.member.mbrPw, 0, 8)}">
+					                <input name="mbrPw" type="password" maxlength="20" id="mbrPw" th:value="${#authentication.principal.member.mbrPw}">
 					            </div>
 					        </div>
 					
@@ -207,6 +208,7 @@ font-family: 'Noto Sans KR', sans-serif;
 					        	<label for="">주소</label>
 					            <div class="input_box">
 					            	<input type="text" class="reset" name="mbrAddr1" id="mbrAddr1" maxlength="" th:value="${#authentication.principal.member.mbrAddr1}">
+					            	<a href="#" class="btn" onclick="" title="새창열림">주소찾기</a>
 					            </div>
 					            <div class="input_box">
 						            <input type="text" name="mbrAddr2" id="mbrAddr2" maxlength="" th:value="${#authentication.principal.member.mbrAddr2}">

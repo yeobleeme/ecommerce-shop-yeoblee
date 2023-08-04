@@ -52,10 +52,12 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
-	@Override
-	public void updateMember(Member member) {
-		memberRepository.save(member);
-	}
+//	@Override
+//	public void updateMember(Member member) {
+//		String encodedPassword = passwordEncoder.encode(member.getMbrPw());
+//		member.setMbrPw(encodedPassword);
+//		memberRepository.save(member);
+//	}
 
 	@Override
 	public void deleteMember(Member member) {

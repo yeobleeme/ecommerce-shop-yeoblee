@@ -22423,7 +22423,6 @@ section.mypage .membership {
     margin-bottom: 57px;
     padding: 50px 0;
     height: 200px;
-    
 }
 
 section.mypage .membership h2 {
@@ -22494,7 +22493,7 @@ section.mypage .membership .mem-profile {
     position: relative;
     display: inline-block;
     width: 290px;
-    margin-left: 30px
+    margin-left: 30px;
 }
 
 section.mypage .membership .mem-profile a.btn.gy {

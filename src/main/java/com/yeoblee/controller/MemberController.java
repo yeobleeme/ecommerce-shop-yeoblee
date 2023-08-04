@@ -1,11 +1,16 @@
 package com.yeoblee.controller;
  
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yeoblee.domain.Member;
 import com.yeoblee.domain.PagingInfo;
+import com.yeoblee.domain.Qna;
 import com.yeoblee.domain.Role;
 import com.yeoblee.security.SecurityUser;
 import com.yeoblee.service.MemberService;
@@ -92,14 +98,32 @@ public class MemberController {
 		return "member/infoMember";
 	}
 	
+//	@GetMapping("/mypage/member")
+//	public String infoMember(@AuthenticationPrincipal SecurityUser pricipal, Model model, @RequestParam Long mbrNum ) {
+//		Member member = new Member();
+//	    member.setMbrNum(mbrNum);
+//		model.addAttribute("member", memberService.getMember(member));
+//		return "member/infoMember";
+//	}
+	
+	
+	
 	@GetMapping("/mypage/member/modify")
 	public String updateMember(@AuthenticationPrincipal SecurityUser pricipal) {
 		return "member/updateMember";
 	}
 	
 	@PostMapping("/mypage/member/modify")
-	public String updateMember(Member member, @AuthenticationPrincipal SecurityUser pricipal) {
-		memberService.updateMember(member);
+	public String updateMember(Member member, @AuthenticationPrincipal SecurityUser principal, HttpSession session) {
+		
+//		memberService.updateMember(member);
+		
+		principal.updateMember(member);
+		
+		Authentication newAuthentication = new UsernamePasswordAuthenticationToken(principal, null, principal.getAuthorities());
+	    SecurityContextHolder.getContext().setAuthentication(newAuthentication);
+	    session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+	    
 		return "redirect:/mypage/member";
 	}
 	

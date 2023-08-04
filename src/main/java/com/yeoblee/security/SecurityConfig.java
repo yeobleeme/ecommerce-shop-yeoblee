@@ -31,6 +31,7 @@ public class SecurityConfig extends	WebSecurityConfigurerAdapter {
 		security.exceptionHandling().accessDeniedPage("/accessDenied"); 
 		
 		security.logout().logoutUrl("/logout").invalidateHttpSession(true).logoutSuccessUrl("/");
+		
 	}
 	
 	@Bean
