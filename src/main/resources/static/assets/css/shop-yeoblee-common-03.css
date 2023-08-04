@@ -11859,7 +11859,7 @@ label.switch span+span {
     color: #111;
     vertical-align: middle;
     text-align: left;
-    border-bottom: 1px solid #bebcb4;
+    border-bottom: 1px solid #e5e5e5;
     font-size: 16px;
 }
 
@@ -22465,7 +22465,7 @@ section.mypage .membership h2>small {
     color: #767676;
     line-height: 18px;
     height: 20px;
-    font-size: 19px;
+    font-size: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap
@@ -23063,7 +23063,7 @@ section.mypage .history_wrap h4 span {
 
 section.mypage .history_wrap+.history_wrap h4 {
     padding-top: 60px;
-    border-top: 1px solid #444
+    border-top: 1px solid #e5e5e5
 }
 
 section.mypage .history_wrap .repair_list {

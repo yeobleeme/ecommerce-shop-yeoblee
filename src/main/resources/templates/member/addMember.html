@@ -43,12 +43,15 @@ font-family: 'Noto Sans KR', sans-serif;
 
     <nav class="side-menu deskonly">
 
-        <a class="cart-tog" href="#">
+        <a class="cart-tog" th:href="@{/mypage/myPage}">
             <span>&nbsp;마이페이지</span>
         </a>
 
-        <a class="cart-tog" href="#">
-            <span>&nbsp;로그인</span>
+        <a class="cart-tog" th:href="@{/login}" th:unless="${#httpServletRequest.userPrincipal != null}">
+        	<span>&nbsp;로그인</span>
+        </a>
+        <a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
+        	<span>&nbsp;로그아웃</span>
         </a>
 
         <a class="cart-tog" href="#">

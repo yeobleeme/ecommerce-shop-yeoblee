@@ -143,92 +143,98 @@ font-family: 'Noto Sans KR', sans-serif;
                 	<a href="#" class="menu-item--link" data-href="">회원 정보</a>
             	</li>
             	<li class="menu-item ">
-                	<a href="#" class="menu-item--link" data-href="">회원 정보 관리</a>
+                	<a th:href="@{/mypage/member}" class="menu-item--link" data-href="">회원 정보 관리</a>
             	</li>
             	<li class="menu-item ">
                 	<a href="@{/mypage/qna}" class="menu-item--link" data-href="">배송지 관리</a>
             	</li>
             
         	</nav>
-        	<br><br><br><br><br><br><br><br><br>
+        	<br><br><br><br><br><br><br>
        	</div>
        	
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
-					<section class="mypage">
-						<form th:action="@{/mypage/qna/modify}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
-							<input type="hidden" class="" name="qnaNum" id="qnaNum" th:value="${qna.qnaNum}"/>
-							<input type="hidden" class="" name="qnaWriterId" id="qnaWriterId" th:value="${#authentication.principal.member.mbrId}">
-							<div class="form_wrap">
-								<ul>
-									<li>
-										<span class="item">문의제목</span>
-										<span class="input_box">
-											<input id="qnaTitle" name="qnaTitle" type="text" th:value="${qna.qnaTitle}" class="">
-										</span>
-									</li>
-									<br>
-									<li>
-										<span class="item">문의내용</span>
-										<textarea name="qnaContent" id="qnaContent" th:text="${qna.qnaContent}" class=""></textarea>
-										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
-									</li>
-									<br>
-									<li>
-										<span class="item">파일첨부</span>
-										<span class="input_box">
-											<label class="" for="qnaUploadFile"></label>
-											<input type="file" class="" name="qnaUploadFile" id="qnaUploadFile" style="color:#767676;">
-											<p class="info no_line" th:text="${qna.qnaFileName}"></p>
-											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
-										</span>
-									</li>
-									<br>
-					                <li>
-										<span class="item">휴대폰번호</span>
-										<span class="input_box">
-											<input type="text" class="" name="qnaMobile" id="qnaMobile" th:value="${#authentication.principal.member.mbrMobile}">
-										</span>
-									</li>
-									<br>
-									<li>
-										<span class="item">이메일</span>
-										<span class="input_box">
-											<input type="text" class="reset" name="qnaEmail" id="qnaEmail" th:value="${#authentication.principal.member.mbrEmail}">
-										</span>
-									</li>
-								</ul>
-							</div>
-							<div class="submit">
-								<a href="" class="btn">취소</a>
-								<button type="submit" class="btn bk">저장</button>
-							</div>
-						</form>
-
-						<div class="list_wrap">
-							<ul>
-								<li>주문취소, 교환/반품 신청은 마이페이지 &gt; 나의주문 &gt;<a href="/secured/mypage/listOrder">주문/배송조회</a>에서 신청해 주세요.</li>
-								<li>문의하신 내용에 대한 답변은 마이페이지 &gt; 나의활동 &gt;<a href="/secured/mypage/myInquiryList">1:1문의</a>을 통해 확인하실 수 있습니다.</li>
-							</ul>
-						</div>
-					</section>
+					<section class="edit form_wrap">
+					   <form th:action="@{/mypage/member/modify}" th:object="${member}" id="gForm" method="post">
+					        <input name="mbrNum" type="hidden" id="mbrNum" th:value="${#authentication.principal.member.mbrNum}">
+					        <input name="mbrPoint" type="hidden" id="mbrPoint" th:value="${#authentication.principal.member.mbrPoint}">
+					        <div class="row">
+					            <label for="mbrId" class="required">아이디</label>
+					            <div class="input_box">
+					                <input name="mbrId" type="text" maxlength="20" id="mbrId" th:value="${#authentication.principal.member.mbrId}" readonly="">
+					            </div>
+					        </div>
 					
+					        <div class="row">
+					            <label for="mbrPw" class="required">비밀번호</label>
+					            <div class="input_box">
+					                <input name="mbrPw" type="password" maxlength="20" id="mbrPw" th:value="${#strings.substring(#authentication.principal.member.mbrPw, 0, 8)}">
+					            </div>
+					        </div>
+					
+					        <div class="row" id="limbrNm">
+					            <label for="mbrName" class="required">이름</label>
+					            <div class="input_box">
+					                <input name="mbrName" id="mbrName" type="text" class="reset" th:value="${#authentication.principal.member.mbrName}">
+					            </div>
+					        </div>
+					        
+					        <div class="row">
+					            <label for="mobileNumber" class="required">휴대폰 번호</label>
+					            <div class="input_box">
+					                <input name="mbrMobile" id="mbrMobile" type="text" placeholder="(‘-’ 없이 입력)" class="reset" maxlength="11" label="휴대폰 번호" th:value="${#authentication.principal.member.mbrMobile}">
+					                </div>
+					            <p class="invalid-txt" id="message_mobileNumber"></p>
+					        </div>
+					        
+					        <div class="row" id="mbrEmail">
+					            <label for="mbrEmail" class="required">이메일</label>
+					            <div class="input_box">
+					                <input name="mbrEmail" id="mbrEmail" type="text" class="reset" th:value="${#authentication.principal.member.mbrEmail}">
+					            </div>
+					        </div>
+					
+					        <div class="row" id="mbrBirth">
+					            <label for="mbrBirth" class="required">생년월일</label>
+					            <div class="input_select">
+					                <input type="text" class="reset" name="mbrBirth" id="mbrBirth" maxlength="" th:value="${#authentication.principal.member.mbrBirth}">
+					            </div>
+					        </div>
+					
+					
+					       	<div class="row">
+					        	<label for="">주소</label>
+					            <div class="input_box">
+					            	<input type="text" class="reset" name="mbrAddr1" id="mbrAddr1" maxlength="" th:value="${#authentication.principal.member.mbrAddr1}">
+					            </div>
+					            <div class="input_box">
+						            <input type="text" name="mbrAddr2" id="mbrAddr2" maxlength="" th:value="${#authentication.principal.member.mbrAddr2}">
+				                </div>
+					            <div class="input_box">
+						            <input type="text" class="reset" name="mbrAddr3" id="mbrAddr3" maxlength="100" th:value="${#authentication.principal.member.mbrAddr3}">
+					            </div>
+					        </div>
+					                
+						    <div class="submit">
+						    	<button type="submit" class="btn bk">저장</button>
+						    </div>
+					    </form>
+					</section>
 				</div>
-				<br><br><br>
+                
             </div>
             
         </div>
-
-        <hr><hr><hr><hr><hr>
-        <hr><hr><hr><hr><hr>
+		<br><br><br><br><br><br><br>
 
     </main>
 
     <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
         <footer class="footer second">
-            <a href="/" class="second--copyright deskonly"></a>
-            <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
-            <a href="/" class="second--copyright deskonly"></a>
+            <a href="#" class="second--copyright deskonly"></a>
+            <a href="#" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
+            <a href="#" class="second--copyright deskonly"></a>
             <br>
         </footer>
     </div>

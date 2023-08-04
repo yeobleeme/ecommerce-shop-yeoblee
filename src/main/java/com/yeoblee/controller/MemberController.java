@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.yeoblee.domain.Member;
 import com.yeoblee.domain.PagingInfo;
 import com.yeoblee.domain.Role;
+import com.yeoblee.security.SecurityUser;
 import com.yeoblee.service.MemberService;
 
 @Controller
@@ -69,7 +71,7 @@ public class MemberController {
 
 	@GetMapping("/addMember")
 	public String getaddMemberPage() {
-		return "addMember";
+		return "member/addMember";
 	}
 	
 	@PostMapping("/addMember")
@@ -85,26 +87,21 @@ public class MemberController {
 	}
 	
 	
-//	@GetMapping("/updateMember")
-//	public String updateMember(Member member, Model model) {
-//		if(member.getId() == null) {
-//			return "redirect:login";
-//		}
-//		model.addAttribute("member", memberService.getMember(member));
-//		return "member/updateMember";
-//	}
+	@GetMapping("/mypage/member")
+	public String infoMember(@AuthenticationPrincipal SecurityUser pricipal) {
+		return "member/infoMember";
+	}
 	
-//	@PostMapping("/updateMember")
-//	public String updateMember(Member member) {
-//		if(member.getId() == null) {
-//			return "redirect:login";
-//		}
-//		memberService.updateMember(member);
-//				
-//		return "redirect:getMemberList?curPage=" + pagingInfo.getCurPage() + "rowSizePerPage="
-//				+ pagingInfo.getRowSizePerPage() + "&searchType=" + pagingInfo.getSearchType()
-//				+ "&searchWord=" + pagingInfo.getSearchWord();
-//	}
+	@GetMapping("/mypage/member/modify")
+	public String updateMember(@AuthenticationPrincipal SecurityUser pricipal) {
+		return "member/updateMember";
+	}
+	
+	@PostMapping("/mypage/member/modify")
+	public String updateMember(Member member, @AuthenticationPrincipal SecurityUser pricipal) {
+		memberService.updateMember(member);
+		return "redirect:/mypage/member";
+	}
 	
 	
 //	@GetMapping("/deleteMember")

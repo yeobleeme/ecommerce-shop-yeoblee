@@ -113,7 +113,7 @@ font-family: 'Noto Sans KR', sans-serif;
     	<div class="default-page--sidebar the-cols--sidebar">
         	<nav class="collection-sidebar--menu">
             	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
-                	<a href="#" class="menu-item--link" data-href="" >나의 쇼핑 활동</a>
+                	<a href="#" class="menu-item--link" data-href="" >나의 쇼핑</a>
             	</li>
             	<li class="menu-item ">
                 	<a href="#" class="menu-item--link" data-href="">주문 내역 조회</a>
@@ -143,7 +143,7 @@ font-family: 'Noto Sans KR', sans-serif;
                 	<a href="#" class="menu-item--link" data-href="">회원 정보</a>
             	</li>
             	<li class="menu-item ">
-                	<a href="#" class="menu-item--link" data-href="">회원 정보 수정</a>
+                	<a href="#" class="menu-item--link" data-href="">회원 정보 관리</a>
             	</li>
             	<li class="menu-item ">
                 	<a href="@{/mypage/qna}" class="menu-item--link" data-href="">배송지 관리</a>
@@ -179,7 +179,7 @@ font-family: 'Noto Sans KR', sans-serif;
 								<tr th:each="qna, state : ${pagedResult.getContent()}">
 									<td style="width: 14%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="'&nbsp;&nbsp;&nbsp;'+${qna.qnaNum}"></a></td>
 									<td style="width: 34%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="${qna.qnaTitle}"></a></td>
-									<td style="width: 20%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="'&nbsp;'+${qna.qnaWriterId}"></a></td>
+									<td style="width: 20%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="${qna.qnaWriterId}"></a></td>
 									<td style="width: 16%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="'&nbsp;&nbsp;'+${qna.qnaCnt}"></a></td>
 									<td style="width: 16%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="${#dates.format(qna.qnaCreateDate, 'yyyy.MM.dd')}"></a></td>
 								</tr>

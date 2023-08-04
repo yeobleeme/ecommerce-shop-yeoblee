@@ -54,7 +54,7 @@ public class Member {
 	private String mbrBirth;
 	
 	@Column(insertable = false, columnDefinition = "bigint default 0")
-	private Long m_point;
+	private Long mbrPoint;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
 	private Date mbrRegDate;
@@ -62,8 +62,6 @@ public class Member {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-//	private boolean enabled;
-
 	@OneToMany(mappedBy = "qnaWriter", fetch = FetchType.EAGER)
 	private List<Qna> qnaList = new ArrayList<>();
 	
