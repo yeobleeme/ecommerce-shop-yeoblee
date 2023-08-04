@@ -2,14 +2,21 @@ package com.yeoblee.impl;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.yeoblee.domain.Member;
 import com.yeoblee.persistence.MemberRepository;
+import com.yeoblee.security.SecurityUser;
 import com.yeoblee.service.MemberService;
 
 @Service
@@ -53,10 +60,17 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 //	@Override
-//	public void updateMember(Member member) {
+//	public void updateMember(Member member, @AuthenticationPrincipal SecurityUser principal, HttpSession session) {
+//		
 //		String encodedPassword = passwordEncoder.encode(member.getMbrPw());
 //		member.setMbrPw(encodedPassword);
-//		memberRepository.save(member);
+//		
+//		Authentication newAuthentication = new UsernamePasswordAuthenticationToken(principal, null, principal.getAuthorities());
+//	    SecurityContextHolder.getContext().setAuthentication(newAuthentication);
+//	    session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+//	    
+//	    memberRepository.save(member);
+//		
 //	}
 
 	@Override

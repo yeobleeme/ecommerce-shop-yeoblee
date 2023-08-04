@@ -1,9 +1,13 @@
 package com.yeoblee.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import com.yeoblee.domain.Member;
+import com.yeoblee.security.SecurityUser;
 
 public interface MemberService {
 
@@ -11,7 +15,7 @@ public interface MemberService {
 	Member getMember(Member member);
 //	Page<Member> getMemberList(Pageable pageable, String searchType, String searchWord);
 	void addMember(Member member);
-//	void updateMember(Member member);
+//	void updateMember(Member member, @AuthenticationPrincipal SecurityUser principal, HttpSession session);
 	void deleteMember(Member member);
 
 }

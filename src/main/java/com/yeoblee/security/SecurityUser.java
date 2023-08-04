@@ -1,20 +1,11 @@
 package com.yeoblee.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.yeoblee.domain.Member;
-import com.yeoblee.persistence.MemberRepository;
 
 public class SecurityUser extends User {
-	
-	@Autowired
-	private MemberRepository memberRepository;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 	
 	private Member member;
 
@@ -32,18 +23,18 @@ public class SecurityUser extends User {
 		
 		this.member.setMbrId(member.getMbrId());
 		
-		String encodedPassword = passwordEncoder.encode(member.getMbrPw());
-		this.member.setMbrPw(encodedPassword);
-		
-//		this.member.setMbrPw(member.getMbrPw());
-		
+//		if (!member.getMbrPw().isEmpty()) {
+//	        String encodedPassword = passwordEncoder.encode(member.getMbrPw());
+//	        this.member.setMbrPw(encodedPassword);
+//	    }
+				
 		this.member.setMbrName(member.getMbrName());
-		this.member.setMbrMobile(member.getMbrName());
+		this.member.setMbrMobile(member.getMbrMobile());
 		this.member.setMbrEmail(member.getMbrEmail());
 		this.member.setMbrAddr1(member.getMbrAddr1());
 		this.member.setMbrAddr2(member.getMbrAddr2());
 		
-		memberRepository.save(member);
+		
 	}
 	
 }

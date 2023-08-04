@@ -22,6 +22,7 @@ import com.yeoblee.domain.Member;
 import com.yeoblee.domain.PagingInfo;
 import com.yeoblee.domain.Qna;
 import com.yeoblee.domain.Role;
+import com.yeoblee.persistence.MemberRepository;
 import com.yeoblee.security.SecurityUser;
 import com.yeoblee.service.MemberService;
 
@@ -31,6 +32,9 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private MemberRepository memberRepository;
 	
 	public PagingInfo pagingInfo = new PagingInfo();
 	
@@ -116,15 +120,15 @@ public class MemberController {
 	@PostMapping("/mypage/member/modify")
 	public String updateMember(Member member, @AuthenticationPrincipal SecurityUser principal, HttpSession session) {
 		
-//		memberService.updateMember(member);
-		
 		principal.updateMember(member);
 		
-		Authentication newAuthentication = new UsernamePasswordAuthenticationToken(principal, null, principal.getAuthorities());
-	    SecurityContextHolder.getContext().setAuthentication(newAuthentication);
-	    session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+//		Authentication newAuthentication = new UsernamePasswordAuthenticationToken(principal, null, principal.getAuthorities());
+//	    SecurityContextHolder.getContext().setAuthentication(newAuthentication);
+//	    session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+		
+		memberRepository.save(member);
 	    
-		return "redirect:/mypage/member";
+		return "redirect:/mypage/myPage";
 	}
 	
 	
