@@ -23,6 +23,13 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
 
+<script>
+function updateMember() {
+  // 알림 창 띄우기
+  alert('회원정보 수정이 완료되었습니다.');
+}
+</script>
+
 </head>
 <body class="">
     
@@ -135,14 +142,14 @@ font-family: 'Noto Sans KR', sans-serif;
             	<li class="menu-item ">
                 	<a href="#" class="menu-item--link" data-href="">자주 묻는 질문</a>
             	</li>
-            	<li class="menu-item " style="color: #00c500">
+            	<li class="menu-item ">
                 	<a th:href="@{/mypage/qna}" class="menu-item--link" data-href="">문의 게시판</a>
             	</li>
             	<br><br>
             	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
                 	<a href="#" class="menu-item--link" data-href="">회원 정보</a>
             	</li>
-            	<li class="menu-item ">
+            	<li class="menu-item " style="color: #00c500">
                 	<a th:href="@{/mypage/member}" class="menu-item--link" data-href="">회원 정보 관리</a>
             	</li>
             	<li class="menu-item ">
@@ -160,6 +167,7 @@ font-family: 'Noto Sans KR', sans-serif;
 					        <input name="mbrNum" type="hidden" id="mbrNum" th:value="${#authentication.principal.member.mbrNum}">
 					        <input name="mbrPoint" type="hidden" id="mbrPoint" th:value="${#authentication.principal.member.mbrPoint}">
 					        <input name="role" type="hidden" id="role" th:value="${#authentication.principal.member.role}">
+					        <input name="mbrPw" type="hidden" maxlength="20" id="mbrPw" th:value="${#authentication.principal.member.mbrPw}">
 					        <div class="row">
 					            <label for="mbrId" class="required">아이디</label>
 					            <div class="input_box">
@@ -170,7 +178,8 @@ font-family: 'Noto Sans KR', sans-serif;
 					        <div class="row">
 					            <label for="mbrPw" class="required">비밀번호</label>
 					            <div class="input_box">
-					                <input name="mbrPw" type="password" maxlength="8" id="mbrPw" th:value="${#authentication.principal.member.mbrPw}">
+					                <input name="" type="password" maxlength="" id="" th:value="12345678" readonly="" style="background-color: #f7f7f7;">
+					                <a th:href="@{/mypage/member/modify-pw(mbrNum=${#authentication.principal.member.mbrNum})}" onclick="" class="btn bk">비밀번호 변경</a>
 					            </div>
 					        </div>
 					
@@ -208,7 +217,7 @@ font-family: 'Noto Sans KR', sans-serif;
 					        	<label for="">주소</label>
 					            <div class="input_box">
 					            	<input type="text" class="reset" name="mbrAddr1" id="mbrAddr1" maxlength="" th:value="${#authentication.principal.member.mbrAddr1}">
-					            	<a href="#" class="btn" onclick="" title="새창열림">주소찾기</a>
+					            	<a href="#" class="btn bk" onclick="" title="새창열림">주소찾기</a>
 					            </div>
 					            <div class="input_box">
 						            <input type="text" name="mbrAddr2" id="mbrAddr2" maxlength="" th:value="${#authentication.principal.member.mbrAddr2}">
@@ -219,7 +228,8 @@ font-family: 'Noto Sans KR', sans-serif;
 					        </div>
 					                
 						    <div class="submit">
-						    	<button type="submit" class="btn bk">저장</button>
+						    	<a th:href="@{/mypage/member}" class="btn">취소</a>
+						    	<button type="submit" class="btn bk" onclick="updateMember()">저장</button>
 						    </div>
 					    </form>
 					</section>

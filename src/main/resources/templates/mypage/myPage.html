@@ -135,7 +135,7 @@ font-family: 'Noto Sans KR', sans-serif;
             	<li class="menu-item ">
                 	<a href="#" class="menu-item--link" data-href="">자주 묻는 질문</a>
             	</li>
-            	<li class="menu-item " style="color: #00c500">
+            	<li class="menu-item ">
                 	<a th:href="@{/mypage/qna}" class="menu-item--link" data-href="">문의 게시판</a>
             	</li>
             	<br><br>
@@ -164,7 +164,7 @@ font-family: 'Noto Sans KR', sans-serif;
 								<i class="lv-03 coin"></i>
 								<div class="mem-profile" style="padding-left: 40px">
 									<h2>
-									<a href=""><em th:text="${#authentication.principal.member.mbrName}"></em>&nbsp;님</a>
+									<a th:href="@{/mypage/member}"><em th:text="${#authentication.principal.member.mbrName}"></em>&nbsp;님</a>
 									<small th:text="${#authentication.principal.member.mbrEmail}"></small>
 									<small th:text="'가입일 : '+${#dates.format(#authentication.principal.member.mbrRegDate, 'yyyy.MM.dd')}"></small>
 									</h2>
@@ -172,21 +172,23 @@ font-family: 'Noto Sans KR', sans-serif;
 							</div>	
 						</div>
 						
-						<div class="history_wrap" style="padding-top: 0;"></div>
+						<div class="history_wrap"></div>
 						
 						<div class="history_wrap">
-							<h4>나의 쇼핑 활동</h4>
+							<h4>
+								<span>나의 쇼핑 활동</span>
+							</h4>
 							<ul class="ask_list">
-								<li><span>찜한상품</span> <a href="/secured/mypage/myWishList" class="c999">0</a></li>
-								<li><span>마이브랜드</span> <a href="/secured/mypage/myBrndList" class="c999">0</a></li>
-								<li><span>재입고알림</span> <a href="/secured/mypage/myAlarmsForStock" class="c999">0</a></li>
-								<li><span>이벤트참여내역</span> <a href="/secured/mypage/eventList">5</a></li>
+								<li><span>주문내역</span> <a href="/secured/mypage/myWishList" class="c999">0</a></li>
+								<li><span>문의내역</span> <a href="/secured/mypage/myBrndList" class="c999">0</a></li>
+								<li><span>위시리스트</span> <a href="/secured/mypage/myAlarmsForStock" class="c999">0</a></li>
+								<li><span>장바구니</span> <a href="/secured/mypage/eventList">0</a></li>
 							</ul>
 		
 							<div class="hint_area">
 								<div class="left">
-									<em>8 Seconds 구매혜택</em>
-									<p>삼성패션 멤버십 고객님들께만 제공되는 혜택입니다.</p>
+									<em>Shop Yeoblee 구매혜택</em>
+									<p>Shop Yeoblee 멤버십 고객님들께만 제공되는 혜택입니다.</p>
 								</div>
 							</div>
 		

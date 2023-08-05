@@ -37,6 +37,13 @@ public class MemberController {
 	private MemberRepository memberRepository;
 	
 	public PagingInfo pagingInfo = new PagingInfo();
+
+	@GetMapping("/login")
+	public void login() {}
+	
+	@GetMapping("/logout")
+	public void logout() {}
+	
 	
 //	@GetMapping("/getMemberList")
 //	public String getMemberList(Model model,
@@ -100,16 +107,7 @@ public class MemberController {
 	@GetMapping("/mypage/member")
 	public String infoMember(@AuthenticationPrincipal SecurityUser pricipal) {
 		return "member/infoMember";
-	}
-	
-//	@GetMapping("/mypage/member")
-//	public String infoMember(@AuthenticationPrincipal SecurityUser pricipal, Model model, @RequestParam Long mbrNum ) {
-//		Member member = new Member();
-//	    member.setMbrNum(mbrNum);
-//		model.addAttribute("member", memberService.getMember(member));
-//		return "member/infoMember";
-//	}
-	
+	}	
 	
 	
 	@GetMapping("/mypage/member/modify")
@@ -122,13 +120,25 @@ public class MemberController {
 		
 		principal.updateMember(member);
 		
-//		Authentication newAuthentication = new UsernamePasswordAuthenticationToken(principal, null, principal.getAuthorities());
-//	    SecurityContextHolder.getContext().setAuthentication(newAuthentication);
-//	    session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+//		memberService.updateMember(member);
 		
 		memberRepository.save(member);
 	    
 		return "redirect:/mypage/myPage";
+	}
+	
+	
+	@GetMapping("/mypage/member/modify-pw")
+	public String updateMemberPw(@AuthenticationPrincipal SecurityUser pricipal) {
+		return "member/updateMemberPw";
+	}
+	
+	@PostMapping("/mypage/member/modify-pw")
+	public String updateMemberPw(Member member, @AuthenticationPrincipal SecurityUser principal, HttpSession session) {
+		
+		memberService.updateMemberPw(member);
+	    
+		return "redirect:/logout";
 	}
 	
 	

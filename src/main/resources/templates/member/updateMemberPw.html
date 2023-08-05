@@ -23,6 +23,13 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
 
+<script>
+function updateMemberPw() {
+  // 알림 창 띄우기
+  alert('비밀번호 변경이 완료되었습니다.\n변경된 새 비밀번호로 다시 로그인해주세요.');
+}
+</script>
+
 </head>
 <body class="">
     
@@ -155,71 +162,44 @@ font-family: 'Noto Sans KR', sans-serif;
        	
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
-					<section class="edit form_wrap">
-					   
-					        <div class="row">
-					            <label for="mbrId" class="required">아이디</label>
-					            <div class="input_box">
-					                <input name="mbrId" type="text" maxlength="20" id="mbrId" th:value="${#authentication.principal.member.mbrId}" readonly="" disabled="disabled">
-					            </div>
-					        </div>
-					
-					        <div class="row">
-					            <label for="mbrPw" class="required">비밀번호</label>
-					            <div class="input_box">
-					                <input name="mbrPw" type="password" maxlength="20" id="mbrPw" th:value="${#strings.substring(#authentication.principal.member.mbrPw, 0, 8)}" readonly="" disabled="disabled">
-					                <a th:href="@{/mypage/member/modify-pw(mbrNum=${#authentication.principal.member.mbrNum})}" onclick="" class="btn bk">비밀번호 변경</a>
-					            </div>
-					        </div>
-					
-					        <div class="row" id="limbrNm">
-					            <label for="mbrName" class="required">이름</label>
-					            <div class="input_box">
-					                <input name="mbrName" id="mbrName" type="text" class="reset" th:value="${#authentication.principal.member.mbrName}" readonly="" disabled="disabled">
-					            </div>
-					        </div>
-					        
-					        <div class="row">
-					            <label for="mobileNumber" class="required">휴대폰 번호</label>
-					            <div class="input_box">
-					                <input name="mbrMobile" id="mbrMobile" type="text" placeholder="(‘-’ 없이 입력)" class="reset" maxlength="11" label="휴대폰 번호" th:value="${#authentication.principal.member.mbrMobile}" readonly="" disabled="disabled">
-					                </div>
-					            <p class="invalid-txt" id="message_mobileNumber"></p>
-					        </div>
-					        
-					        <div class="row" id="mbrEmail">
-					            <label for="mbrEmail" class="required">이메일</label>
-					            <div class="input_box">
-					                <input name="mbrEmail" id="mbrEmail" type="text" class="reset" th:value="${#authentication.principal.member.mbrEmail}" readonly="" disabled="disabled">
-					            </div>
-					        </div>
-					
-					        <div class="row" id="mbrBirth">
-					            <label for="mbrBirth" class="required">생년월일</label>
-					            <div class="input_select">
-					                <input type="text" class="reset" name="mbrBirth" id="mbrBirth" maxlength="" th:value="${#authentication.principal.member.mbrBirth}" disabled="disabled">
-					            </div>
-					        </div>
-					
-					
-					       	<div class="row">
-					        	<label for="">주소</label>
-					            <div class="input_box">
-					            	<input type="text" class="reset" name="mbrAddr1" id="mbrAddr1" maxlength="" th:value="${#authentication.principal.member.mbrAddr1}" readonly="readonly" disabled="disabled">
-					            </div>
-					            <div class="input_box">
-						            <input type="text" name="mbrAddr2" id="mbrAddr2" maxlength="" th:value="${#authentication.principal.member.mbrAddr2}" readonly="readonly" disabled="disabled">
-				                </div>
-					            <div class="input_box">
-						            <input type="text" class="reset" name="mbrAddr3" id="mbrAddr3" maxlength="100" th:value="${#authentication.principal.member.mbrAddr3}" readonly="readonly" disabled="disabled">
-					            </div>
-					        </div>
-					              
-						    <div class="submit">
-								<a th:href="@{/mypage/member/modify(mbrNum=${#authentication.principal.member.mbrNum})}" class="btn bk" onclick="" id="btnUpdateMember">회원정보 수정</a>
-						    </div>
-					    
-					</section>
+	            	<h1 style="text-align: left"></h1><br />
+					<form th:action="@{/mypage/member/modify-pw}" method="post" id="changePwdForm">
+						<input name="mbrNum" type="hidden" id="mbrNum" th:value="${#authentication.principal.member.mbrNum}">
+						<input name="mbrId" type="hidden" id="mbrId" th:value="${#authentication.principal.member.mbrId}">
+						<input name="mbrName" type="hidden" id="mbrName" th:value="${#authentication.principal.member.mbrName}">
+						<input name="mbrMobile" type="hidden" id="mbrMobile" th:value="${#authentication.principal.member.mbrMobile}">
+						<input name="mbrEmail" type="hidden" id="mbrEmail" th:value="${#authentication.principal.member.mbrEmail}">
+					    <input name="mbrPoint" type="hidden" id="mbrPoint" th:value="${#authentication.principal.member.mbrPoint}">
+					    <input name="mbrAddr1" type="hidden" id="mbrAddr1" th:value="${#authentication.principal.member.mbrAddr1}">
+					    <input name="mbrAddr2" type="hidden" id="mbrAddr2" th:value="${#authentication.principal.member.mbrAddr2}">
+					    <input name="mbrAddr3" type="hidden" id="mbrAddr3" th:value="${#authentication.principal.member.mbrAddr3}">
+					    <input name="mbrBirth" type="hidden" id="mbrBirth" th:value="${#authentication.principal.member.mbrBirth}">
+					    <input name="role" type="hidden" id="role" th:value="${#authentication.principal.member.role}">
+						<section class="change form_wrap">
+							<div class="row" id="">
+								<label for="mbrPw" class="required">새 비밀번호</label>
+								<div class="input_box">
+									<input name="mbrPw" id="mbrPw" value="" validate="" label="새 비밀번호" autocomplete="off" type="password">
+								</div>
+								<p class="valid-status" id="desc_newPw">
+									<span class="spec">영문,숫자,특수문자 2가지 이상 조합</span>
+									<span class="size">10자 이상</span>
+								</p>
+								<p class="invalid-txt" id="message_newPw"></p>
+							</div>
+							<div class="row" id="reNewLi">
+								<label for="reNewPw" class="required">새 비밀번호 확인</label>
+								<div class="input_box">
+									<input id="reNewPw" maxlength="" value="" label="새 비밀번호 확인" autocomplete="off" type="password" class="empty">
+								</div>
+								<p class="invalid-txt" id="message_reNewPw"></p>
+							</div>
+							<div class="submit">
+								<a th:href="@{/mypage/member}" class="btn">취소</a>
+								<button type="submit" class="btn bk" onclick="updateMemberPw()">변경</button>
+							</div>
+						</section>
+					</form>
 				</div>
                 
             </div>

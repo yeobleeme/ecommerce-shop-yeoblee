@@ -34,7 +34,6 @@ public class SecurityUser extends User {
 		this.member.setMbrAddr1(member.getMbrAddr1());
 		this.member.setMbrAddr2(member.getMbrAddr2());
 		
-		
 	}
 	
 }
