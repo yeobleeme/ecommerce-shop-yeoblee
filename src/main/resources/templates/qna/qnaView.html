@@ -198,7 +198,6 @@ font-family: 'Noto Sans KR', sans-serif;
 							   <form th:action="@{/mypage/qna/view/comment}" th:object="${qnaComment}" id="gForm" method="post">
 							        <input name="qnaCommentWriterId" type="hidden" id="qnaCommentWriterId" th:value="${#authentication.principal.member.mbrId}">
 							        <input name="qnaNum" type="hidden" id="qnaNum" th:value="${qnaNum}">
-							        <input name="qnaCommentWriter" type="hidden" id="qnaCommentWriter" th:value="${#authentication.principal.member.mbrNum}">
 							        <div class="row">
 							            <div class="input_box" style="width: 100%">
 							                <input name="qnaCommentContent" type="text" id="qnaCommentContent" value="">

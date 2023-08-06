@@ -18,13 +18,13 @@ public class QnaCommentController {
 	private QnaCommentService qnaCommentService;
 	
 	@PostMapping("/mypage/qna/view/comment")
-	public String insertQnaComment(@RequestParam Long qnaNum, QnaComment qnaComment, @AuthenticationPrincipal SecurityUser pricipal) {
-		
-		System.out.println("qnaNum: " + qnaNum);
-		
+	public String insertQnaComment(@RequestParam Long qnaNum, QnaComment qnaComment, @AuthenticationPrincipal SecurityUser principal) {
+				
 		Qna qna = new Qna();
 	    qna.setQnaNum(qnaNum);
 	    qnaComment.setQna(qna);
+	    
+	    qnaComment.setQnaCommentWriter(principal.getMember());
 	    
 		qnaCommentService.insertQnaComment(qnaComment);
 		
