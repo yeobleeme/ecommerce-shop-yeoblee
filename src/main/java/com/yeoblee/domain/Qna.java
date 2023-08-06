@@ -50,7 +50,7 @@ public class Qna {
 	private String qnaFileName;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date qnaCreateDate;	
+	private Date qnaCreateDate;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
 	private Long qnaCnt;
@@ -61,8 +61,8 @@ public class Qna {
 	
 	private String qnaEmail;
 	
-//	@OneToMany(mappedBy = "qna")
-//    private List<QnaComment> qnaComment;
+	@OneToMany(mappedBy = "qna")
+  private List<QnaComment> qnaComment;
 	
 }
 
