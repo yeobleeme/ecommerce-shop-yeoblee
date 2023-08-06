@@ -31,7 +31,7 @@ public class QnaComment {
 	
 	@Lob
 	@Column(columnDefinition = "TEXT", nullable = false)
-	private String qnaComment;
+	private String qnaCommentContent;
 	 
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
 	private Date qnaCommentCreateDate;	

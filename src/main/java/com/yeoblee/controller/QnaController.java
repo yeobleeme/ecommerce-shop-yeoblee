@@ -55,24 +55,6 @@ public class QnaController {
 		return "qna/qnaWrite";
 	}
 	
-//	@PostMapping("/mypage/qna/write")
-//	public String insertQna(@ModelAttribute("member") Member member, Qna qna) throws IOException {
-//		
-//		// 파일업로드
-//		MultipartFile qnaUploadFile = qna.getQnaUploadFile();
-//		if(!qnaUploadFile.isEmpty()) {
-//			String qnaFileName = qnaUploadFile.getOriginalFilename();
-//			qnaUploadFile.transferTo(new File(uploadFolder + qnaFileName));
-//			qna.setQnaFileName(qnaFileName);
-//		}
-//		
-////		 qna.setQnaMobile(member.getMbrMobile());
-////		 qna.setQnaEmail(member.getMbrEmail());
-//		
-//		qnaService.insertQna(qna);
-//		return "redirect:/mypage/qna";
-//	}
-	
 	
 	@PostMapping("/mypage/qna/write")
 	public String insertQna(Qna qna, @AuthenticationPrincipal SecurityUser pricipal) throws IOException {
@@ -141,6 +123,7 @@ public class QnaController {
 	    qna.setQnaNum(qnaNum);
 		qnaService.updateQnaCnt(qna);
 		model.addAttribute("qna", qnaService.getQna(qna));
+		model.addAttribute("qnaNum", qnaNum);
 		return "qna/qnaView";
 	}
 	
