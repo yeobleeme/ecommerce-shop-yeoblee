@@ -18,14 +18,14 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-@Table(name = "qnacomment")
+@ToString(exclude = "qna")
+@Table(name = "qna_comment")
 @Entity
 public class QnaComment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long qnaCommentId;
+	private Long qnaCommentNum;
 	
 	private String qnaCommentWriterId;
 	
@@ -34,11 +34,11 @@ public class QnaComment {
 	private String qnaComment;
 	 
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date qnaCreateDate;	
+	private Date qnaCommentCreateDate;	
 	 
 	@ManyToOne
-	@JoinColumn(name = "qnaNum")
-	private Qna qnaNum;
+	@JoinColumn(name = "qnaNum", referencedColumnName = "qnaNum")
+	private Qna qna;
 	 
 	@ManyToOne
 	@JoinColumn(name = "mbrNum")

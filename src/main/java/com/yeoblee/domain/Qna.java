@@ -3,6 +3,7 @@ package com.yeoblee.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -14,9 +15,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -61,8 +65,10 @@ public class Qna {
 	
 	private String qnaEmail;
 	
-	@OneToMany(mappedBy = "qna")
-  private List<QnaComment> qnaComment;
+	@OneToMany(mappedBy = "qna", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({"qna"})
+	@OrderBy("qnaCommentNum asc")
+	private List<QnaComment> qnaComments;
 	
 }
 

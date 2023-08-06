@@ -175,22 +175,20 @@ font-family: 'Noto Sans KR', sans-serif;
 					            </li>
 					            <li>
 					                <span class="item">문의내용</span>
-					                <p class="info no_line" th:text="${qna.qnaContent}" style="font-size: 17px;"></p>
+					                <p class="info no_line" th:text="${qna.qnaContent}" style="font-size: 17px;"></p><br><br>
+					                <img th:src="@{'/uploadfile/' + ${qna.qnaFileName}}" alt="" style="width: 41%"/>
 					            </li>
-					            <br />
-					            <li>
-					            	<span class="item">파일첨부</span>
-					                    <p class="info no_line" style="font-size: 17px;">
-					                    	<img th:src="@{'/uploadfile/' + ${qna.qnaFileName}}" alt="" style="width: 41%"/>
-					                    </p>
-					            </li>
-					            <li>
+				            	<li>
 					                <span class="item"></span>
 					                <p class="info"></p>
 					            </li>
+					            <li>
+					                <span class="item">답글</span>
+					                <p class="info no_line"></p>
+					            </li>
 					        </ul>
 					        <div class="btn_center">
-					         	<a href="#" class="btn bk">답글작성</a>
+					         	<a href="#" class="btn bk">답글 작성</a>
 					         	<!-- <a th:href="@{/mypage/qna}" class="btn">목록</a> -->
 					            <a th:href="@{/mypage/qna/modify(qnaNum=${qna.qnaNum})}" onclick="" class="btn">수정</a>
 					            <a href="#" onclick="" class="btn">삭제</a>
