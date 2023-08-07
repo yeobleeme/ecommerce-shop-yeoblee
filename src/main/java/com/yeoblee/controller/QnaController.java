@@ -151,6 +151,15 @@ public class QnaController {
 		return "redirect:/mypage/qna/view?qnaNum=" + qna.getQnaNum();
 	}
 	
+	
+	@GetMapping("/mypage/qna/delete")
+	public String deleteQna(Qna qna) {
+		
+		qnaService.deleteQna(qna);
+		
+		return "forward:/mypage/qna";
+	}
+	
 
 	
 

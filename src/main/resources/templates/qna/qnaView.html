@@ -23,6 +23,19 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
 
+<script>
+function deleteQna(event) {
+	  event.preventDefault();
+	  const confirmation = confirm("문의글을 삭제하시겠습니까?");
+
+	  if (confirmation) {
+	    window.location.href = event.target.getAttribute("href");
+	  } else {
+		  
+	  }
+	}
+</script>
+
 </head>
 <body class="">
     
@@ -179,13 +192,20 @@ font-family: 'Noto Sans KR', sans-serif;
 					        </ul>
 					        
 					        <section class="edit form_wrap" style="width: 100%">
-							   <form th:action="@{/mypage/qna/view/comment}" th:object="${qnaComment}" id="gForm" method="post">
+							   <form th:action="@{/mypage/qna/comment/modify}" th:object="${qnaComment}" id="gForm" method="post">
 							        <div class="row">
 							        <label for="mbrPw" class="" style="color: #767676">답글</label>
 							            <div class="input_box" style="width: 100%" th:each="qnaComment : ${qna.qnaComments}">
+							            
 							                <input name="qnaCommentContent" type="text" id="qnaCommentContent" th:value="${qnaComment.qnaCommentContent}" autocomplete="off" style="font-size: 17px;">
+							                
+							                <input name="qnaCommentNum" type="hidden" id="qnaCommentNum" th:value="${qnaComment.qnaCommentNum}">
+							                <input name="qnaCommentWriterId" type="hidden" id="qnaCommentWriterId" th:value="${qnaComment.qnaCommentWriterId}">
+							                <input name="mbrNum" type="hidden" id="mbrNum" th:value="${#authentication.principal.member.mbrNum}">
+							                <input name="qnaNum" type="hidden" id="qnaNum" th:value="${qnaNum}" autocomplete="off" style="font-size: 17px;">
+							                
 							                <button type="submit" class="btn">수정</button>
-							                <button type="submit" class="btn">삭제</button>
+							                <a th:href="@{/mypage/qna/comment/delete(qnaNum=${qna.qnaNum},qnaCommentNum=${qnaComment.qnaCommentNum})}" class="btn" style="text-decoration: none; color: #444444;">삭제</a>
 							            </div>
 							        </div>
 							    </form>
@@ -207,7 +227,7 @@ font-family: 'Noto Sans KR', sans-serif;
 					        <div class="btn_center">
 					         	<!-- <a th:href="@{/mypage/qna}" class="btn">목록</a> -->
 					            <a th:href="@{/mypage/qna/modify(qnaNum=${qna.qnaNum})}" onclick="" class="btn">수정</a>
-					            <a href="#" onclick="" class="btn">삭제</a>
+					            <a th:href="@{/mypage/qna/delete(qnaNum=${qna.qnaNum})}" onclick="deleteQna(event)" class="btn">삭제</a>
 					        </div>
 					    </div>
 					</section>
