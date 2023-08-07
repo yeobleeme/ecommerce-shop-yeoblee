@@ -162,46 +162,43 @@ font-family: 'Noto Sans KR', sans-serif;
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${qna.qnaTitle}" style="font-size: 17px;"></p>
 					            </li>
 					            <li>
+					            	<span class="item">작성자</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${qna.qnaWriterId}" style="font-size: 17px; color: #767676"></p>
+					            </li>
+					            <li>
 					                <span class="item">작성일</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${#dates.format(qna.qnaCreateDate, 'yyyy.MM.dd')}" style="font-size: 17px;"></p>
-					            </li>
-					            <li>
-					                <span class="item">조회수</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${qna.qnaCnt}" style="font-size: 17px;"></p>
-					            </li>
-					            <li>
-					                <span class="item">작성자</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${qna.qnaWriterId}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${#dates.format(qna.qnaCreateDate, 'yyyy.MM.dd')}" style="font-size: 17px; color: #767676"></p>
+					                <span class="item" style="border-bottom: 1px solid #e5e5e5;">조회수</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${qna.qnaCnt}" style="font-size: 17px; color: #767676"></p>
 					            </li>
 					            <li>
 					                <span class="item">문의내용</span>
 					                <p class="info no_line" th:text="'&nbsp;&nbsp;'+${qna.qnaContent}" style="font-size: 17px;"></p><br><br>
 					                <img th:src="@{'/uploadfile/' + ${qna.qnaFileName}}" alt="" style="width: 41%"/>
 					            </li>
-				            	<li>
-					                <span class="item"></span>
-					                <p class="info"></p>
-					            </li>
-					            <br />
-					            <li>
-					                <span class="item comment">답글</span>
-					                <p class="info">&nbsp;&nbsp;dddsadasdasdasd 
-					                <em style="float: right">
-					                <span>aasadaddda&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					                aasadaa&nbsp;&nbsp;&nbsp;&nbsp;</em>
-					                </p>
-					            </li>
-					            
 					        </ul>
 					        
+					        <section class="edit form_wrap" style="width: 100%">
+							   <form th:action="@{/mypage/qna/view/comment}" th:object="${qnaComment}" id="gForm" method="post">
+							        <div class="row">
+							        <label for="mbrPw" class="" style="color: #767676">답글</label>
+							            <div class="input_box" style="width: 100%" th:each="qnaComment : ${qna.qnaComments}">
+							                <input name="qnaCommentContent" type="text" id="qnaCommentContent" th:value="${qnaComment.qnaCommentContent}" autocomplete="off" style="font-size: 17px;">
+							                <button type="submit" class="btn">수정</button>
+							                <button type="submit" class="btn">삭제</button>
+							            </div>
+							        </div>
+							    </form>
+							</section>
+							
 					        <section class="edit form_wrap" style="width: 100%">
 							   <form th:action="@{/mypage/qna/view/comment}" th:object="${qnaComment}" id="gForm" method="post">
 							        <input name="qnaCommentWriterId" type="hidden" id="qnaCommentWriterId" th:value="${#authentication.principal.member.mbrId}">
 							        <input name="qnaNum" type="hidden" id="qnaNum" th:value="${qnaNum}">
 							        <div class="row">
 							            <div class="input_box" style="width: 100%">
-							                <input name="qnaCommentContent" type="text" id="qnaCommentContent" value="">
-							                <button type="submit" class="btn bk">답글 작성</button>
+							                <input name="qnaCommentContent" type="text" id="qnaCommentContent" placeholder="답글 내용을 작성해주세요." autocomplete="off">
+							                <button type="submit" class="btn bk">작성</button>
 							            </div>
 							        </div>
 							    </form>
