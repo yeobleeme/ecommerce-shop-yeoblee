@@ -1,11 +1,8 @@
 package com.yeoblee.impl;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.yeoblee.domain.Product;
@@ -52,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void updateProduct(Product product) {
 		
-		Product findProduct = productRepository.findById(product.getPNum()).get();
+//		Product findProduct = productRepository.findById(product.getPNum()).get();
 //		findProduct.setP_name(product.getP_name());
 //		findProduct.setP_detail(product.getP_detail());
 //		productRepository.save(product);

@@ -13,16 +13,12 @@ import com.yeoblee.domain.Qna;
 import com.yeoblee.domain.QnaComment;
 import com.yeoblee.security.SecurityUser;
 import com.yeoblee.service.QnaCommentService;
-import com.yeoblee.service.QnaService;
 
 @Controller
 public class QnaCommentController {
 	
 	@Autowired
 	private QnaCommentService qnaCommentService;
-	
-	@Autowired
-	private QnaService qnaService;
 	
 	
 	@PostMapping("/mypage/qna/view/comment")
