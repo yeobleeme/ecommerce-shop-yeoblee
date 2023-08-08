@@ -17051,7 +17051,7 @@ section.category>div>img {
 }
 
 .mem-class .lv-03 {
-    background: linear-gradient(-45deg,#39ff14 40%,#00c500 100%)
+    background: linear-gradient(-45deg,#2eb62c 20%,#c5e8b7 100%)
 }
 
 .mem-class .badge.lv-03 {
@@ -17059,11 +17059,11 @@ section.category>div>img {
 }
 
 .mem-class .lv-04 {
-    background: linear-gradient(-45deg,#74553c 40%,#b58643 100%)
+    background: linear-gradient(-45deg,#0288d1 20%,#b3e5fc 100%)
 }
 
 .mem-class .badge.lv-04 {
-    background: linear-gradient(-90deg,#74553c 40%,#b58643 100%)
+    background: linear-gradient(-90deg,#e1f5fe 40%,#0288d1 100%)
 }
 
 .mem-class .lv-05 {
@@ -17111,7 +17111,7 @@ section.category>div>img {
 }
 
 .mem-class .lv-04:after {
-    content: 'BRONZE'
+    content: 'ADMIN'
 }
 
 .mem-class .lv-05:after {

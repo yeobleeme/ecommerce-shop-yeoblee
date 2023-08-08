@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -18,45 +20,58 @@ import lombok.ToString;
 @Getter
 @Setter
 @Entity
+@Table(name = "product")
 @ToString
 public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long p_num;
+	private Long pNum;
 	
-	private String p_name;
+	@Column(nullable = false, length = 100)
+	private String pName;
 	
-	private Long p_price;
+	private String pBrand;
 	
-	private Long p_discount;
+	private String pType;
 	
-	private Long p_stock;
+	@Column(nullable = false)
+	private Long pPrice;
 	
-	private String p_image1;
-	private String p_image2;
-	private String p_image3;
+	private Long pPoint;
 	
-	private String p_detail;
-	private String p_size;
-	private String p_origin;
+	@Column(nullable = false)
+	private Long pStock;
 	
-	private String p_delivery;
+	@Transient
+	private MultipartFile pUploadFile;
+	
+	private String pImage1;
+	private String pImage2;
+	private String pImage3;
+	
+	@Lob
+	private String pDetail;
+	
+	private String pSize;
+	
+	private String pOrigin;
+	
+	@Column(nullable = false)
+	private String pDelivery;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date p_regdate;
+	private Date pRegdate;
+	
+	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
+	private Date pUpdate;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
-	private Long p_hit;
+	private Long pCnt;
 	
-	private Long p_sell;
-		
-	@Transient
-	private MultipartFile uploadFile;
+	@Column(nullable = false)
+	private String pStatus;
 	
-//	private Long p_ref;
-//	private Long p_lev;
-//	private Long p_seq;
 
 }
 
