@@ -181,7 +181,7 @@ font-family: 'Noto Sans KR', sans-serif;
 									<td style="width: 34%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="${qna.qnaTitle}"></a></td>
 									<td style="width: 20%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="${qna.qnaWriterId}"></a></td>
 									<td style="width: 16%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="'&nbsp;&nbsp;'+${qna.qnaCnt}"></a></td>
-									<td style="width: 16%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="${#dates.format(qna.qnaCreateDate, 'yyyy.MM.dd')}"></a></td>
+									<td style="width: 16%;"><a th:href="@{/mypage/qna/view(qnaNum=${qna.qnaNum})}" th:text="${#dates.format(qna.qnaRegdate, 'yyyy.MM.dd')}"></a></td>
 								</tr>
 							</tbody>
 						</table>

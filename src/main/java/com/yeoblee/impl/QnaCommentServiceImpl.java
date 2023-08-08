@@ -19,7 +19,7 @@ public class QnaCommentServiceImpl implements QnaCommentService {
 	@Override
 	public QnaComment getQnaComment(QnaComment qnaComment) {
 		
-		Optional<QnaComment> findQnaComment = qnaCommentRepository.findById(qnaComment.getQnaCommentNum());
+		Optional<QnaComment> findQnaComment = qnaCommentRepository.findById(qnaComment.getQcNum());
 		if(findQnaComment.isPresent())
 			return findQnaComment.get();
 		else return null;
@@ -44,9 +44,7 @@ public class QnaCommentServiceImpl implements QnaCommentService {
 
 	@Override
 	public void deleteQnaComment(QnaComment qnaComment) {
-		qnaCommentRepository.deleteById(qnaComment.getQnaCommentNum());		
+		qnaCommentRepository.deleteById(qnaComment.getQcNum());		
 	}
 
 }
-
-

@@ -155,17 +155,3 @@ public class MemberController {
 	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

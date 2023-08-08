@@ -54,7 +54,7 @@ public class Qna {
 	private String qnaFileName;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date qnaCreateDate;
+	private Date qnaRegdate;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
 	private Long qnaCnt;
@@ -67,11 +67,7 @@ public class Qna {
 	
 	@OneToMany(mappedBy = "qna", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({"qna"})
-	@OrderBy("qnaCommentNum asc")
+	@OrderBy("qcNum asc")
 	private List<QnaComment> qnaComments;
 	
 }
-
-
-
-

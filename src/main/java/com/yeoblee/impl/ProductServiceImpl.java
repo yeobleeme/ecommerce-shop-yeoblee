@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getProduct(Product product) {
 		
-		Optional<Product> findProduct = productRepository.findById(product.getP_num());
+		Optional<Product> findProduct = productRepository.findById(product.getPNum());
 		if(findProduct.isPresent()) return findProduct.get();
 		else return null; 
 	}
@@ -52,15 +52,15 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void updateProduct(Product product) {
 		
-		Product findProduct = productRepository.findById(product.getP_num()).get();
-		findProduct.setP_name(product.getP_name());
-		findProduct.setP_detail(product.getP_detail());
-		productRepository.save(product);
+		Product findProduct = productRepository.findById(product.getPNum()).get();
+//		findProduct.setP_name(product.getP_name());
+//		findProduct.setP_detail(product.getP_detail());
+//		productRepository.save(product);
 	}
 
 	@Override
 	public void deleteProduct(Product product) {
-		productRepository.deleteById(product.getP_num());
+//		productRepository.deleteById(product.getP_num());
 	}
 
 //	@Override
@@ -74,12 +74,3 @@ public class ProductServiceImpl implements ProductService {
 //	}
 
 }
-
-
-
-
-
-
-
-
-

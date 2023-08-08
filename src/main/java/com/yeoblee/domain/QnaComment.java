@@ -25,16 +25,16 @@ public class QnaComment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long qnaCommentNum;
+	private Long qcNum;
 	
-	private String qnaCommentWriterId;
+	private String qcWriterId;
 	
 	@Lob
 	@Column(columnDefinition = "TEXT", nullable = false)
-	private String qnaCommentContent;
+	private String qcContent;
 	 
 	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date qnaCommentCreateDate;	
+	private Date qcRegdate;	
 	 
 	@ManyToOne
 	@JoinColumn(name = "qnaNum", referencedColumnName = "qnaNum")

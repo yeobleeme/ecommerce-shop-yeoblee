@@ -74,8 +74,3 @@ public class Product {
 	
 
 }
-
-
-
-
-

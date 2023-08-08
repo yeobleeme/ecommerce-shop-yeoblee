@@ -19,4 +19,3 @@ public interface ProductService {
 //	int updateReadCount(Product product);
 
 }
-

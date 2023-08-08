@@ -56,10 +56,10 @@ public class QnaCommentController {
 	
 	
 	@GetMapping("/mypage/qna/comment/delete")
-	public String deleteQnaComment(@RequestParam Long qnaNum, @RequestParam Long qnaCommentNum) {
+	public String deleteQnaComment(@RequestParam Long qnaNum, @RequestParam Long qcNum) {
 		
 		QnaComment qnaComment = new QnaComment();
-	    qnaComment.setQnaCommentNum(qnaCommentNum);
+	    qnaComment.setQcNum(qcNum);
 
 	    Qna qna = new Qna();
 	    qna.setQnaNum(qnaNum);
