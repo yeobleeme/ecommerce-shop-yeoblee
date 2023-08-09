@@ -42,7 +42,7 @@ public class ProductController {
 		return "admin/product/insertProduct";
 	}
 	
-	@PostMapping("/mypage/qna/write")
+	@PostMapping("/admin/product/insert")
 	public String insertProduct(Product product, @AuthenticationPrincipal SecurityUser pricipal) throws IOException {
 		
 		// 파일업로드

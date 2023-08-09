@@ -156,50 +156,90 @@ font-family: 'Noto Sans KR', sans-serif;
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
 					<section class="mypage">
-						<form th:action="@{/mypage/qna/write}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
-							<input type="hidden" class="reset" name="qnaWriterId" id="qnaWriterId" th:value="${#authentication.principal.member.mbrId}">
+						<form th:action="@{/admin/product/insert}" th:object="${product}" id="gForm" method="post" enctype="multipart/form-data">
 							<div class="form_wrap">
 								<ul>
 									<li>
 										<span class="item">상품명</span>
 										<span class="input_box">
-											<input id="qnaTitle" name="qnaTitle" type="text" value="" placeholder="제목을 입력해주세요." class="" autocomplete="off">
+											<input id="pName" name="pName" type="text" value="" placeholder="상품명을 입력해주세요." class="" autocomplete="off">
 										</span>
 									</li>
 									<br>
 									<li>
-										<span class="item">문의내용</span>
-										<textarea name="qnaContent" id="qnaContent" placeholder="문의 내용을 작성해주세요."></textarea>
-										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
+										<span class="item">판매가</span>
+										<span class="input_box">
+											<input id="pPrice" name="pPrice" type="text" value="" placeholder="판매가격을 입력해주세요." class="" autocomplete="off">
+										</span>
 									</li>
 									<br>
 									<li>
-										<span class="item">파일첨부</span>
+										<span class="item">브랜드</span>
 										<span class="input_box">
-											<label class="" for="qnaUploadFile"></label>
-											<input type="file" class="" name="qnaUploadFile" id="qnaUploadFile" style="color:#767676;"> 
+											<input id="pBrand" name="pBrand" type="text" value="" placeholder="브랜드명을 입력해주세요." class="" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">상품분류</span>
+										<span class="input_box">
+											<input id="pType" name="pType" type="text" value="" placeholder="분류정보를 입력해주세요." class="" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">상품설명</span>
+										<textarea name="pDetail" id="pDetail" placeholder="상품설명을 작성해주세요." autocomplete="off"></textarea>
+									</li>
+									<br>
+									<li>
+										<span class="item">사이즈</span>
+										<span class="input_box">
+											<input id="pSize" name="pSize" type="text" value="" placeholder="실측정보를 입력해주세요." class="" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">상품재고</span>
+										<span class="input_box">
+											<input id="pStock" name="pStock" type="text" value="" placeholder="상품재고를 입력해주세요." class="" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">제조국</span>
+										<span class="input_box">
+											<input id="pOrigin" name="pOrigin" type="text" value="" placeholder="제조국을 입력해주세요." class="" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">상품이미지</span>
+										<span class="input_box">
+											<label class="" for="pUploadFile"></label>
+											<input type="file" class="" name="pUploadFile" id="pUploadFile" style="color:#767676;"> 
 											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
 										</span>
 									</li>
 									<br>
 					                <li>
-										<span class="item">휴대폰번호</span>
+										<span class="item">판매상태</span>
 										<span class="input_box">
-											<input type="text" class="" name="qnaMobile" id="qnaMobile" th:value="${#authentication.principal.member.mbrMobile}">
+											<input id="pStatus" name="pStatus" type="text" value="" placeholder="판매상태를 입력해주세요." class="" autocomplete="off">
 										</span>
 									</li>
 									<br>
 									<li>
-										<span class="item">이메일</span>
+										<span class="item">배송조건</span>
 										<span class="input_box">
-											<input type="text" class="reset" name="qnaEmail" id="qnaEmail" th:value="${#authentication.principal.member.mbrEmail}">
+											<input id="pDelivery" name="pDelivery" type="text" value="" placeholder="배송조건을 입력해주세요." class="" autocomplete="off">
 										</span>
 									</li>
 								</ul>
 							</div>
 							<div class="submit">
 								<a href="" class="btn">취소</a>
-								<button type="submit" class="btn bk">저장</button>
+								<button type="submit" class="btn bk">등록</button>
 							</div>
 						</form>
 
