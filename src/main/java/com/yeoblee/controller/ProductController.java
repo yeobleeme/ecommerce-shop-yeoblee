@@ -2,6 +2,8 @@ package com.yeoblee.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,13 +47,27 @@ public class ProductController {
 	@PostMapping("/admin/product/insert")
 	public String insertProduct(Product product, @AuthenticationPrincipal SecurityUser pricipal) throws IOException {
 		
-		// 파일업로드
+		// 대표이미지 (썸네일) 파일 업로드
 		MultipartFile pUploadFile = product.getPUploadFile();
+		
 		if(!pUploadFile.isEmpty()) {
 			String pFileName = pUploadFile.getOriginalFilename();
 			pUploadFile.transferTo(new File(pUploadFolder + pFileName));
-			product.setPImage1(pFileName);
+			product.setPImageTh(pFileName);
 		}
+		
+		
+		// 상세이미지 다중파일 업로드
+		MultipartFile[] pUploadFiles = product.getPUploadFiles();
+	    
+	    List<String> detailImageNames = new ArrayList<>(); // 상세이미지 파일명 리스트
+	    for (MultipartFile file : pUploadFiles) {
+	        if (!file.isEmpty()) {
+	            String fileName = productService.saveUploadedFile(file); // ProductService의 saveUploadedFile 메서드 호출
+	            detailImageNames.add(fileName);
+	        }
+	    }
+	    product.setPImagesDt(detailImageNames); // 엔티티 필드에 파일명 리스트 저장
 		
 		productService.insertProduct(product);
 		

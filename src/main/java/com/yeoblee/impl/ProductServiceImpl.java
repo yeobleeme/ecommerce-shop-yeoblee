@@ -1,11 +1,15 @@
 package com.yeoblee.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yeoblee.domain.Product;
 import com.yeoblee.persistence.ProductRepository;
@@ -53,6 +57,17 @@ public class ProductServiceImpl implements ProductService {
 		
 		productRepository.save(product);
 	}
+	
+	@Value("${path.upload}")
+    private String pUploadFolder;
+	
+	@Override
+    public String saveUploadedFile(MultipartFile file) throws IOException {
+        String fileName = file.getOriginalFilename();
+        String filePath = pUploadFolder + fileName;
+        file.transferTo(new File(filePath));
+        return fileName;
+    }
 
 //	@Override
 //	public void updateProduct(Product product) {
