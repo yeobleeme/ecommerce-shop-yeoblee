@@ -4,6 +4,8 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 //	@Override
 //	public Page<Member> getMemberList(Pageable pageable, String searchType, String searchWord) {
 //		if(searchType.equalsIgnoreCase("m_id")) {
-//			return memberRepository.findByIdContaining(searchWord, pageable);
+//			return memberRepository.findByMIdContaining(searchWord, pageable);
 //		} else {
 //			return memberRepository.findByNameContaining(searchWord, pageable);
 //		}

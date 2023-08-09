@@ -109,7 +109,7 @@ font-family: 'Noto Sans KR', sans-serif;
                 	<a href="#" class="menu-item--link" data-href="" >상품관리</a>
             	</li>
             	<li class="menu-item ">
-                	<a th:href="@{/admin/product/insert}" class="menu-item--link" data-href="">상품 등록</a>
+                	<a href="#" class="menu-item--link" data-href="">상품 등록</a>
             	</li>
             	<li class="menu-item ">
                 	<a th:href="@{/mypage/qna}" class="menu-item--link" data-href="">상품 조회</a>
@@ -155,59 +155,75 @@ font-family: 'Noto Sans KR', sans-serif;
        	
         	<div class="default-page--content the-cols--content in">
 	            <div class="inner-wrap">
-						
 					<section class="mypage">
-	
-		
-						<div class="membership">
-							<div class="mem-class" style="display:flex; align-items: center">
-								<i class="lv-04 coin"></i>
-								<div class="mem-profile" style="padding-left: 40px">
-									<h2>
-									<a th:href="@{/mypage/member}"><em th:text="${#authentication.principal.member.mbrName}"></em>&nbsp;님</a>
-									<small th:text="${#authentication.principal.member.mbrEmail}"></small>
-									<small th:text="'가입일 : '+${#dates.format(#authentication.principal.member.mbrRegDate, 'yyyy.MM.dd')}"></small>
-									</h2>
-								</div>
-							</div>	
-						</div>
-						
-						<div class="history_wrap"></div>
-						
-						<div class="history_wrap">
-							<h4>
-								<span>나의 쇼핑 활동</span>
-							</h4>
-							<ul class="ask_list">
-								<li><span>주문내역</span> <a href="/secured/mypage/myWishList" class="c999">0</a></li>
-								<li><span>문의내역</span> <a href="/secured/mypage/myBrndList" class="c999">0</a></li>
-								<li><span>위시리스트</span> <a href="/secured/mypage/myAlarmsForStock" class="c999">0</a></li>
-								<li><span>장바구니</span> <a href="/secured/mypage/eventList">0</a></li>
-							</ul>
-		
-							<div class="hint_area">
-								<div class="left">
-									<em>Shop Yeoblee 구매혜택</em>
-									<p>Shop Yeoblee 멤버십 고객님들께만 제공되는 혜택입니다.</p>
-								</div>
+						<form th:action="@{/mypage/qna/write}" th:object="${qna}" id="gForm" method="post" enctype="multipart/form-data">
+							<input type="hidden" class="reset" name="qnaWriterId" id="qnaWriterId" th:value="${#authentication.principal.member.mbrId}">
+							<div class="form_wrap">
+								<ul>
+									<li>
+										<span class="item">상품명</span>
+										<span class="input_box">
+											<input id="qnaTitle" name="qnaTitle" type="text" value="" placeholder="제목을 입력해주세요." class="" autocomplete="off">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">문의내용</span>
+										<textarea name="qnaContent" id="qnaContent" placeholder="문의 내용을 작성해주세요."></textarea>
+										<span class="desc">특수문자 ￦ / : &lt; &gt; 는 사용할 수 없습니다.</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">파일첨부</span>
+										<span class="input_box">
+											<label class="" for="qnaUploadFile"></label>
+											<input type="file" class="" name="qnaUploadFile" id="qnaUploadFile" style="color:#767676;"> 
+											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
+										</span>
+									</li>
+									<br>
+					                <li>
+										<span class="item">휴대폰번호</span>
+										<span class="input_box">
+											<input type="text" class="" name="qnaMobile" id="qnaMobile" th:value="${#authentication.principal.member.mbrMobile}">
+										</span>
+									</li>
+									<br>
+									<li>
+										<span class="item">이메일</span>
+										<span class="input_box">
+											<input type="text" class="reset" name="qnaEmail" id="qnaEmail" th:value="${#authentication.principal.member.mbrEmail}">
+										</span>
+									</li>
+								</ul>
 							</div>
-		
+							<div class="submit">
+								<a href="" class="btn">취소</a>
+								<button type="submit" class="btn bk">저장</button>
+							</div>
+						</form>
+
+						<div class="list_wrap">
+							<ul>
+								<li>주문취소, 교환/반품 신청은 마이페이지 &gt; 나의주문 &gt;<a href="/secured/mypage/listOrder">주문/배송조회</a>에서 신청해 주세요.</li>
+								<li>문의하신 내용에 대한 답변은 마이페이지 &gt; 나의활동 &gt;<a href="/secured/mypage/myInquiryList">1:1문의</a>을 통해 확인하실 수 있습니다.</li>
+							</ul>
 						</div>
 					</section>
+					
 				</div>
-                
+				<br><br><br>
             </div>
             
         </div>
-
 
     </main>
 
     <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
         <footer class="footer second">
-            <a href="#" class="second--copyright deskonly"></a>
-            <a href="#" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
-            <a href="#" class="second--copyright deskonly"></a>
+            <a href="/" class="second--copyright deskonly"></a>
+            <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
+            <a href="/" class="second--copyright deskonly"></a>
             <br>
         </footer>
     </div>
