@@ -98,7 +98,21 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProduct(Product product) {
 
-		productRepository.deleteById(product.getPNum());
+		Optional<Product> findProduct = productRepository.findById(product.getPNum());
+	    if (findProduct.isPresent()) {
+	        Product existingProduct = findProduct.get();
+	        
+	        // 상세 이미지 파일 삭제 로직 추가 (pDtImages를 사용하여 파일 경로를 찾는다고 가정)
+	        for (String imagePath : existingProduct.getPDtImages()) {
+	            File imageFile = new File(pUploadFolder + imagePath);
+	            if (imageFile.exists()) {
+	                imageFile.delete();
+	            }
+	        }
+	        
+	        // 상품 삭제
+	        productRepository.deleteById(product.getPNum());
+	    }
 	}
 
 	@Override

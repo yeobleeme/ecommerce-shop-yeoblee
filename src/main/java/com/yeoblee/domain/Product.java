@@ -3,16 +3,19 @@ package com.yeoblee.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
@@ -46,15 +49,18 @@ public class Product {
 	private Long pStock;
 	
 	@Transient
-	private MultipartFile pUploadFile;
+	private MultipartFile pThUploadFile;
 	
-	private String pImageTh;
+	private String pThImage;
 	
 	@Transient
-	private MultipartFile[] pUploadFiles;
+	private MultipartFile[] pDtUploadFile;
 	
 	@ElementCollection
-	private List<String> pImagesDt;
+	@JoinColumn(name = "product_p_num")
+	@CollectionTable(name = "product_p_dt_images")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL) // 추가된 부분
+	private List<String> pDtImages;
 	
 	@Lob
 	private String pDetail;
