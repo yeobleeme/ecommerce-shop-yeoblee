@@ -1,8 +1,10 @@
 package com.yeoblee.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -55,12 +58,17 @@ public class Product {
 	
 	@Transient
 	private MultipartFile[] pDtUploadFile;
+//	
+//	@ElementCollection
+//	@JoinColumn(name = "product_p_num")
+//	@CollectionTable(name = "product_p_dt_images")
+//	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+//	private List<String> pDtImages;
 	
 	@ElementCollection
-	@JoinColumn(name = "product_p_num")
-	@CollectionTable(name = "product_p_dt_images")
-	@Cascade(org.hibernate.annotations.CascadeType.ALL) // 추가된 부분
-	private List<String> pDtImages;
+    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "p_num"))
+    @Column(name = "p_dt_images")
+    private List<String> pDtImages;
 	
 	@Lob
 	private String pDetail;

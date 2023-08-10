@@ -45,7 +45,7 @@ font-family: 'Noto Sans KR', sans-serif;
 
     <nav class="side-menu deskonly">
 
-        <a class="cart-tog" th:href="@{/mypage/myPage}" style="color: #006af9">
+        <a class="cart-tog" th:href="@{/admin}" style="color: #006af9">
         	<span>&nbsp;관리자페이지</span>
         </a>
 
@@ -109,10 +109,10 @@ font-family: 'Noto Sans KR', sans-serif;
                 	<a href="#" class="menu-item--link" data-href="" >상품관리</a>
             	</li>
             	<li class="menu-item ">
-                	<a href="#" class="menu-item--link" data-href="">상품 등록</a>
+                	<a href="#" class="menu-item--link" data-href="" style="color: #006af9">상품 등록</a>
             	</li>
             	<li class="menu-item ">
-                	<a th:href="@{/mypage/qna}" class="menu-item--link" data-href="">상품 조회</a>
+                	<a th:href="@{/admin/product}" class="menu-item--link" data-href="">상품 조회</a>
             	</li>
             	<br>
             	
@@ -247,7 +247,7 @@ font-family: 'Noto Sans KR', sans-serif;
 								</ul>
 							</div>
 							<div class="submit">
-								<a href="" class="btn">취소</a>
+								<a th:href="@{/admin}" class="btn">취소</a>
 								<button type="submit" class="btn bk">등록</button>
 							</div>
 						</form>

@@ -42,13 +42,13 @@ public class ProductServiceImpl implements ProductService {
 	public Page<Product> getProductList(Pageable pageable, String searchType, String searchWord) {
 		
 		if(searchType.equalsIgnoreCase("pName")) {
-			return productRepository.findByPNameContaining(searchWord, pageable);
+			return productRepository.findBypNameContaining(searchWord, pageable);
 			
 		} else if(searchType.equalsIgnoreCase("pBrand")) {
-			return productRepository.findByPBrandContaining(searchWord, pageable);
+			return productRepository.findBypBrandContaining(searchWord, pageable);
 			
 		} else {
-			return productRepository.findByPTypeContaining(searchWord, pageable);
+			return productRepository.findBypTypeContaining(searchWord, pageable);
 		}
 	}
 
@@ -98,21 +98,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProduct(Product product) {
 
-		Optional<Product> findProduct = productRepository.findById(product.getPNum());
-	    if (findProduct.isPresent()) {
-	        Product existingProduct = findProduct.get();
-	        
-	        // 상세 이미지 파일 삭제 로직 추가 (pDtImages를 사용하여 파일 경로를 찾는다고 가정)
-	        for (String imagePath : existingProduct.getPDtImages()) {
-	            File imageFile = new File(pUploadFolder + imagePath);
-	            if (imageFile.exists()) {
-	                imageFile.delete();
-	            }
-	        }
-	        
-	        // 상품 삭제
-	        productRepository.deleteById(product.getPNum());
-	    }
+		productRepository.deleteById(product.getPNum());
 	}
 
 	@Override

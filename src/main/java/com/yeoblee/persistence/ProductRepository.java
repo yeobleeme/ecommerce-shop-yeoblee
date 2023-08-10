@@ -22,9 +22,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 //	@Query("update Works w set w.works_ref = w.seq, w.works_lev =:lev, w.works_seq = :_seq where w.seq = :seq")
 //	void updateQnaLastSeq(@Param("lev") Long i, @Param("_seq") Long j, @Param("seq") Long seq);
 	
-	Page<Product> findByPNameContaining(String pName, Pageable pageable);
-	Page<Product> findByPBrandContaining(String pBrand, Pageable pageable);
-	Page<Product> findByPTypeContaining(String pType, Pageable pageable); 
+	Page<Product> findBypNameContaining(String pName, Pageable pageable);
+	Page<Product> findBypBrandContaining(String pBrand, Pageable pageable);
+	Page<Product> findBypTypeContaining(String pType, Pageable pageable); 
 	
 }
 
