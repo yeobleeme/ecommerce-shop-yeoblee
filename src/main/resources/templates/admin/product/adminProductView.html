@@ -163,45 +163,40 @@ font-family: 'Noto Sans KR', sans-serif;
 					        	<li>
 					                <span class="item">상품번호</span>
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pNum}" style="font-size: 17px; color: #767676"></p>
-					                <span class="item">등록일</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${#dates.format(product.pRegdate, 'yyyy.MM.dd')}" style="font-size: 17px; color: #767676"></p>
+					                <span class="item">조회수</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pCnt}" style="font-size: 17px; color: #767676"></p>
 					            </li>
-					            <br>
 					            <li>
 					                <span class="item">상품명</span>
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pName}" style="font-size: 17px;"></p>
-					                <span class="item">판매상태</span>
+					            </li>
+					            <br>
+					            <li>
+					            	<span class="item">판매상태</span>
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pStatus}" style="font-size: 17px;"></p>
+					                <span class="item">상품재고</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pStock}" style="font-size: 17px;"></p>
 					            </li>
 					            <li>
 					                <span class="item">판매가</span>
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pPrice}" style="font-size: 17px;"></p>
-					                <span class="item">배송조건</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pDelivery}" style="font-size: 17px;"></p>
+					                <span class="item">포인트</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pPoint}" style="font-size: 17px;"></p>
 					            </li>
 					            <li>
-					            	<span class="item">브랜드</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pBrand}" style="font-size: 17px;"></p>
 					                <span class="item">상품분류</span>
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pType}" style="font-size: 17px;"></p>
+					            	<span class="item">브랜드</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pBrand}" style="font-size: 17px;"></p>
 					            </li>
 					            <br>
 					            <li>
 					                <span class="item">상품설명</span>
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pDetail}" style="font-size: 17px;"></p><br><br>
 					            </li>
-					            <br>
 					            <li>
 					                <span class="item">사이즈</span>
 					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pSize}" style="font-size: 17px;"></p>
-					                <span class="item">상품재고</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pStock}" style="font-size: 17px;"></p>
-					            </li>
-					            <li>
-					                <span class="item">제조국</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pOrigin}" style="font-size: 17px;"></p>
-					            	<span class="item">조회수</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pCnt}" style="font-size: 17px; color: #767676"></p>
 					            </li>
 					            <br>
 					            <li>
@@ -214,6 +209,19 @@ font-family: 'Noto Sans KR', sans-serif;
 					                <div th:each="image : ${product.pDtImages}">
 								        <img class="info no_line" th:src="@{'/uploadfile/' + ${image}}" alt="" style="width: 20%;"/>
 								    </div>
+					            </li>
+					            <br>
+					            <li>
+					                <span class="item">제조국</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pOrigin}" style="font-size: 17px;"></p>
+					                <span class="item">배송조건</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pDelivery}" style="font-size: 17px;"></p>
+					            </li>
+					            <li>
+					            	<span class="item">등록일</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${#temporals.format(product.pRegdate, 'yyyy.MM.dd HH:mm')}" style="font-size: 17px; color: #767676"></p>
+					                <span class="item">수정일</span>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${#temporals.format(product.pUpdate, 'yyyy.MM.dd HH:mm')}" style="font-size: 17px; color: #767676"></p>
 					            </li>
 					        </ul>
 					        

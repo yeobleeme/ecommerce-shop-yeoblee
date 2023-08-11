@@ -23,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.yeoblee.domain.PagingInfo;
 import com.yeoblee.domain.Product;
-import com.yeoblee.domain.Qna;
 import com.yeoblee.security.SecurityUser;
 import com.yeoblee.service.ProductService;
 

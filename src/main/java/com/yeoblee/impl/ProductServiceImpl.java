@@ -2,6 +2,7 @@ package com.yeoblee.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +92,8 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public void updateProduct(Product product) {
+		
+		product.setPUpdate(LocalDateTime.now());
 		
 		productRepository.save(product);
 	}

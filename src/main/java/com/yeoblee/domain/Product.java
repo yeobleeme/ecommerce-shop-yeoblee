@@ -1,10 +1,8 @@
 package com.yeoblee.domain;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -14,11 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Cascade;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
@@ -80,11 +76,11 @@ public class Product {
 	@Column(nullable = false)
 	private String pDelivery;
 	
-	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date pRegdate;
+	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDateTime pRegdate;
 	
-	@Column(insertable = false, updatable = false, columnDefinition = "date default now()")
-	private Date pUpdate;
+	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+	private LocalDateTime pUpdate;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
 	private Long pCnt;
