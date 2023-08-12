@@ -47,6 +47,9 @@ function updateMemberPw() {
         <li class="menu-item ">
             <a href="#">Topics&nbsp;</a>
         </li>
+        <li class="menu-item ">
+            <a href="#">Community&nbsp;</a>
+        </li>
     </nav>
 
     <nav class="side-menu deskonly">
@@ -54,18 +57,12 @@ function updateMemberPw() {
         <a class="cart-tog" th:href="@{/mypage/myPage}" style="color: #00c500">
         	<span>&nbsp;마이페이지</span>
         </a>
-
         <a class="cart-tog" th:href="@{/login}" th:unless="${#httpServletRequest.userPrincipal != null}">
         	<span>&nbsp;로그인</span>
         </a>
         <a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
             <span>&nbsp;로그아웃</span>
         </a>
-
-        <a class="cart-tog" href="#">
-            <span>&nbsp;위시리스트</span>
-        </a>
-
         <a class="cart-tog" href="#">
             <span>&nbsp;쇼핑백</span>
             <span class="hc-items-count">(0)</span>
