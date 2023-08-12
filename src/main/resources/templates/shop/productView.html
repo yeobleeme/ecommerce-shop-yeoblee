@@ -11,7 +11,6 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-
 <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-03.css">
 <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
 <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-02.css">
@@ -115,187 +114,80 @@ font-family: 'Noto Sans KR', sans-serif;
 
             <div class="single-product--images">
 
-                <div class="single-product--image hires-wrap " data-idx="1/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png">
-                </div>
-
-                <div class="single-product--image hires-wrap " data-idx="2/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                </div>
-
-                <div class="single-product--image hires-wrap " data-idx="3/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
+                <div class="single-product--image hires-wrap">
+                    <img class="single-product--image-img" th:src="@{'/uploadfile/' + ${product.pThImage}}" alt="">
                 </div>
                 
-                <div class="single-product--image hires-wrap " data-idx="4/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
+                <div class="single-product--image hires-wrap" th:each="image : ${product.pDtImages}">
+                    <img class="single-product--image-img" th:src="@{'/uploadfile/' + ${image}}" alt="">
                 </div>
-
-                <div class="single-product--image hires-wrap " data-idx="5/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                </div>
-
-                <div class="single-product--image hires-wrap " data-idx="6/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                </div>
-
-                <div class="single-product--image hires-wrap " data-idx="7/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                </div>
-
-                <div class="single-product--image hires-wrap " data-idx="8/8">
-                    <img class="single-product--image-img lores ok" src="./img/720.png" alt="">
-                    <img class="single-product--image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                </div>
-
-                <div class="single-product--images--indicator mobonly">
-                    <span class="cur">1</span>
-                    <span class="div">/</span>
-                    <span class="total">8</span>
-                </div>
-
+                
             </div>
 
 
             <div class="single-product--data">
-                <div class="single-product--data--empty"></div>
                     <div class="single-product--data--wrap">
-
-                        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="product-data">
-                        <h1 class="product-data--title">110 상품명</h1><br>
-                            <div class="product-data--price">
-                                &nbsp;<span class="price-span money">₩ 360,000</span><br><br>
+						<div class="product-data">
+						
+                        <h1 class="product-data--title" th:text="${product.pName}" style="margin-bottom:18px; text-align: left"></h1>
+                        	<div class="product-data--price" style="margin-bottom: 24px;">
+                                <span class="price-span money" th:text="${product.pBrand}" style="color:#8e8f89;"></span>
+                            </div>
+                            <div class="product-data--price" style="margin-bottom: 24px;">
+                                <span class="price-span money" th:text="'₩' + ${#numbers.formatDecimal(product.pPrice, 0, 'COMMA', 0, 'POINT')}" style="font-weight: 500"></span>
                             </div>
 
-                            <div class="product-data--description">
+                            <div class="product-data--description" style="margin-bottom: 18px;">
                                 <section>
                                     <div class="easyslider-text">
-                                        <p><span>Minimalistic and warm super light quilted jacket. Ideal for layering to meet many weather conditions. Made of recycled materials that repel humidity, dirt and wind. Longer hem at the back.</span></p>
+                                        <p><span th:text="${product.pDetail}" style="color:#8e8f89;"></span></p>
                                     <br><hr>
                                     </div>
                                 </section>
                             </div>
-
-                            <select name="id" id="productSelect" class="product-data--variant">
-                                <option value="" selected="">사이즈</option>
-                                <option value="42675147211004">S</option>
-                                <option value="42675147243772">M</option>
-                                <option value="42675147276540">L</option>
-                            </select>
-                                &nbsp;
-                            <select name="id" id="productSelect" class="product-data--variant">
-                                <option value="" selected="">1</option>
-                            </select>
-
-                            <div class="product-data--quantity">
-                                <label for="Quantity">quantity</label>
-                                <input type="number" id="Quantity" name="quantity" value="1" min="1">
-                            </div>
-
-                            <br><hr>
                             
                             <button type="submit" name="add" id="AddToCart" class="product-data--buy">쇼핑백 추가</button>
                             <button type="submit" name="add" id="AddToCart" class="product-data--buy">위시리스트 추가</button>
                             <button type="submit" name="add" id="AddToCart" class="product-data--buy">바로 구매하기</button>
+						
+						</div>
+                        <br><br>
+							
+                        <div class="easyslider-container easyslider-widget-7599073100028 easyslider-inited">
+                            <div class="easyslider-contents">
 
-                            <div class="product-data--toggles"></div>
-                        </form>
-
-                        <br>
-
-                        <div class="easyslider-container easyslider-widget-7599073100028 easyslider-inited" data-es-sta="0" data-es-amp="0" data-es-adv="1" id="7599073100028">
-                            <div class="easyslider-contents" role="tablist">
-
-                                <div class="easyslider-item" data-es-marker="slide-113e-quilted-jacket-3" data-es-handle="slide-details">
-                                    <div class="easyslider-header" tabindex="0" aria-selected="false" aria-labelledby="easyslider-label-7599073100028-0" role="tab">
+                                <div class="easyslider-item" style="margin-bottom: 16px;">
+                                    <div class="easyslider-header">
                                         <div class="easyslider-anchor">
-                                            <span class="easyslider-header-text" id="easyslider-label-7599073100028-0">Details</span> 
+                                            <span class="easyslider-header-text" style="color: #bebcb4">사이즈정보</span><br>
+                                            <span class="easyslider-header-text" th:text="${product.pSize}" style="color: #8e8f89"></span>
+                                        </div> 
+                                    </div> 
+                                </div>
+                                <div class="easyslider-item" style="margin-bottom: 16px;">
+                                    <div class="easyslider-header">
+                                        <div class="easyslider-anchor">
+                                            <span class="easyslider-header-text" style="color: #bebcb4">제조국</span><br>
+                                            <span class="easyslider-header-text" th:text="${product.pOrigin}" style="color: #8e8f89"></span>
                                         </div> 
                                     </div> 
                                 </div>
 
-                                <div class="easyslider-item" data-es-marker="slide-113e-quilted-jacket-3" data-es-handle="slide-details">
-                                    <div class="easyslider-header" tabindex="0" aria-selected="false" aria-labelledby="easyslider-label-7599073100028-0" role="tab">
+                                <div class="easyslider-item" style="margin-bottom: 16px;">
+                                    <div class="easyslider-header">
                                         <div class="easyslider-anchor">
-                                            <span class="easyslider-header-text" id="easyslider-label-7599073100028-0">Details</span> 
-                                        </div> 
-                                    </div> 
-                                </div>
-
-                                <div class="easyslider-item" data-es-marker="slide-113e-quilted-jacket-3" data-es-handle="slide-details">
-                                    <div class="easyslider-header" tabindex="0" aria-selected="false" aria-labelledby="easyslider-label-7599073100028-0" role="tab">
-                                        <div class="easyslider-anchor">
-                                            <span class="easyslider-header-text" id="easyslider-label-7599073100028-0">Details</span> 
-                                        </div> 
-                                    </div> 
-                                </div>
-
-                                <div class="easyslider-item" data-es-marker="slide-113e-quilted-jacket-3" data-es-handle="slide-details">
-                                    <div class="easyslider-header" tabindex="0" aria-selected="false" aria-labelledby="easyslider-label-7599073100028-0" role="tab">
-                                        <div class="easyslider-anchor">
-                                            <span class="easyslider-header-text" id="easyslider-label-7599073100028-0">Details</span> 
+                                            <span class="easyslider-header-text" style="color: #bebcb4">배송조건</span><br>
+                                            <span class="easyslider-header-text" th:text="${product.pDelivery} + ' 상품'" style="color: #8e8f89"></span>
                                         </div> 
                                     </div> 
                                 </div>
 
                                 </div>
-                                <div class="easyslider-undertabs-holder"></div>
                             </div>
                         </div>
 
                         <br>
 
-
-                        <div class="single-product--data--thumbs deskonly">
-
-                            <div class="thumb-image hires-wrap fd">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                            <div class="thumb-image hires-wrap">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                            <div class="thumb-image hires-wrap">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                            <div class="thumb-image hires-wrap">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                            <div class="thumb-image hires-wrap">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                            <div class="thumb-image hires-wrap">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                            <div class="thumb-image hires-wrap">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                            <div class="thumb-image hires-wrap">
-                                <img class="thumb-image-img lores ok" src="./img/720.png" alt="">
-                                <img class="thumb-image-img hires in" data-src="" alt="" data-srcset="" sizes="100vw" src="./img/720.png" srcset="">
-                            </div>
-
-                        </div>
                     </div>
 
                 </div>

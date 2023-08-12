@@ -226,7 +226,7 @@ public class ProductController {
 	public String getProductShop(Model model, @RequestParam Long pNum) {
 		
 		Product product = new Product();
-	    product.setPNum(pNum);
+	    product.setPNum(pNum); 
 		productService.updatePCnt(product);
 		model.addAttribute("product", productService.getProduct(product));
 		model.addAttribute("pNum", pNum);

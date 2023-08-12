@@ -54,13 +54,7 @@ public class Product {
 	
 	@Transient
 	private MultipartFile[] pDtUploadFile;
-//	
-//	@ElementCollection
-//	@JoinColumn(name = "product_p_num")
-//	@CollectionTable(name = "product_p_dt_images")
-//	@Cascade(org.hibernate.annotations.CascadeType.ALL)
-//	private List<String> pDtImages;
-	
+
 	@ElementCollection
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "p_num"))
     @Column(name = "p_dt_images")

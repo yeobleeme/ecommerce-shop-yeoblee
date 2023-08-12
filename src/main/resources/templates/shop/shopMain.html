@@ -145,17 +145,16 @@ font-family: 'Noto Sans KR', sans-serif;
     </div>
 
 
-    <div class="collection-list the-cols--content" style="opacity: 1;" th:each="product, state : ${pagedResult.getContent()}">
+    <div class="collection-list the-cols--content" style="opacity: 1;">
 
 
-        <div class="products-list--item">
+        <div class="products-list--item" th:each="product, state : ${pagedResult.getContent()}">
             <article class="product-item">
                 <div class="product-item--wrap">
                     <a th:href="@{/shop/product(pNum=${product.pNum})}" class="product-item--image">
                     <div class="product-item--images">
                     <div class="product-item--image hires-wrap">
-                    
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" th:src="@{'uploadfile/' + ${product.pThImage}}">
+                    <img class="product-item--image-img hires in" alt="" sizes="100vw" th:src="@{'/uploadfile/' + ${product.pThImage}}">
                     </div>
                     </div>
                     </a>
@@ -165,7 +164,7 @@ font-family: 'Noto Sans KR', sans-serif;
                             <a th:href="@{/shop/product(pNum=${product.pNum})}">
                                 <span class="code" th:text="${product.pBrand}" style="color: #bebcb4;"></span><br>
                                 <span class="code" th:text="${product.pName}"></span><br>
-                                <span class="code" th:text="'₩'+${product.pPrice}" style="color: #676965;"></span>
+                                <span th:text="'₩' + ${#numbers.formatDecimal(product.pPrice, 0, 'COMMA', 0, 'POINT')}" style="color: #676965;"></span>
                             </a>
                         </h2>
                     </div>
@@ -179,7 +178,7 @@ font-family: 'Noto Sans KR', sans-serif;
         </div>
         </div>
 
-		<br><br><br><br><br><br><br>
+		<br><br><br><br><br>
     </main>
 
     <div id="shopify-section-footer" class="shopify-section shopify-section--footer">

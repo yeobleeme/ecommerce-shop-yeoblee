@@ -211,7 +211,7 @@ font-family: 'Noto Sans KR', sans-serif;
 										<span class="item">상세이미지</span>
 										<span class="input_box">
 											<label class="" for="pDtUploadFile"></label>
-											<input type="file" class="" name="pDtUploadFile" id="pDtUploadFile" style="color:#767676;">
+											<input type="file" class="" name="pDtUploadFile" id="pDtUploadFile" style="color:#767676;" multiple="multiple">
 											<div th:each="image : ${product.pDtImages}">
 												<p class="info no_line" th:text="'첨부파일 : ' + ${image}"></p>
 											</div>
