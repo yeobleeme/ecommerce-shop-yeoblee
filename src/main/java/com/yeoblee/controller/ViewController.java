@@ -21,6 +21,12 @@ public class ViewController {
 		return "admin/admin";
 	}
 	
+//	@GetMapping("/shop")
+//	public String getShopPage(@AuthenticationPrincipal SecurityUser pricipal) {
+//		
+//		return "shop/shopMain";
+//	}
+	
 	
 //	@GetMapping("/mypage/myPage")
 //	public String getMypage(@AuthenticationPrincipal SecurityUser pricipal, Model model, @RequestParam Long mbrNum) {

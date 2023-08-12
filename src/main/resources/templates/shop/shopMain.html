@@ -31,9 +31,8 @@ font-family: 'Noto Sans KR', sans-serif;
         <a href="/" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
     
     <nav class="main-menu deskonly">
-    
         <li class="menu-item ">
-            <a th:href="@{/shop}">Shop&nbsp;</a>
+            <a th:href="@{/shop}" style="color: #ff1818">Shop&nbsp;</a>
         </li>
         <li class="menu-item ">
             <a href="#">About&nbsp;</a>
@@ -45,8 +44,8 @@ font-family: 'Noto Sans KR', sans-serif;
 
     <nav class="side-menu deskonly">
 
-        <a class="cart-tog" th:href="@{/admin}" style="color: #006af9">
-        	<span>&nbsp;관리자페이지</span>
+        <a class="cart-tog" th:href="@{/mypage/myPage}">
+        	<span>&nbsp;마이페이지</span>
         </a>
 
         <a class="cart-tog" th:href="@{/login}" th:unless="${#httpServletRequest.userPrincipal != null}">
@@ -54,6 +53,15 @@ font-family: 'Noto Sans KR', sans-serif;
         </a>
         <a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
             <span>&nbsp;로그아웃</span>
+        </a>
+
+        <a class="cart-tog" href="#">
+            <span>&nbsp;위시리스트</span>
+        </a>
+
+        <a class="cart-tog" href="#">
+            <span>&nbsp;쇼핑백</span>
+            <span class="hc-items-count">(0)</span>
         </a>
 
     </nav>
@@ -101,113 +109,84 @@ font-family: 'Noto Sans KR', sans-serif;
         </section>
     </div>
 
-    <div class="default-page the-cols">
-    	<div class="default-page--sidebar the-cols--sidebar">
-        	<nav class="collection-sidebar--menu">
-        	
-            	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
-                	<a href="#" class="menu-item--link" data-href="" >상품관리</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a th:href="@{/admin/product/insert}" class="menu-item--link" data-href="">상품 등록</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a th:href="@{/admin/product}" class="menu-item--link" data-href="">상품 조회</a>
-            	</li>
-            	<br>
-            	
-            	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
-                	<a href="#" class="menu-item--link" data-href="">주문관리</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a th:href="@{/mypage/member}" class="menu-item--link" data-href="">회원 정보 관리</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a href="@{/mypage/qna}" class="menu-item--link" data-href="">배송지 관리</a>
-            	</li>
-            	<br>
-            	
-            	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
-                	<a href="#" class="menu-item--link" data-href="">고객관리</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a th:href="@{/mypage/member}" class="menu-item--link" data-href="">회원 정보 관리</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a href="@{/mypage/qna}" class="menu-item--link" data-href="">배송지 관리</a>
-            	</li>
-            	<br>
-            	
-            	<li class="menu-item is-active" style="margin-bottom: 8px; font-size: 24px;">
-                	<a href="#" class="menu-item--link" data-href="">게시판관리</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a th:href="@{/mypage/member}" class="menu-item--link" data-href="">회원 정보 관리</a>
-            	</li>
-            	<li class="menu-item ">
-                	<a href="@{/mypage/qna}" class="menu-item--link" data-href="">배송지 관리</a>
-            	</li>
-            	<br>
-            	
-        	</nav>
-        	<br><br><br><br><br><br><br>
-       	</div>
-       	
-        	<div class="default-page--content the-cols--content in">
-	            <div class="inner-wrap">
-						
-					<section class="mypage">
-	
-		
-						<div class="membership">
-							<div class="mem-class" style="display:flex; align-items: center">
-								<i class="lv-04 coin"></i>
-								<div class="mem-profile" style="padding-left: 40px">
-									<h2>
-									<a th:href="@{/mypage/member}"><em th:text="${#authentication.principal.member.mbrName}"></em>&nbsp;님</a>
-									<small th:text="${#authentication.principal.member.mbrEmail}"></small>
-									<small th:text="'가입일 : '+${#dates.format(#authentication.principal.member.mbrRegDate, 'yyyy.MM.dd')}"></small>
-									</h2>
-								</div>
-							</div>	
-						</div>
-						
-						<div class="history_wrap"></div>
-						
-						<div class="history_wrap">
-							<h4>
-								<span>나의 쇼핑 활동</span>
-							</h4>
-							<ul class="ask_list">
-								<li><span>주문내역</span> <a href="/secured/mypage/myWishList" class="c999">0</a></li>
-								<li><span>문의내역</span> <a href="/secured/mypage/myBrndList" class="c999">0</a></li>
-								<li><span>위시리스트</span> <a href="/secured/mypage/myAlarmsForStock" class="c999">0</a></li>
-								<li><span>장바구니</span> <a href="/secured/mypage/eventList">0</a></li>
-							</ul>
-		
-							<div class="hint_area">
-								<div class="left">
-									<em>Shop Yeoblee 구매혜택</em>
-									<p>Shop Yeoblee 멤버십 고객님들께만 제공되는 혜택입니다.</p>
-								</div>
-							</div>
-		
-						</div>
-					</section>
-				</div>
-                
-            </div>
-            
+    <div id="shopify-section-collection-template" class="shopify-section shopify-section--bordered">
+    <div class="collection the-cols ">
+    <!-- <a class="collection-sidebar--toggle mobonly">
+    <span data-title="All products<em>Filter</em>">All products<em>Filter</em></span>
+    </a> -->
+
+    <div class="collection-sidebar the-cols--sidebar">
+        <nav class="collection-sidebar--menu">
+            <li class="menu-item" style="margin-bottom: 8px; font-size: 24px; color: #bebcb4;">
+                	<a href="#" class="menu-item--link" data-href="" >전체 상품</a>
+            </li>
+            <li class="menu-item is-active">
+                <a href="#" class="menu-item--link" data-href="">Outers</a>
+            </li>
+            <li class="menu-item is-active">
+                <a href="#" class="menu-item--link" data-href="">Tops</a>
+            </li>
+            <li class="menu-item is-active">
+                <a href="#" class="menu-item--link" data-href="">Bottoms</a>
+            </li>
+            <li class="menu-item is-active">
+                <a href="#" class="menu-item--link" data-href="">Shoes</a>
+            </li>
+            <li class="menu-item is-active">
+                <a href="#" class="menu-item--link" data-href="">Accessories</a>
+            </li>
+        </nav>
+
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        
+    </div>
+
+
+    <div class="collection-list the-cols--content" style="opacity: 1;" th:each="product, state : ${pagedResult.getContent()}">
+
+
+        <div class="products-list--item">
+            <article class="product-item">
+                <div class="product-item--wrap">
+                    <a th:href="@{/shop/product(pNum=${product.pNum})}" class="product-item--image">
+                    <div class="product-item--images">
+                    <div class="product-item--image hires-wrap">
+                    
+                    <img class="product-item--image-img hires in" alt="" sizes="100vw" th:src="@{'uploadfile/' + ${product.pThImage}}">
+                    </div>
+                    </div>
+                    </a>
+
+                    <div class="product-item--info" style="text-align: center">
+                        <h2 class="product-item--info--title not-index">
+                            <a th:href="@{/shop/product(pNum=${product.pNum})}">
+                                <span class="code" th:text="${product.pBrand}" style="color: #bebcb4;"></span><br>
+                                <span class="code" th:text="${product.pName}"></span><br>
+                                <span class="code" th:text="'₩'+${product.pPrice}" style="color: #676965;"></span>
+                            </a>
+                        </h2>
+                    </div>
+                </div>
+            </article>
+            <br>
+        </div>
+        
+
+        </div>
+        </div>
         </div>
 
-
+		<br><br><br><br><br><br><br>
     </main>
 
     <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
         <footer class="footer second">
-            <a href="#" class="second--copyright deskonly"></a>
-            <a href="#" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
-            <a href="#" class="second--copyright deskonly"></a>
+            <a href="/" class="second--copyright deskonly"></a>
+            <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
+            <a href="/" class="second--copyright deskonly"></a>
             <br>
         </footer>
     </div>

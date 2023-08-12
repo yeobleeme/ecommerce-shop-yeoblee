@@ -178,6 +178,62 @@ public class ProductController {
 		return "forward:/admin/product";
 	}
 	
+	
+	@GetMapping("/shop")
+	public String getShopPage(Model model,
+			@RequestParam(defaultValue = "0") int curPage,
+			@RequestParam(defaultValue = "10") int rowSizePerPage,
+			@RequestParam(defaultValue = "pName") String searchType,
+			@RequestParam(defaultValue = "pNum") String qnaSeq,
+			@RequestParam(defaultValue = "") String searchWord
+			) {
+		
+		Pageable pageable = PageRequest.of(curPage, rowSizePerPage, Sort.by(qnaSeq).descending());
+		Page<Product> pagedResult = productService.getProductList(pageable, searchType, searchWord);
+		
+		int totalRowCount = pagedResult.getNumberOfElements();
+		int totalPageCount = pagedResult.getTotalPages();
+		int pageSize = pagingInfo.getPageSize();
+		int startPage = curPage / pageSize * pageSize + 1;
+		int endPage = startPage + pageSize + 1;
+		endPage = endPage > totalPageCount ? (totalPageCount > 0 ? totalPageCount : 1) : endPage;
+		
+		pagingInfo.setCurPage(curPage);
+		pagingInfo.setTotalRowCount(totalRowCount);
+		pagingInfo.setTotalPageCount(totalPageCount);
+		pagingInfo.setStartPage(startPage);
+		pagingInfo.setEndPage(endPage);
+		pagingInfo.setSearchType(searchType);
+		pagingInfo.setSearchWord(searchWord);
+		
+		model.addAttribute("pagingInfo", pagingInfo);
+		model.addAttribute("pagedResult", pagedResult);
+		model.addAttribute("pageable", pageable);
+		model.addAttribute("cp", curPage);
+		model.addAttribute("sp", startPage);
+		model.addAttribute("ep", endPage);
+		model.addAttribute("ps", pageSize);
+		model.addAttribute("rp", rowSizePerPage);
+		model.addAttribute("tp", totalPageCount);
+		model.addAttribute("st", searchType);
+		model.addAttribute("sw", searchWord);
+		
+		return "shop/shopMain";
+	}
+	
+	
+	@GetMapping("/shop/product")
+	public String getProductShop(Model model, @RequestParam Long pNum) {
+		
+		Product product = new Product();
+	    product.setPNum(pNum);
+		productService.updatePCnt(product);
+		model.addAttribute("product", productService.getProduct(product));
+		model.addAttribute("pNum", pNum);
+		
+		return "shop/productView";
+	}
+	
 
 }
 
