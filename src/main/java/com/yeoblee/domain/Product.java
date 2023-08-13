@@ -30,7 +30,8 @@ public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long pNum;
+	@Column(name = "prd_num")
+	private Long prdNum;
 	
 	@Column(nullable = false, length = 100)
 	private String pName;

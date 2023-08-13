@@ -14,8 +14,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	@Modifying
 	@Transactional
-	@Query("update Product p set p.pCnt = p.pCnt + 1 where p.pNum = :pNum")
-	int updatePCnt(@Param("pNum") Long pNum);
+	@Query("update Product p set p.pCnt = p.pCnt + 1 where p.prdNum = :prdNum")
+	int updatePCnt(@Param("prdNum") Long prdNum);
 	
 //	@Modifying
 //	@Transactional

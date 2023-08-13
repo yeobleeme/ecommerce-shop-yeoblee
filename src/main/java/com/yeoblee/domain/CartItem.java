@@ -1,9 +1,9 @@
 package com.yeoblee.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,31 +19,30 @@ import lombok.Setter;
 public class CartItem {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ciNum;
+    @GeneratedValue
+    @Column(name = "cart_item_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="cNum")
+    @JoinColumn(name="cart_id")
     private Cart cart;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="pNum")
+    @JoinColumn(name = "p_num")
     private Product product;
 
-    private int ciQty;
-    
+    private int count;
 
-    public static CartItem createCartItem(Cart cart, Product product, int ciQty) {
+    public static CartItem createCartItem(Cart cart, Product product, int count){
         CartItem cartItem = new CartItem();
         cartItem.setCart(cart);
         cartItem.setProduct(product);
-        cartItem.setCiQty(ciQty);
+        cartItem.setCount(count);
         return cartItem;
     }
 
-    
-    public void addCount(int count) {
-        this.ciQty += count;
+    public void addCount(int count){
+        this.count += count;
     }
 	
 

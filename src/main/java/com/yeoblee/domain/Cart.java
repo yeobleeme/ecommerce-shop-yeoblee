@@ -1,5 +1,6 @@
 package com.yeoblee.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,20 +22,21 @@ import lombok.ToString;
 public class Cart {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cNum;
+    @Column(name = "cart_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="mbrNum")
+    @JoinColumn(name = "mbr_num")
     private Member member;
 
-    
-    public static Cart createCart(Member member) {
+    public static Cart createCart(Member member){
         Cart cart = new Cart();
         cart.setMember(member);
         return cart;
     }
 
+    
 }
 
 

@@ -126,13 +126,13 @@ public class ProductController {
 	
 	
 	@GetMapping("/admin/product/view")
-	public String getProductView(Model model, @RequestParam Long pNum) {
+	public String getProductView(Model model, @RequestParam Long prdNum) {
 		
 		Product product = new Product();
-	    product.setPNum(pNum);
+	    product.setPrdNum(prdNum);
 		productService.updatePCnt(product);
 		model.addAttribute("product", productService.getProduct(product));
-		model.addAttribute("pNum", pNum);
+		model.addAttribute("pNum", prdNum);
 		
 		return "admin/product/adminProductView";
 	}
@@ -166,7 +166,7 @@ public class ProductController {
 		
 		model.addAttribute("product", productService.getProduct(product));
 		
-		return "redirect:/admin/product/view?pNum=" + product.getPNum();
+		return "redirect:/admin/product/view?prdNum=" + product.getPrdNum();
 	}
 	
 	
@@ -184,7 +184,7 @@ public class ProductController {
 			@RequestParam(defaultValue = "0") int curPage,
 			@RequestParam(defaultValue = "10") int rowSizePerPage,
 			@RequestParam(defaultValue = "pName") String searchType,
-			@RequestParam(defaultValue = "pNum") String qnaSeq,
+			@RequestParam(defaultValue = "prdNum") String qnaSeq,
 			@RequestParam(defaultValue = "") String searchWord
 			) {
 		
@@ -223,13 +223,13 @@ public class ProductController {
 	
 	
 	@GetMapping("/shop/product")
-	public String getProductShop(Model model, @RequestParam Long pNum) {
+	public String getProductShop(Model model, @RequestParam Long prdNum) {
 		
 		Product product = new Product();
-	    product.setPNum(pNum); 
+	    product.setPrdNum(prdNum); 
 		productService.updatePCnt(product);
 		model.addAttribute("product", productService.getProduct(product));
-		model.addAttribute("pNum", pNum);
+		model.addAttribute("prdNum", prdNum);
 		
 		return "shop/productView";
 	}

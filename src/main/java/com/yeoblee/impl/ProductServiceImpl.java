@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getProduct(Product product) {
 		
-		Optional<Product> findProduct = productRepository.findById(product.getPNum());
+		Optional<Product> findProduct = productRepository.findById(product.getPrdNum());
 		
 		if(findProduct.isPresent())
 			return findProduct.get();
@@ -101,13 +101,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProduct(Product product) {
 
-		productRepository.deleteById(product.getPNum());
+		productRepository.deleteById(product.getPrdNum());
 	}
 
 	@Override
 	public int updatePCnt(Product product) {
 		
-		return productRepository.updatePCnt(product.getPNum());
+		return productRepository.updatePCnt(product.getPrdNum());
 	}
 	
 	
