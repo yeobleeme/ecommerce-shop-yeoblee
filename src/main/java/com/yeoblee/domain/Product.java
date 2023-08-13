@@ -34,54 +34,54 @@ public class Product {
 	private Long prdNum;
 	
 	@Column(nullable = false, length = 100)
-	private String pName;
+	private String prdName;
 	
-	private String pBrand;
+	private String prdBrand;
 	
-	private String pType;
-	
-	@Column(nullable = false)
-	private Long pPrice;
-	
-	private Long pPoint;
+	private String prdType;
 	
 	@Column(nullable = false)
-	private Long pStock;
+	private Long prdPrice;
+	
+	private Long prdPoint;
+	
+	@Column(nullable = false)
+	private Long prdStock;
 	
 	@Transient
-	private MultipartFile pThUploadFile;
+	private MultipartFile prdThUploadFile;
 	
-	private String pThImage;
+	private String prdThImage;
 	
 	@Transient
-	private MultipartFile[] pDtUploadFile;
+	private MultipartFile[] prdDtUploadFile;
 
 	@ElementCollection
-    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "p_num"))
-    @Column(name = "p_dt_images")
-    private List<String> pDtImages;
+    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "prd_num"))
+    @Column(name = "prd_dt_images")
+    private List<String> prdDtImages;
 	
 	@Lob
-	private String pDetail;
+	private String prdDetail;
 	
-	private String pSize;
+	private String prdSize;
 	
-	private String pOrigin;
+	private String prdOrigin;
 	
 	@Column(nullable = false)
-	private String pDelivery;
+	private String prdDelivery;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private LocalDateTime pRegdate;
+	private LocalDateTime prdRegdate;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-	private LocalDateTime pUpdate;
+	private LocalDateTime prdUpdate;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "bigint default 0")
-	private Long pCnt;
+	private Long prdCnt;
 	
 	@Column(nullable = false)
-	private String pStatus;
+	private String prdStatus;
 	
 
 }

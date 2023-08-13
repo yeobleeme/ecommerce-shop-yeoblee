@@ -180,12 +180,12 @@ font-family: 'Noto Sans KR', sans-serif;
 							</thead>
 							<tbody>
 								<tr th:each="product, state : ${pagedResult.getContent()}">
-									<td style="width: 10%;"><a th:href="@{/admin/product/view(pNum=${product.pNum})}" th:text="'&nbsp;&nbsp;&nbsp;'+${product.pNum}"></a></td>
-									<td style="width: 15%;"><a th:href="@{/admin/product/view(pNum=${product.pNum})}" th:text="${product.pStatus}"></a></td>
-									<td style="width: 33%;"><a th:href="@{/admin/product/view(pNum=${product.pNum})}" th:text="${product.pName}"></a></td>
-									<td style="width: 19%;"><a th:href="@{/admin/product/view(pNum=${product.pNum})}" th:text="'&nbsp;'+${product.pPrice}"></a></td>
-									<td style="width: 15%;"><a th:href="@{/admin/product/view(pNum=${product.pNum})}" th:text="'&nbsp;'+${product.pStock}"></a></td>
-									<td style="width: 8%;"><a th:href="@{/admin/product/view(pNum=${product.pNum})}" th:text="'&nbsp;&nbsp;'+${product.pCnt}"></a></td>
+									<td style="width: 10%;"><a th:href="@{/admin/product/view(prdNum=${product.prdNum})}" th:text="'&nbsp;&nbsp;&nbsp;'+${product.prdNum}"></a></td>
+									<td style="width: 15%;"><a th:href="@{/admin/product/view(prdNum=${product.prdNum})}" th:text="${product.prdStatus}"></a></td>
+									<td style="width: 33%;"><a th:href="@{/admin/product/view(prdNum=${product.prdNum})}" th:text="${product.prdName}"></a></td>
+									<td style="width: 19%;"><a th:href="@{/admin/product/view(prdNum=${product.prdNum})}" th:text="'&nbsp;'+${product.prdPrice}"></a></td>
+									<td style="width: 15%;"><a th:href="@{/admin/product/view(prdNum=${product.prdNum})}" th:text="'&nbsp;'+${product.prdStock}"></a></td>
+									<td style="width: 8%;"><a th:href="@{/admin/product/view(prdNum=${product.prdNum})}" th:text="'&nbsp;&nbsp;'+${product.prdCnt}"></a></td>
 								</tr>
 							</tbody>
 						</table>

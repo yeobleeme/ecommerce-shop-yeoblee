@@ -160,62 +160,62 @@ font-family: 'Noto Sans KR', sans-serif;
 	            <div class="inner-wrap">
 					<section class="mypage">
 						<form th:action="@{/admin/product/modify}" th:object="${product}" id="gForm" method="post" enctype="multipart/form-data">
-							<input type="hidden" class="" name="pNum" id="pNum" th:value="${product.pNum}"/>
+							<input type="hidden" class="" name="prdNum" id="prdNum" th:value="${product.prdNum}"/>
 							<div class="form_wrap">
 								<ul>
 									<li>
 										<span class="item">상품명</span>
 										<span class="input_box">
-											<input id="pName" name="pName" type="text" th:value="${product.pName}" class="">
+											<input id="prdName" name="prdName" type="text" th:value="${product.prdName}" class="">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">판매가</span>
 										<span class="input_box">
-											<input id="pPrice" name="pPrice" type="text" th:value="${product.pPrice}" class="">
+											<input id="prdPrice" name="prdPrice" type="text" th:value="${product.prdPrice}" class="">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">판매상태</span>
 										<span class="input_box">
-											<input id="pStatus" name="pStatus" type="text" th:value="${product.pStatus}" class="">
+											<input id="prdStatus" name="prdStatus" type="text" th:value="${product.prdStatus}" class="">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">상품재고</span>
 										<span class="input_box">
-											<input id="pStock" name="pStock" type="text" th:value="${product.pStock}" class="">
+											<input id="prdStock" name="prdStock" type="text" th:value="${product.prdStock}" class="">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">상품설명</span>
-										<textarea name="pDetail" id="pDetail" th:text="${product.pDetail}" class=""></textarea>
+										<textarea name="prdDetail" id="prdDetail" th:text="${product.prdDetail}" class=""></textarea>
 									</li>
 									<br>
 									<li>
 										<span class="item">사이즈</span>
-										<textarea name="pSize" id="pSize" th:text="${product.pSize}" class=""></textarea>
+										<textarea name="prdSize" id="prdSize" th:text="${product.prdSize}" class=""></textarea>
 									</li>
 									<br>
 									<li>
 										<span class="item">대표이미지</span>
 										<span class="input_box">
-											<label class="" for="pThUploadFile"></label>
-											<input type="file" class="" name="pThUploadFile" id="pThUploadFile" style="color:#767676;">
-											<p class="info no_line" th:text="'첨부파일 : ' + ${product.pThImage}"></p>
+											<label class="" for="prdThUploadFile"></label>
+											<input type="file" class="" name="prdThUploadFile" id="prdThUploadFile" style="color:#767676;">
+											<p class="info no_line" th:text="'첨부파일 : ' + ${product.prdThImage}"></p>
 											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
 										</span>
 									</li>
 									<li>
 										<span class="item">상세이미지</span>
 										<span class="input_box">
-											<label class="" for="pDtUploadFile"></label>
-											<input type="file" class="" name="pDtUploadFile" id="pDtUploadFile" style="color:#767676;" multiple="multiple">
-											<div th:each="image : ${product.pDtImages}">
+											<label class="" for="prdDtUploadFile"></label>
+											<input type="file" class="" name="prdDtUploadFile" id="prdDtUploadFile" style="color:#767676;" multiple="multiple">
+											<div th:each="image : ${product.prdDtImages}">
 												<p class="info no_line" th:text="'첨부파일 : ' + ${image}"></p>
 											</div>
 											<span class="desc">10MB까지 등록 가능합니다. (GIF, PNG, JPG(JPEG))</span>
@@ -225,28 +225,28 @@ font-family: 'Noto Sans KR', sans-serif;
 									<li>
 										<span class="item">상품분류</span>
 										<span class="input_box">
-											<input id="pType" name="pType" type="text" th:value="${product.pType}" class="">
+											<input id="prdType" name="prdType" type="text" th:value="${product.prdType}" class="">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">브랜드</span>
 										<span class="input_box">
-											<input id="pBrand" name="pBrand" type="text" th:value="${product.pBrand}" class="">
+											<input id="prdBrand" name="prdBrand" type="text" th:value="${product.prdBrand}" class="">
 										</span>
 									</li>
 									<br>
 									<li>
 										<span class="item">제조국</span>
 										<span class="input_box">
-											<input id="pOrigin" name="pOrigin" type="text" th:value="${product.pOrigin}" class="">
+											<input id="prdOrigin" name="prdOrigin" type="text" th:value="${product.prdOrigin}" class="">
 										</span>
 									</li>
 									<br>
 					                <li>
 										<span class="item">배송조건</span>
 										<span class="input_box">
-											<input id="pDelivery" name="pDelivery" type="text" th:value="${product.pDelivery}" class="">
+											<input id="prdDelivery" name="prdDelivery" type="text" th:value="${product.prdDelivery}" class="">
 										</span>
 									</li>
 								</ul>

@@ -112,10 +112,10 @@ font-family: 'Noto Sans KR', sans-serif;
             <div class="single-product--images">
 
                 <div class="single-product--image hires-wrap">
-                    <img class="single-product--image-img" th:src="@{'/uploadfile/' + ${product.pThImage}}" alt="">
+                    <img class="single-product--image-img" th:src="@{'/uploadfile/' + ${product.prdThImage}}" alt="">
                 </div>
                 
-                <div class="single-product--image hires-wrap" th:each="image : ${product.pDtImages}">
+                <div class="single-product--image hires-wrap" th:each="image : ${product.prdDtImages}">
                     <img class="single-product--image-img" th:src="@{'/uploadfile/' + ${image}}" alt="">
                 </div>
                 
@@ -126,18 +126,18 @@ font-family: 'Noto Sans KR', sans-serif;
                     <div class="single-product--data--wrap">
 						<div class="product-data">
 						
-                        <h1 class="product-data--title" th:text="${product.pName}" style="margin-bottom:18px; text-align: left"></h1>
+                        <h1 class="product-data--title" th:text="${product.prdName}" style="margin-bottom:18px; text-align: left"></h1>
                         	<div class="product-data--price" style="margin-bottom: 24px;">
-                                <span class="price-span money" th:text="${product.pBrand}" style="color:#8e8f89;"></span>
+                                <span class="price-span money" th:text="${product.prdBrand}" style="color:#8e8f89;"></span>
                             </div>
                             <div class="product-data--price" style="margin-bottom: 24px;">
-                                <span class="price-span money" th:text="'₩' + ${#numbers.formatDecimal(product.pPrice, 0, 'COMMA', 0, 'POINT')}" style="font-weight: 500"></span>
+                                <span class="price-span money" th:text="'₩' + ${#numbers.formatDecimal(product.prdPrice, 0, 'COMMA', 0, 'POINT')}" style="font-weight: 500"></span>
                             </div>
 
                             <div class="product-data--description" style="margin-bottom: 18px;">
                                 <section>
                                     <div class="easyslider-text">
-                                        <p><span th:text="${product.pDetail}" style="color:#8e8f89;"></span></p>
+                                        <p><span th:text="${product.prdDetail}" style="color:#8e8f89;"></span></p>
                                     <br><hr>
                                     </div>
                                 </section>
@@ -157,7 +157,7 @@ font-family: 'Noto Sans KR', sans-serif;
                                     <div class="easyslider-header">
                                         <div class="easyslider-anchor">
                                             <span class="easyslider-header-text" style="color: #bebcb4">사이즈정보</span><br>
-                                            <span class="easyslider-header-text" th:text="${product.pSize}" style="color: #8e8f89"></span>
+                                            <span class="easyslider-header-text" th:text="${product.prdSize}" style="color: #8e8f89"></span>
                                         </div> 
                                     </div> 
                                 </div>
@@ -165,7 +165,7 @@ font-family: 'Noto Sans KR', sans-serif;
                                     <div class="easyslider-header">
                                         <div class="easyslider-anchor">
                                             <span class="easyslider-header-text" style="color: #bebcb4">제조국</span><br>
-                                            <span class="easyslider-header-text" th:text="'MADE IN ' + ${product.pOrigin}" style="color: #8e8f89"></span>
+                                            <span class="easyslider-header-text" th:text="'MADE IN ' + ${product.prdOrigin}" style="color: #8e8f89"></span>
                                         </div> 
                                     </div> 
                                 </div>
@@ -174,7 +174,7 @@ font-family: 'Noto Sans KR', sans-serif;
                                     <div class="easyslider-header">
                                         <div class="easyslider-anchor">
                                             <span class="easyslider-header-text" style="color: #bebcb4">배송조건</span><br>
-                                            <span class="easyslider-header-text" th:text="${product.pDelivery} + ' 상품'" style="color: #8e8f89"></span>
+                                            <span class="easyslider-header-text" th:text="${product.prdDelivery} + ' 상품'" style="color: #8e8f89"></span>
                                         </div> 
                                     </div> 
                                 </div>

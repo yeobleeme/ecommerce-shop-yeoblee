@@ -39,10 +39,10 @@ public class ProductController {
 	public PagingInfo pagingInfo = new PagingInfo();
 	
 	@Value("${path.upload}")
-	public String pUploadFolder;
+	public String prdUploadFolder;
 	
 	@Value("${path.download}")
-	public String pDownFolder;
+	public String prdDownFolder;
 	
 	
 	@GetMapping("/admin/product/insert")
@@ -55,26 +55,26 @@ public class ProductController {
 	public String insertProduct(Product product, @AuthenticationPrincipal SecurityUser pricipal) throws IOException {
 		
 		// 대표이미지 (썸네일) 단일파일 업로드
-		MultipartFile pThUploadFile = product.getPThUploadFile();
+		MultipartFile prdThUploadFile = product.getPrdThUploadFile();
 		
-		if(!pThUploadFile.isEmpty()) {
-			String pThFileName = pThUploadFile.getOriginalFilename();
-			pThUploadFile.transferTo(new File(pUploadFolder + pThFileName));
-			product.setPThImage(pThFileName);
+		if(!prdThUploadFile.isEmpty()) {
+			String prdThFileName = prdThUploadFile.getOriginalFilename();
+			prdThUploadFile.transferTo(new File(prdUploadFolder + prdThFileName));
+			product.setPrdThImage(prdThFileName);
 		}
 		
 		
 		// 상세이미지 다중파일 업로드
-		MultipartFile[] pDtUploadFile = product.getPDtUploadFile();
+		MultipartFile[] prdDtUploadFile = product.getPrdDtUploadFile();
 	    
 	    List<String> detailImageNames = new ArrayList<>();
-	    for (MultipartFile file : pDtUploadFile) {
+	    for (MultipartFile file : prdDtUploadFile) {
 	        if (!file.isEmpty()) {
 	            String fileName = productService.saveUploadedFile(file);
 	            detailImageNames.add(fileName);
 	        }
 	    }
-	    product.setPDtImages(detailImageNames);
+	    product.setPrdDtImages(detailImageNames);
 		
 		productService.insertProduct(product);
 		
@@ -86,8 +86,8 @@ public class ProductController {
 	public String getProductList(Model model,
 			@RequestParam(defaultValue = "0") int curPage,
 			@RequestParam(defaultValue = "10") int rowSizePerPage,
-			@RequestParam(defaultValue = "pName") String searchType,
-			@RequestParam(defaultValue = "pNum") String qnaSeq,
+			@RequestParam(defaultValue = "prdName") String searchType,
+			@RequestParam(defaultValue = "prdNum") String qnaSeq,
 			@RequestParam(defaultValue = "") String searchWord
 			) {
 		
@@ -130,9 +130,9 @@ public class ProductController {
 		
 		Product product = new Product();
 	    product.setPrdNum(prdNum);
-		productService.updatePCnt(product);
+		productService.updatePrdCnt(product);
 		model.addAttribute("product", productService.getProduct(product));
-		model.addAttribute("pNum", prdNum);
+		model.addAttribute("prdNum", prdNum);
 		
 		return "admin/product/adminProductView";
 	}
@@ -145,22 +145,22 @@ public class ProductController {
 	}
 	
 	@PostMapping("/admin/product/modify")
-	public String updateProduct(Product product, MultipartFile pThUploadFile, MultipartFile[] pDtUploadFile, @AuthenticationPrincipal SecurityUser pricipal, Model model) throws IOException {
+	public String updateProduct(Product product, MultipartFile prdThUploadFile, MultipartFile[] prdDtUploadFile, @AuthenticationPrincipal SecurityUser pricipal, Model model) throws IOException {
 		
-		if(!pThUploadFile.isEmpty()) {
-			String pThFileName = pThUploadFile.getOriginalFilename();
-			pThUploadFile.transferTo(new File(pUploadFolder + pThFileName));
-			product.setPThImage(pThFileName);
+		if(!prdThUploadFile.isEmpty()) {
+			String prdThFileName = prdThUploadFile.getOriginalFilename();
+			prdThUploadFile.transferTo(new File(prdUploadFolder + prdThFileName));
+			product.setPrdThImage(prdThFileName);
 		}
 		
 		List<String> detailImageNames = new ArrayList<>();
-	    for (MultipartFile file : pDtUploadFile) {
+	    for (MultipartFile file : prdDtUploadFile) {
 	        if (!file.isEmpty()) {
 	            String fileName = productService.saveUploadedFile(file);
 	            detailImageNames.add(fileName);
 	        }
 	    }
-	    product.setPDtImages(detailImageNames);
+	    product.setPrdDtImages(detailImageNames);
 		
 		productService.updateProduct(product);
 		
@@ -183,7 +183,7 @@ public class ProductController {
 	public String getShopPage(Model model,
 			@RequestParam(defaultValue = "0") int curPage,
 			@RequestParam(defaultValue = "10") int rowSizePerPage,
-			@RequestParam(defaultValue = "pName") String searchType,
+			@RequestParam(defaultValue = "prdName") String searchType,
 			@RequestParam(defaultValue = "prdNum") String qnaSeq,
 			@RequestParam(defaultValue = "") String searchWord
 			) {
@@ -227,7 +227,7 @@ public class ProductController {
 		
 		Product product = new Product();
 	    product.setPrdNum(prdNum); 
-		productService.updatePCnt(product);
+		productService.updatePrdCnt(product);
 		model.addAttribute("product", productService.getProduct(product));
 		model.addAttribute("prdNum", prdNum);
 		

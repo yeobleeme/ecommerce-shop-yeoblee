@@ -165,73 +165,73 @@ font-family: 'Noto Sans KR', sans-serif;
 					        <ul>
 					        	<li>
 					                <span class="item">상품번호</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pNum}" style="font-size: 17px; color: #767676"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdNum}" style="font-size: 17px; color: #767676"></p>
 					                <span class="item">조회수</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pCnt}" style="font-size: 17px; color: #767676"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdCnt}" style="font-size: 17px; color: #767676"></p>
 					            </li>
 					            <li>
 					                <span class="item">상품명</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pName}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdName}" style="font-size: 17px;"></p>
 					            </li>
 					            <br>
 					            <li>
 					            	<span class="item">판매상태</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pStatus}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdStatus}" style="font-size: 17px;"></p>
 					                <span class="item">상품재고</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pStock}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdStock}" style="font-size: 17px;"></p>
 					            </li>
 					            <li>
 					                <span class="item">판매가</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pPrice}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdPrice}" style="font-size: 17px;"></p>
 					                <span class="item">포인트</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pPoint}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdPoint}" style="font-size: 17px;"></p>
 					            </li>
 					            <li>
 					                <span class="item">상품분류</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pType}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdType}" style="font-size: 17px;"></p>
 					            	<span class="item">브랜드</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pBrand}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdBrand}" style="font-size: 17px;"></p>
 					            </li>
 					            <br>
 					            <li>
 					                <span class="item">상품설명</span>
-					                <p class="info" th:text="${product.pDetail}" style="font-size: 17px;"></p><br><br>
+					                <p class="info" th:text="${product.prdDetail}" style="font-size: 17px;"></p><br><br>
 					            </li>
 					            <li>
 					                <span class="item">사이즈</span>
-					                <p class="info" th:text="${product.pSize}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="${product.prdSize}" style="font-size: 17px;"></p>
 					            </li>
 					            <br>
 					            <li>
 					                <span class="item">대표이미지</span>
-					                <img class="info no_line" th:src="@{'/uploadfile/' + ${product.pThImage}}" alt="" style="width: 20%;"/>
+					                <img class="info no_line" th:src="@{'/uploadfile/' + ${product.prdThImage}}" alt="" style="width: 20%;"/>
 					            </li>
 					            <br>
 					            <li>
 					                <span class="item">상세이미지</span>
-					                <div th:each="image : ${product.pDtImages}">
+					                <div th:each="image : ${product.prdDtImages}">
 								        <img class="info no_line" th:src="@{'/uploadfile/' + ${image}}" alt="" style="width: 20%;"/>
 								    </div>
 					            </li>
 					            <br>
 					            <li>
 					                <span class="item">제조국</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pOrigin}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdOrigin}" style="font-size: 17px;"></p>
 					                <span class="item">배송조건</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.pDelivery}" style="font-size: 17px;"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${product.prdDelivery}" style="font-size: 17px;"></p>
 					            </li>
 					            <li>
 					            	<span class="item">등록일</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${#temporals.format(product.pRegdate, 'yyyy.MM.dd HH:mm')}" style="font-size: 17px; color: #767676"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${#temporals.format(product.prdRegdate, 'yyyy.MM.dd HH:mm')}" style="font-size: 17px; color: #767676"></p>
 					                <span class="item">수정일</span>
-					                <p class="info" th:text="'&nbsp;&nbsp;'+${#temporals.format(product.pUpdate, 'yyyy.MM.dd HH:mm')}" style="font-size: 17px; color: #767676"></p>
+					                <p class="info" th:text="'&nbsp;&nbsp;'+${#temporals.format(product.prdUpdate, 'yyyy.MM.dd HH:mm')}" style="font-size: 17px; color: #767676"></p>
 					            </li>
 					        </ul>
 					        
 					        <div class="btn_center">
 					         	<!-- <a th:href="@{/mypage/qna}" class="btn">목록</a> -->
-					            <a th:href="@{/admin/product/modify(pNum=${product.pNum})}" onclick="" class="btn bk">수정</a>
-					            <a th:href="@{/admin/product/delete(pNum=${product.pNum})}" onclick="deleteQna(event)" class="btn bk">삭제</a>
+					            <a th:href="@{/admin/product/modify(prdNum=${product.prdNum})}" onclick="" class="btn bk">수정</a>
+					            <a th:href="@{/admin/product/delete(prdNum=${product.prdNum})}" onclick="deleteQna(event)" class="btn bk">삭제</a>
 					        </div>
 					    </div>
 						

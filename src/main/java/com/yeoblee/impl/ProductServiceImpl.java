@@ -42,14 +42,14 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Page<Product> getProductList(Pageable pageable, String searchType, String searchWord) {
 		
-		if(searchType.equalsIgnoreCase("pName")) {
-			return productRepository.findBypNameContaining(searchWord, pageable);
+		if(searchType.equalsIgnoreCase("prdName")) {
+			return productRepository.findByPrdNameContaining(searchWord, pageable);
 			
-		} else if(searchType.equalsIgnoreCase("pBrand")) {
-			return productRepository.findBypBrandContaining(searchWord, pageable);
+		} else if(searchType.equalsIgnoreCase("prdBrand")) {
+			return productRepository.findByPrdBrandContaining(searchWord, pageable);
 			
 		} else {
-			return productRepository.findBypTypeContaining(searchWord, pageable);
+			return productRepository.findByPrdTypeContaining(searchWord, pageable);
 		}
 	}
 
@@ -60,12 +60,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Value("${path.upload}")
-    private String pUploadFolder;
+    private String prdUploadFolder;
 	
 	@Override
     public String saveUploadedFile(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
-        String filePath = pUploadFolder + fileName;
+        String filePath = prdUploadFolder + fileName;
         file.transferTo(new File(filePath));
         return fileName;
     }
@@ -93,7 +93,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void updateProduct(Product product) {
 		
-		product.setPUpdate(LocalDateTime.now());
+		product.setPrdUpdate(LocalDateTime.now());
 		
 		productRepository.save(product);
 	}
@@ -105,9 +105,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int updatePCnt(Product product) {
+	public int updatePrdCnt(Product product) {
 		
-		return productRepository.updatePCnt(product.getPrdNum());
+		return productRepository.updatePrdCnt(product.getPrdNum());
 	}
 	
 	

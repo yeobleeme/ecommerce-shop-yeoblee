@@ -150,20 +150,20 @@ font-family: 'Noto Sans KR', sans-serif;
         <div class="products-list--item" th:each="product, state : ${pagedResult.getContent()}">
             <article class="product-item">
                 <div class="product-item--wrap">
-                    <a th:href="@{/shop/product(pNum=${product.pNum})}" class="product-item--image">
+                    <a th:href="@{/shop/product(prdNum=${product.prdNum})}" class="product-item--image">
                     <div class="product-item--images">
                     <div class="product-item--image hires-wrap">
-                    <img class="product-item--image-img hires in" alt="" sizes="100vw" th:src="@{'/uploadfile/' + ${product.pThImage}}">
+                    <img class="product-item--image-img hires in" alt="" sizes="100vw" th:src="@{'/uploadfile/' + ${product.prdThImage}}">
                     </div>
                     </div>
                     </a>
 
                     <div class="product-item--info" style="text-align: center">
                         <h2 class="product-item--info--title not-index">
-                            <a th:href="@{/shop/product(pNum=${product.pNum})}">
-                                <span class="code" th:text="${product.pBrand}" style="color: #bebcb4;"></span><br>
-                                <span class="code" th:text="${product.pName}"></span><br>
-                                <span th:text="'₩' + ${#numbers.formatDecimal(product.pPrice, 0, 'COMMA', 0, 'POINT')}" style="color: #676965;"></span>
+                            <a th:href="@{/shop/product(prdNum=${product.prdNum})}">
+                                <span class="code" th:text="${product.prdBrand}" style="color: #bebcb4;"></span><br>
+                                <span class="code" th:text="${product.prdName}"></span><br>
+                                <span th:text="'₩' + ${#numbers.formatDecimal(product.prdPrice, 0, 'COMMA', 0, 'POINT')}" style="color: #676965;"></span>
                             </a>
                         </h2>
                     </div>

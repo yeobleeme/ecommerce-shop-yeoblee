@@ -16,7 +16,7 @@ public interface ProductService {
 	void insertProduct(Product product);
 	void updateProduct(Product product);
 	void deleteProduct(Product product);
-	int updatePCnt(Product product);
+	int updatePrdCnt(Product product);
 	
 	String saveUploadedFile(MultipartFile file) throws IOException;
 
