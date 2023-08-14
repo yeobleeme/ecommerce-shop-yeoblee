@@ -31,7 +31,7 @@ font-family: 'Noto Sans KR', sans-serif;
     
     <nav class="main-menu deskonly">
         <li class="menu-item ">
-            <a th:href="@{/shop}" style="color: #ff1818">Shop&nbsp;</a>
+            <a th:href="@{/shop}" style="color: #ff0099">Shop&nbsp;</a>
         </li>
         <li class="menu-item ">
             <a href="#">About&nbsp;</a>
@@ -55,7 +55,7 @@ font-family: 'Noto Sans KR', sans-serif;
         <a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
             <span>&nbsp;로그아웃</span>
         </a>
-        <a class="cart-tog" href="#">
+        <a class="cart-tog" th:href="@{/shop/cart}">
             <span>&nbsp;쇼핑백</span>
             <span class="hc-items-count">(0)</span>
         </a>

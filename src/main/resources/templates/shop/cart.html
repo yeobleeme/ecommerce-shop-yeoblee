@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
+    <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-02.css">
+
+    <style>
+    body {
+    font-family: 'Roboto', sans-serif; 
+    font-family: 'Noto Sans KR', sans-serif;
+    }
+    </style>
+
+</head>
+<body class="">
+    
+    <div id="wrap" class="cart">
+        <div id="shopify-section-header" class="shopify-section shopify-section--header">
+        <header class="header" id="section-header" role="banner">
+        <a href="/" id="logo">&nbsp;<span class="deskonly">Yeoblee</span></a>
+    
+    <nav class="main-menu deskonly">
+        <li class="menu-item ">
+            <a th:href="@{/shop}" style="color: #bebcb4">Shop&nbsp;</a>
+        </li>
+        <li class="menu-item ">
+            <a href="#">About&nbsp;</a>
+        </li>
+        <li class="menu-item ">
+            <a href="#">Topics&nbsp;</a>
+        </li>
+        <li class="menu-item ">
+            <a href="#">Community&nbsp;</a>
+        </li>
+    </nav>
+
+    <nav class="side-menu deskonly">
+
+        <a class="cart-tog" th:href="@{/mypage/myPage}">
+        	<span>&nbsp;마이페이지</span>
+        </a>
+        <a class="cart-tog" th:href="@{/login}" th:unless="${#httpServletRequest.userPrincipal != null}">
+        	<span>&nbsp;로그인</span>
+        </a>
+        <a class="cart-tog" th:href="@{/logout}" th:if="${#httpServletRequest.userPrincipal != null}">
+            <span>&nbsp;로그아웃</span>
+        </a>
+        <a class="cart-tog" th:href="@{/shop/cart}">
+            <span style="color: #ff0099">&nbsp;쇼핑백</span>
+            <span class="hc-items-count">(0)</span>
+        </a>
+
+    </nav>
+    
+        </header>
+    </div>
+
+    <main role="main">
+        
+        <div id="mini-cart" class="">
+            <br><br><br>
+            <header class="hc-mini-header">
+                <h4 class="cart-title">쇼핑백</h4>
+                <span class="hc-close" aria-hidden="true">Close</span>
+            </header> <br><br>
+
+            <form action="/cart" method="post" novalidate="" class="cart">
+                <div class="hc-append">
+                    <table class="hc-mini-table">
+                    
+                    <tr class="item-details" data-id="">
+                        <td class="item-details--image">
+                            <a href="#">
+                            <img src="/assets/images/720.png">
+                            </a>
+                        </td>
+                        <td class="item-details--text">
+                            <div class="item-details--text--string first">
+                                <a href="#">
+                                110 상품명
+                                </a>
+                            </div>
+                            <div class="item-details--text--string split">size S</div>
+                            <span class="item-details-price item-price">360,000 KRW</span>
+                        </td>
+                        <td class="item-details--quantity">
+                            <div class="item-details--quantity--buts">
+                                <a href="" class="minus-quantity">−</a>
+                                <input type="text" class="quantity-input" value="1">
+                                <a href="" class="plus-quantity">+</a>
+                            </div>
+                            <br>
+                            <a class="" href="">x 삭제</a>
+                        </td>
+                    </tr>
+                    
+                    <tr class="item-details" data-id="">
+                        <td class="item-details--image">
+                            <a href="#">
+                            <img src="/assets/images/720.png">
+                            </a>
+                        </td>
+                        <td class="item-details--text">
+                            <div class="item-details--text--string first">
+                                <a href="#">
+                                112 상품명
+                                </a>
+                            </div>
+                            <div class="item-details--text--string split">size S</div>
+                            <span class="item-details-price item-price">35,000 KRW</span>
+                        </td>
+                        <td class="item-details--quantity">
+                            <div class="item-details--quantity--buts">
+                                <a href="" class="minus-quantity">−</a>
+                                <input type="text" class="quantity-input" value="1">
+                                <a href="" class="plus-quantity">+</a>
+                            </div>
+                            <br>
+                            <a class="" href="">x 삭제</a>
+                        </td>
+                    </tr>
+
+                    </table>
+                </div>
+
+                <div class="hc-mini-form--footer">
+                    <div class="hc-buttons action buttons">
+                        <div class="ordernote">
+                            <span class="ordernote--toggle"><hr> </span>
+                            <div class="ordernote--message out">
+                            <textarea class="ordernote--message--area" name="note" id="cart-note" rows="4" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <a class="checkout" href="/checkout" rel="nofollow">
+                        <span>주문하기&nbsp;&nbsp;&nbsp;</span>&nbsp;<span class="amount" id="cart-price">₩ 710,000</span></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr>
+    
+    </div>
+
+    <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
+        <footer class="footer second">
+            <a href="/" class="second--copyright deskonly"></a>
+            <a href="/" class="second--copyright deskonly">&nbsp;copyright © 2023 Yeoblee Inc.</a>
+            <a href="/" class="second--copyright deskonly"></a>
+            <br>
+        </footer>
+    </div>
+    
+</body>
+</html>
