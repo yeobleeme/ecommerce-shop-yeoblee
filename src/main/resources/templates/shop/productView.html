@@ -22,6 +22,109 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script th:inline="javascript" defer>
+        $(document).ready(function(){
+
+            calculateToalPrice();
+
+            $("#count").change(function(){
+                calculateToalPrice();
+            });
+        });
+
+        function calculateToalPrice(){
+            var count = $("#count").val();
+            var price = $("#price").val();
+            var totalPrice = price*count;  // 결제 금액 : 현재 주문할 수량 * 상품 한 개 가격
+            $("#totalPrice").html(totalPrice + '원');
+        }
+
+        function order(){
+
+            // 스프링 시큐리티 는 POST 방식임. 근데 POST 방식으로 데이터를 전송할 때는 CSRF 토큰값이 필요해서, token 에다가 넣어준거임
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+
+            var url = "/order";
+            var paramData = { // 주문상품 id, 주문할 상품 개수 저장
+                itemId : $("#itemId").val(),
+                count : $("#count").val()
+            };
+
+            var param = JSON.stringify(paramData); // JSON 으로 데이터 보냄
+            // JSON 으로 데이터 보냄
+            $.ajax({
+                url      : url,
+                type     : "POST",
+                contentType : "application/json",
+                data     : param,
+                beforeSend : function(xhr){
+                    /* 데이터를 전송하기 전에 헤더에 csrf 값을 설정 (POST 방식 토큰) */
+                    xhr.setRequestHeader(header, token);
+                },
+                dataType : "json",
+                cache   : false,
+                success  : function(result, status){
+                    alert("주문이 완료 되었습니다.");
+                    location.href='/'; // 주문 로직 호출이 성공하면은 위의 메세지가 출력되고, 메인 페이지로 이동
+                },
+                error : function(jqXHR, status, error){
+
+                    if(jqXHR.status == '401'){
+                        alert('로그인 후 이용해주세요');
+                        location.href='/members/login'; // 401이면(로그인 상태가 아니면) 로그인 페이지로 이동함
+                    } else{
+                        alert(jqXHR.responseText); // 주문 시 에러가 발생하면 메세지 출력됨
+                    }
+
+                }
+            });
+        }
+
+        function addCart(){
+            /* var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content"); */
+
+            var url = "/shop/cart";
+            var paramData = {
+                itemId : $("#prdNum").val(),
+                count : $("#count").val()
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url      : url,
+                type     : "POST",
+                contentType : "application/json",
+                data     : param,
+                /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                /* beforeSend : function(xhr){
+                    xhr.setRequestHeader(header, token);
+                } */
+                dataType : "json",
+                cache   : false,
+                success  : function(result, status){
+                    alert("상품을 장바구니에 담았습니다.");
+                    /* location.href='/shop/product/view'; */
+                },
+                error : function(jqXHR, status, error){
+
+                    if(jqXHR.status == '401'){
+                        alert('로그인 후 이용해주세요');
+                        location.href='/login';
+                    } else{
+                        alert(jqXHR.responseText);
+                    }
+
+                }
+            });
+        }
+
+    </script>
+
 </head>
 <body class="">
     
@@ -70,7 +173,7 @@ font-family: 'Noto Sans KR', sans-serif;
         <div id="shopify-section-1627014023e7f9b35f" class="shopify-section shopify-section--slideshow">
             <section id="section-1627014023e7f9b35f" data-section-id="1627014023e7f9b35f" data-section-type="slideshow">
 
-                <div class="slideshow size-default" style="height: 124px;">
+                <div class="slideshow size-default" style="height: 108px;">
                     <div class="slideshow--carousel carousel carousel--fadeIn carousel--insideDots flickity-enabled" data-flickity="{
                         &quot;prevNextButtons&quot;:false,
                         &quot;setGallerySize&quot;: true,
@@ -140,12 +243,17 @@ font-family: 'Noto Sans KR', sans-serif;
                                         <p><span th:text="${product.prdDetail}" style="color:#8e8f89;"></span></p>
                                     <br><hr>
                                     </div>
+                                    
                                 </section>
                             </div>
                             
-                            <button type="submit" name="add" id="AddToCart" class="product-data--buy">쇼핑백 추가</button>
-                            <button type="submit" name="add" id="AddToCart" class="product-data--buy">위시리스트 추가</button>
-                            <button type="submit" name="add" id="AddToCart" class="product-data--buy">바로 구매하기</button>
+                            <input type="hidden" id="prdNum" name="prdNum" th:value="${product.prdNum}">
+    						<input type="hidden" id="prdPrice" name="prdPrice" th:value="${product.prdPrice}">
+    						<input type="hidden" name="count" id="count" value="1">
+    						
+                            <button type="submit" name="add" id="AddToCart" class="product-data--buy" onclick="addCart()">쇼핑백 추가</button>
+                            <button type="submit" name="" id="" class="product-data--buy" onclick="order()">위시리스트 추가</button>
+                            <button type="submit" name="" id="" class="product-data--buy">바로 구매하기</button>
 						
 						</div>
                         <br><br>
