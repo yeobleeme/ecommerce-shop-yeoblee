@@ -87,7 +87,7 @@ public class CartController {
     }
 
     // 장바구니에서 삭제할 요소 제거 delete
-    @DeleteMapping(value = "/cartItem/{cartItemId}")
+    @DeleteMapping(value = "/shop/cart/{cartItemId}")
     public @ResponseBody ResponseEntity deleteCartItem(@PathVariable("cartItemId") Long cartItemId, Principal principal){
 
         if(!cartService.validateCartItem(cartItemId, principal.getName())){// cartService 에서 검증 로직 발동!

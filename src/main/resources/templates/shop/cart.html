@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <title>Document</title>
-
-    <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
-    <link rel="stylesheet" href="/assets/css/shop-yeoblee-common-02.css">
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-03.css">
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-01.css">
+<link rel="stylesheet" href="/assets/css/shop-yeoblee-common-02.css">
 
     <style>
     body {
@@ -22,45 +22,161 @@
     }
     </style>
     
-    <script th:inline="javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:inline="javascript" defer>
 
-        $(document).ready(function(){
-            $("input[name=cartChkBox]").change( function(){
-                getOrderTotalPrice();
-            });
+ // 체크박스 데이터 받아오기 위한 익명 func
+    // 주문할 상품의 체크박스를 클릭 시 총 주문 금액을 받아옴 (체크하면 +, 헤제하면 -)
+    $(document).ready(function(){
+        $("input[name=cartChkBox]").change( function(){
+            getOrderTotalPrice();
+        });
+    });
+
+    // 총 주문 금액을 구하는 func
+    function getOrderTotalPrice(){
+        var orderTotalPrice = 0;
+        $("input[name=cartChkBox]:checked").each(function() {
+            var cartItemId = $(this).val();
+            var price = $("#price_" + cartItemId).attr("data-price");
+            var count = $("#count_" + cartItemId).val();
+            orderTotalPrice += price*count;
         });
 
-        function getOrderTotalPrice(){
-            var orderTotalPrice = 0;
-            $("input[name=cartChkBox]:checked").each(function() {
-                var cartItemId = $(this).val();
-                var price = $("#price_" + cartItemId).attr("data-price");
-                var count = $("#count_" + cartItemId).val();
-                orderTotalPrice += price*count;
-            });
+        $("#orderTotalPrice").html(orderTotalPrice+'원');
+    }
 
-            $("#orderTotalPrice").html(orderTotalPrice+'원');
+    // 장바구니 안 상품 개수를 바꾸는 func
+    function changeCount(obj){
+        var count = obj.value;
+        var cartItemId = obj.id.split('_')[1];
+        var price = $("#price_" + cartItemId).data("price");
+        var totalPrice = count*price;
+        $("#totalPrice_" + cartItemId).html(totalPrice+"원");
+        getOrderTotalPrice(); // 여기서 총 주문 금액 구하는 func 호출
+
+        updateCartItemCount(cartItemId, count); // 장바구니 상품 개수 수정 func 호출
+    }
+
+    // 체크박스 데이터 받아오기 위한 func
+    function checkAll(){
+        if($("#checkall").prop("checked")){
+            $("input[name=cartChkBox]").prop("checked",true);
+        }else{
+            $("input[name=cartChkBox]").prop("checked",false);
         }
+        getOrderTotalPrice(); // 여기서 체크된 아이템들의 총 주문 금액 구하는 func 호출
+    }
 
-        function changeCount(obj){
-            var count = obj.value;
-            var cartItemId = obj.id.split('_')[1];
-            var price = $("#price_" + cartItemId).data("price");
-            var totalPrice = count*price;
-            $("#totalPrice_" + cartItemId).html(totalPrice+"원");
-            getOrderTotalPrice();
-            updateCartItemCount(cartItemId, count);
-        }
+    // 장바구니 상품 개수 수정
+    function updateCartItemCount(cartItemId, count){
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
 
-        function checkAll(){
-            if($("#checkall").prop("checked")){
-                $("input[name=cartChkBox]").prop("checked",true);
-            }else{
-                $("input[name=cartChkBox]").prop("checked",false);
+        var url = "/cartItem/" + cartItemId+"?count=" + count;
+
+        $.ajax({
+            url      : url,
+            type     : "PATCH",
+            beforeSend : function(xhr){
+                /* 데이터를 전송하기 전에 헤더에 csrf 값을 설정 */
+                xhr.setRequestHeader(header, token);
+            },
+            dataType : "json",
+            cache   : false,
+            success  : function(result, status){
+                console.log("cartItem count update success");
+            },
+            error : function(jqXHR, status, error){
+
+                if(jqXHR.status == '401'){
+                    alert('로그인 후 이용해주세요');
+                    location.href='/members/login';
+                } else{
+                    alert(jqXHR.responseJSON.message);
+                }
+
             }
-            getOrderTotalPrice();
-        }
-    </script>
+        });
+    }
+
+    // 카트에 있는 아이템 제거
+    function deleteCartItem(obj){
+        var cartItemId = obj.dataset.id;
+
+        var url = "/shop/cart/" + cartItemId;
+
+        $.ajax({
+            url      : url,
+            type     : "DELETE",
+            dataType : "json",
+            cache   : false,
+            success  : function(result, status){
+            	alert("장바구니에서 상품을 삭제했습니다.");
+                location.href='/shop/cart'; // 장바구니 페이지를 새로고침
+            },
+            error : function(jqXHR, status, error){
+
+                if(jqXHR.status == '401'){
+                    alert('로그인 후 이용해주세요');
+                    location.href='/login';
+                } else{
+                    alert(jqXHR.responseJSON.message);
+                }
+
+            }
+        });
+    }
+
+    function orders(){
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        var url = "/cart/orders";
+
+        var dataList = new Array();
+        var paramData = new Object();
+
+        $("input[name=cartChkBox]:checked").each(function() {
+            var cartItemId = $(this).val();
+            var data = new Object();
+            data["cartItemId"] = cartItemId;
+            dataList.push(data);
+        });
+
+        paramData['cartOrderDtoList'] = dataList;
+
+        var param = JSON.stringify(paramData);
+
+        $.ajax({
+            url      : url,
+            type     : "POST",
+            contentType : "application/json",
+            data     : param,
+            beforeSend : function(xhr){
+                /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                xhr.setRequestHeader(header, token);
+            },
+            dataType : "json",
+            cache   : false,
+            success  : function(result, status){
+                alert("주문이 완료 되었습니다.");
+                location.href='/orders';
+            },
+            error : function(jqXHR, status, error){
+
+                if(jqXHR.status == '401'){
+                    alert('로그인 후 이용해주세요');
+                    location.href='/members/login';
+                } else{
+                    alert(jqXHR.responseJSON.message);
+                }
+
+            }
+        });
+    }
+
+</script>
 
 </head>
 <body class="">
@@ -115,7 +231,7 @@
                 <span class="hc-close" aria-hidden="true">Close</span>
             </header> <br><br>
 
-            <form action="/cart" method="post" novalidate="" class="cart">
+            <form class="cart">
                 <div class="hc-append">
                     <table class="hc-mini-table">
                     
@@ -129,17 +245,17 @@
                             <div class="item-details--text--string first">
                                 <a href="#" th:text="${cartItem.itemName}"></a>
                             </div>
-                            <div class="item-details--text--string split">size S</div>
-                            <span class="item-details-price item-price" th:text="${cartItem.price}"></span>
+                            <div class="item-details--text--string split">&nbsp;</div>
+                            <span class="item-details-price item-price" th:text="'₩' + ${#numbers.formatDecimal(cartItem.price, 0, 'COMMA', 0, 'POINT')}"></span>
                         </td>
                         <td class="item-details--quantity">
                             <div class="item-details--quantity--buts">
                                 <a href="" class="minus-quantity">−</a>
-                                <input type="text" class="quantity-input" value="1">
+                                <input type="text" class="quantity-input" th:value="${cartItem.count}">
                                 <a href="" class="plus-quantity">+</a>
                             </div>
                             <br>
-                            <a class="" href="">x 삭제</a>
+                            <button class="btn bk" style="background-color: #2b2b2e" th:data-id="${cartItem.cartItemId}" onclick="deleteCartItem(this)">삭제</button>
                         </td>
                     </tr>
                     
@@ -149,13 +265,15 @@
                 <div class="hc-mini-form--footer">
                     <div class="hc-buttons action buttons">
                         <div class="ordernote">
-                            <span class="ordernote--toggle"><hr> </span>
+                            <span class="ordernote--toggle"> </span>
                             <div class="ordernote--message out">
                             <textarea class="ordernote--message--area" name="note" id="cart-note" rows="4" placeholder=""></textarea>
                             </div>
                         </div>
                         <a class="checkout" href="/checkout" rel="nofollow">
-                        <span>주문하기&nbsp;&nbsp;&nbsp;</span>&nbsp;<span class="amount" id="cart-price">₩ 710,000</span></a>
+                        <span>주문하기&nbsp;&nbsp;&nbsp;</span>&nbsp;
+                        <span class="amount" id="cart-price" >₩ 710,000</span>
+                    	</a>
                     </div>
                 </div>
             </form>
@@ -163,8 +281,7 @@
 
     </main>
 
-    <hr><hr><hr><hr><hr>
-    <hr><hr><hr><hr><hr>
+    <br><br><br><br><br><br><br>
     
     </div>
 
