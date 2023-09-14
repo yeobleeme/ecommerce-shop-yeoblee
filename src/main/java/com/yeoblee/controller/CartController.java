@@ -72,7 +72,7 @@ public class CartController {
         return "shop/cart";
     }
 
-    // 장바구니 상품의 개수 수정 patch 
+    // 장바구니 상품의 개수 수정 patch
     @PatchMapping(value = "/cartItem/{cartItemId}")
     public @ResponseBody ResponseEntity updateCartItem(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal){
 
